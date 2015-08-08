@@ -6,15 +6,12 @@ export default function* (source) {
         throw new Error("source is null or undefined");
 
     if (Array.isArray(source)) {
-        for (var index = 0;
-            index < source.length; index++) {
+        for (let index = 0; index < source.length; index++) {
             let element = source[index];
             yield element;
         }
     }
     else {
-
-        return source;
+        throw new Error("source can not be enumerated");
     }
-
 };
