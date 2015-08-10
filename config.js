@@ -1,3 +1,4 @@
+/* global System */
 System.config({
   "baseURL": "/",
   "transpiler": "babel",

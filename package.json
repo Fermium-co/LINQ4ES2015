@@ -1,4 +1,6 @@
 {
+  "name": "linq4es2015",
+  "version": "0.0.1",
   "jspm": {
     "directories": {},
     "devDependencies": {
