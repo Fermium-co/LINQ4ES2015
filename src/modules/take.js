@@ -3,7 +3,10 @@
 import utils from "./utils";
 
 export default function* (source, totalCount) {
-    source = source || this;
+    if (arguments.length == 1) {
+        totalCount = source;
+        source = this;
+    }
     if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
     }
