@@ -10,6 +10,9 @@ export default function* (source, projection) {
     if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
     }
+    if (!(projection instanceof Function)) {
+        throw new Error("projection must be a function");
+    }
     if (!utils.isGenerator(source)) {
         source = source.asEnumerable();
     }
