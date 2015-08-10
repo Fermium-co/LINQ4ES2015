@@ -19,5 +19,6 @@ export default function* (source, totalCount) {
     while (count < totalCount) {
         yield next.value;
         count++;
+        next = source.next();
     }
 };
