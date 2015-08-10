@@ -9,14 +9,14 @@ let oddWhereExecutionCount = 0;
 let odds = arr.asEnumerable().where(n => {
 	oddWhereExecutionCount++;
 	return n % 2 !== 0;
-}).take(2).toArray();
+}).take(2).select(num => '[' + num + ']').toArray();
 
 let evenWhereExecutionCount = 0;
 
 let evens = arr.asEnumerable().where(n => {
 	evenWhereExecutionCount++;
 	return n % 2 === 0;
-}).take(2).toArray();
+}).take(2).select(num => '[' + num + ']').toArray();
 
 console.log('array: ' + arr);
 console.log('odds: ' + odds);
