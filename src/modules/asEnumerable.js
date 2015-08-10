@@ -1,9 +1,10 @@
 "use strict";
 
 export default function* (source) {
-
-    if (source == null || source == undefined)
+    source = source || this;
+    if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
+    }
 
     if (Array.isArray(source)) {
         for (let index = 0; index < source.length; index++) {
