@@ -18,10 +18,8 @@ export default function* (source, totalCount) {
     let count = 0;
     while (true) {
         yield next.value;
-        count++;
-        if(count < totalCount)
-            next = source.next();
-        else
+        if (++count >= totalCount)
             break;
+        next = source.next();
     }
 };
