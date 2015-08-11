@@ -1,4 +1,4 @@
-/* global describe it expect */
+/* global describe it expect spyOn */
 "use strict";
 
 import linq from "../../src/linq";
@@ -32,12 +32,13 @@ describe("where", () => {
   });
 
   it("must call predicate 2 times when result is get enumerated", () => {
-    let fakePredicate = jasmine.createSpy();
-    let evenNumbers = arr.asEnumerable().where(fakePredicate).take(1).toArray();
-    expect(fakePredicate).toHaveBeenCalledWith(1);
-    expect(fakePredicate).toHaveBeenCalledWith(2);
-    expect(fakePredicate).not.toHaveBeenCalledWith(3);
-    expect(fakePredicate.calls.count()).toBe(2);
+    let fakeObject = { fakePredicate: num => { return num % 2 == 0; } };
+    spyOn(fakeObject, 'fakePredicate').and.callThrough();
+    let evenNumbers = arr.asEnumerable().where(fakeObject.fakePredicate).take(1).toArray();
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1);
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2);
+    expect(fakeObject.fakePredicate).not.toHaveBeenCalledWith(3);
+    expect(fakeObject.fakePredicate.calls.count()).toBe(2);
   });
 
 });
