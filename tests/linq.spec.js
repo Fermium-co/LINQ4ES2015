@@ -5,6 +5,8 @@ import linq from "../src/linq";
 
 describe("linq", () => {
   it("must be a function", () => {
-    expect((linq instanceof Function));
+    expect((typeof linq)).toBe("function");
   });
 });
+
+linq();
