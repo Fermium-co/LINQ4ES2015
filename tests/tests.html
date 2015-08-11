@@ -1,19 +1,16 @@
 <html>
 	<head>
 		<title>Linq4Es2015 Test Suite</title>
-		
-		<style>
-			ul li.pass { color: green; }
-			ul li.fail { color: red; }
-		</style>
-		
+		<link rel="stylesheet" type="text/css" href="/libs/jasmine/lib/jasmine-core/jasmine.css">
+		<script type="text/javascript" src="/libs/jasmine/lib/jasmine-core/jasmine.js"></script>
+		<script type="text/javascript" src="/libs/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+		<script type="text/javascript" src="systemjsJasmineBoot.js"></script>
 		<script src="../jspm_packages/system.js"></script>
 		<script src="../config.js"></script>
 		<script>
-			System.import('./tests/tests');
+			System.import('./tests/app.spec').then(runJasmine); // see systemjsJasmineBoot.js
 		</script>
 	</head>
-	
 	<body></body>
 
 </html>

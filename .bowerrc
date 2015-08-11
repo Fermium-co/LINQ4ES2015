@@ -1,0 +1,13 @@
+{
+	"name": "linq4es2015",
+	"version": "0.0.1",
+	"directory": "libs",
+	"dependencies": {
+		"jasmine": "~1.3.1"
+	},
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"components"
+	]
+}
