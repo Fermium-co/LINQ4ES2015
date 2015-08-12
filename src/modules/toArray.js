@@ -7,8 +7,11 @@ export default function (source) {
     if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
     }
-    if (!utils.isGenerator(source)) {
-        source = source.asEnumerable();
+    if (Array.isArray(source)) {
+        return source;
+    }
+        if (!utils.isGenerator(source)) {
+        throw new Error("source must be an enumerable");
     }
 
     let result = [];
