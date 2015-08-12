@@ -17,6 +17,13 @@ describe("take", () => {
     expect(evenNumbers[1]).toBe(2);
   });
 
+  it("must retrn first two even items", () => {
+    let evenNumbers = arr.asEnumerable().where(num => num % 2 == 0).take(2).toArray();
+    expect(evenNumbers.length).toBe(2);
+    expect(evenNumbers[0]).toBe(2);
+    expect(evenNumbers[1]).toBe(4);
+  });
+
   it("must throws an exception when the source is null or undefined", () => {
     expect(() => toArray(take(null, 1))).toThrowError("source is null or undefined");
     expect(() => toArray(take(undefined, 1))).toThrowError("source is null or undefined");

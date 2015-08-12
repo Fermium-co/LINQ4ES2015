@@ -28,6 +28,35 @@ describe("orderByDescending", () => {
 		expect(orderedItems[2].FirstName).toBe('A');
 	});
 
+	it("must call projection 2 times because of where method", () => {
+		let fakeObject = { fakeorderByDescending: num => num };
+		spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
+		let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderByDescending(fakeObject.fakeorderByDescending).toArray();
+		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(2);
+		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(4);
+		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(6);
+		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(3);
+		expect(fakeObject.fakeorderByDescending.calls.count()).toBe(6);
+		expect(result[0]).toBe(6);
+		expect(result[1]).toBe(4);
+		expect(result[2]).toBe(2);
+		expect(result.length).toBe(3);
+	});
+
+	it("must call projection 2 times because of take method", () => {
+		let fakeObject = { fakeorderByDescending: num => num };
+		spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
+		let result = simpleArr.asEnumerable().take(2).orderByDescending(fakeObject.fakeorderByDescending).toArray();
+		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(3);
+		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(2);
+		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(6);
+		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(4);
+		expect(fakeObject.fakeorderByDescending.calls.count()).toBe(2);
+		expect(result[0]).toBe(3);
+		expect(result[1]).toBe(2);
+		expect(result.length).toBe(2);
+	});
+
 	it("must throws an exception when the source is null or undefined", () => {
 		expect(() => toArray(orderByDescending(null, item => item))).toThrowError("source is null or undefined");
 		expect(() => toArray(orderByDescending(undefined, item => item))).toThrowError("source is null or undefined");
