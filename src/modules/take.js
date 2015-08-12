@@ -17,7 +17,7 @@ export default function* (source, totalCount) {
     if (!utils.isGenerator(source)) {
         throw new Error("source must be an enumerable");
     }
-    if (isNaN(totalCount)) {
+    if (isNaN(totalCount) || totalCount == null) {
         throw new Error("take number must be a number");
     }
 
