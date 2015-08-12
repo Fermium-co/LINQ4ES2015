@@ -7,6 +7,7 @@ import where from "./modules/where";
 import take from "./modules/take";
 import select from "./modules/select";
 import orderBy from "./modules/orderBy";
+import orderByDescending from "./modules/orderByDescending";
 
 function setPrototype(prototype) {
 	prototype.asEnumerable = asEnumerable;
@@ -15,6 +16,7 @@ function setPrototype(prototype) {
 	prototype.take = take;
 	prototype.select = select;
 	prototype.orderBy = orderBy;
+	prototype.orderByDescending = orderByDescending;
 }
 
 export default function () {
