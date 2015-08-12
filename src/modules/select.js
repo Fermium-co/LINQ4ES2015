@@ -13,8 +13,11 @@ export default function* (source, projection) {
     if (!(projection instanceof Function)) {
         throw new Error("projection must be a function");
     }
-    if (!utils.isGenerator(source)) {
+    if (Array.isArray(source)) {
         source = source.asEnumerable();
+    }    
+    if (!utils.isGenerator(source)) {
+        throw new Error("source must be an enumerable");
     }
 
     let next = source.next();

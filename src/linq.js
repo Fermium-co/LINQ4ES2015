@@ -19,6 +19,6 @@ export default function () {
 	//setPrototype(Array.prototype);
 	setPrototype(utils.GeneratorFunctionProto);
 	setPrototype(utils.GeneratorFunctionPrototype);
-	
+
 	Array.prototype.asEnumerable = asEnumerable;
 }

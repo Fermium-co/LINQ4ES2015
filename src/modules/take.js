@@ -3,6 +3,7 @@
 import utils from "./utils";
 
 export default function* (source, totalCount) {
+    
     if (arguments.length == 1) {
         totalCount = source;
         source = this;
@@ -10,8 +11,14 @@ export default function* (source, totalCount) {
     if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
     }
-    if (!utils.isGenerator(source)) {
+    if (Array.isArray(source)) {
         source = source.asEnumerable();
+    }    
+    if (!utils.isGenerator(source)) {
+        throw new Error("source must be an enumerable");
+    }
+    if (isNaN(totalCount)) {
+        throw new Error("take number must be a number");
     }
 
     let next = source.next();

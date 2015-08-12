@@ -2,3 +2,4 @@
 
 import "./linq.spec";
 import "./modules/where.spec";
+import "./modules/take.spec";

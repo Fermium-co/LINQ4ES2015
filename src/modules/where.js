@@ -13,8 +13,11 @@ export default function* (source, predicate) {
     if (!(predicate instanceof Function)) {
         throw new Error("predicate must be a function");
     }
-    if (!utils.isGenerator(source)) {
+    if (Array.isArray(source)) {
         source = source.asEnumerable();
+    }
+    if (!utils.isGenerator(source)) {
+        throw new Error("source must be an enumerable");
     }
 
     let next = source.next();

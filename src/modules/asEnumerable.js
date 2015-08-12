@@ -1,9 +1,14 @@
 "use strict";
 
+import utils from "./utils";
+
 export default function* (source) {
     source = source || this;
     if (source == null || source == undefined) {
         throw new Error("source is null or undefined");
+    }
+    if (utils.isGenerator(source)) {
+        return source;
     }
 
     if (Array.isArray(source)) {
