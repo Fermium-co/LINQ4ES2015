@@ -11,7 +11,7 @@ describe("orderBy", () => {
 	let simpleArr = [3, 2, 6, 4];
 	let complexArr = [{ FirstName: 'C' }, { FirstName: 'A' }, { FirstName: 'B' }];
 
-	it("must retrn ordered items", () => {
+	it("should retrn ordered items", () => {
 		let orderedItems = simpleArr.asEnumerable().orderBy(num => num).toArray();
 		expect(orderedItems.length).toBe(4);
 		expect(orderedItems[0]).toBe(2);
@@ -20,7 +20,7 @@ describe("orderBy", () => {
 		expect(orderedItems[3]).toBe(6);
 	});
 
-	it("must retrn ordered set of complex items", () => {
+	it("should retrn ordered set of complex items", () => {
 		let orderedItems = complexArr.asEnumerable().orderBy(item => item.FirstName).toArray();
 		expect(orderedItems.length).toBe(3);
 		expect(orderedItems[0].FirstName).toBe('A');
@@ -28,7 +28,7 @@ describe("orderBy", () => {
 		expect(orderedItems[2].FirstName).toBe('C');
 	});
 
-	it("must call order by function correctly because of where method", () => {
+	it("should call order by function correctly because of where method", () => {
 		let fakeObject = { fakeOrderBy: num => num };
 		spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
 		let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderBy(fakeObject.fakeOrderBy).toArray();
@@ -43,7 +43,7 @@ describe("orderBy", () => {
 		expect(result.length).toBe(3);
 	});
 
-	it("must call order by function correctly because of take method", () => {
+	it("should call order by function correctly because of take method", () => {
 		let fakeObject = { fakeOrderBy: num => num };
 		spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
 		let result = simpleArr.asEnumerable().take(2).orderBy(fakeObject.fakeOrderBy).toArray();
@@ -57,16 +57,16 @@ describe("orderBy", () => {
 		expect(result.length).toBe(2);
 	});
 
-	it("must throws an exception when the source is null or undefined", () => {
+	it("should throws an exception when the source is null or undefined", () => {
 		expect(() => toArray(orderBy(null, item => item))).toThrowError("source is null or undefined");
 		expect(() => toArray(orderBy(undefined, item => item))).toThrowError("source is null or undefined");
 	});
 
-	it("must throws an exception when the source is not an enumerable", () => {
+	it("should throws an exception when the source is not an enumerable", () => {
 		expect(() => toArray(orderBy({}, item => item))).toThrowError("source must be an enumerable");
 	});
 
-	it("must throws an exception when the order by column is not a function", () => {
+	it("should throws an exception when the order by column is not a function", () => {
 		expect(() => toArray(orderBy([], {}))).toThrowError("order by column must be a function");
 	});
 });

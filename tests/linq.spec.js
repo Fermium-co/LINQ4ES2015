@@ -1,10 +1,10 @@
-/* global describe it expect */
+/* global describe, it, expect */
 "use strict";
 
 import linq from "../src/linq";
 
 describe("linq", () => {
-  it("must be a function", () => {
+  it("should be a function", () => {
     expect((typeof linq)).toBe("function");
   });
 });

@@ -15,7 +15,7 @@ export default function* (source, projection) {
     }
     if (Array.isArray(source)) {
         source = source.asEnumerable();
-    }    
+    }
     if (!utils.isGenerator(source)) {
         throw new Error("source must be an enumerable");
     }
