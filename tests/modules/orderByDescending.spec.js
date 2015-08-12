@@ -28,7 +28,7 @@ describe("orderByDescending", () => {
 		expect(orderedItems[2].FirstName).toBe('A');
 	});
 
-	it("must call projection 2 times because of where method", () => {
+	it("must call order by descending function correctly because of where method", () => {
 		let fakeObject = { fakeorderByDescending: num => num };
 		spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
 		let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderByDescending(fakeObject.fakeorderByDescending).toArray();
@@ -43,7 +43,7 @@ describe("orderByDescending", () => {
 		expect(result.length).toBe(3);
 	});
 
-	it("must call projection 2 times because of take method", () => {
+	it("must call order by descending function correctly because of take method", () => {
 		let fakeObject = { fakeorderByDescending: num => num };
 		spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
 		let result = simpleArr.asEnumerable().take(2).orderByDescending(fakeObject.fakeorderByDescending).toArray();

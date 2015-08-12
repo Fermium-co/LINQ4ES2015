@@ -28,7 +28,7 @@ describe("orderBy", () => {
 		expect(orderedItems[2].FirstName).toBe('C');
 	});
 
-	it("must call projection 2 times because of where method", () => {
+	it("must call order by function correctly because of where method", () => {
 		let fakeObject = { fakeOrderBy: num => num };
 		spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
 		let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderBy(fakeObject.fakeOrderBy).toArray();
@@ -43,7 +43,7 @@ describe("orderBy", () => {
 		expect(result.length).toBe(3);
 	});
 
-	it("must call projection 2 times because of take method", () => {
+	it("must call order by function correctly because of take method", () => {
 		let fakeObject = { fakeOrderBy: num => num };
 		spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
 		let result = simpleArr.asEnumerable().take(2).orderBy(fakeObject.fakeOrderBy).toArray();
