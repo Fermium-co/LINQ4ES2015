@@ -8,7 +8,7 @@ export default function* (source) {
         throw new Error("source is null or undefined");
     }
     if (utils.isGenerator(source)) {
-        return source;
+        throw new Error("enumerable may not be enumerated twice");
     }
 
     if (Array.isArray(source)) {
