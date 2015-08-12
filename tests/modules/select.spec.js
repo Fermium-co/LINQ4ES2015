@@ -10,7 +10,7 @@ describe("select", () => {
 
   let arr = [1, 2, 3, 4];
 
-  it("must retrn items with provided projection format", () => {
+  it("should retrn items with provided projection format", () => {
     let evenNumbers = arr.asEnumerable().select(num => '[' + num + ']').toArray();
     expect(evenNumbers.length).toBe(4);
     expect(evenNumbers[0]).toBe('[1]');
@@ -19,7 +19,7 @@ describe("select", () => {
     expect(evenNumbers[3]).toBe('[4]');
   });
 
-  it("must call projection 2 times because of where method", () => {
+  it("should call projection 2 times because of where method", () => {
     let fakeObject = { fakeProjection: num => '[' + num + ']' };
     spyOn(fakeObject, 'fakeProjection').and.callThrough();
     let result = arr.asEnumerable().where(num => num % 2 == 0).select(fakeObject.fakeProjection).toArray();
@@ -33,7 +33,7 @@ describe("select", () => {
     expect(result.length).toBe(2);
   });
   
-  it("must call projection 2 times because of take method", () => {
+  it("should call projection 2 times because of take method", () => {
     let fakeObject = { fakeProjection: num => '[' + num + ']' };
     spyOn(fakeObject, 'fakeProjection').and.callThrough();
     let result = arr.asEnumerable().take(2).select(fakeObject.fakeProjection).toArray();
@@ -47,16 +47,16 @@ describe("select", () => {
     expect(result.length).toBe(2);
   });
 
-  it("must throws an exception when the source is null or undefined", () => {
+  it("should throws an exception when the source is null or undefined", () => {
     expect(() => toArray(select(null, num => num))).toThrowError("source is null or undefined");
     expect(() => toArray(select(undefined, num => num))).toThrowError("source is null or undefined");
   });
 
-  it("must throws an exception when the source is not an enumerable", () => {
+  it("should throws an exception when the source is not an enumerable", () => {
     expect(() => toArray(select({}, num => num))).toThrowError("source must be an enumerable");
   });
 
-  it("must throws an exception when the projection format is not a function", () => {
+  it("should throws an exception when the projection format is not a function", () => {
     expect(() => toArray(select([], {}))).toThrowError("projection format must be a function");
   });
 });
