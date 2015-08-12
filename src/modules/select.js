@@ -11,7 +11,7 @@ export default function* (source, projection) {
         throw new Error("source is null or undefined");
     }
     if (!(projection instanceof Function)) {
-        throw new Error("projection must be a function");
+        throw new Error("projection format must be a function");
     }
     if (Array.isArray(source)) {
         source = source.asEnumerable();

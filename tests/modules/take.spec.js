@@ -29,8 +29,8 @@ describe("take", () => {
   it("must throws an exception when the take number is not a number", () => {
     expect(() => toArray(take([], {}))).toThrowError("take number must be a number");
   });
-  
-    it("must throws an exception when the take number is not a number", () => {
+
+  it("must throws an exception when the take number is not a number", () => {
     expect(() => toArray(take([], null))).toThrowError("take number must be a number");
   });
 
