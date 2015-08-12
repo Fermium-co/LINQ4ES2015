@@ -22,7 +22,7 @@ export default function* (source, orderByDescendingFunction) {
         throw new Error("source must be an enumerable");
     }
 
-    sortedResults = source.toArray().sort(function (a, b) { return orderByDescendingFunction(a) < orderByDescendingFunction(b); });
+    sortedResults = source.toArray().sort((a, b) => orderByDescendingFunction(a) < orderByDescendingFunction(b));
 
     for (let index = 0; index < sortedResults.length; index++) {
         let element = sortedResults[index];
