@@ -10,7 +10,7 @@ export default function (source) {
     if (Array.isArray(source)) {
         return source;
     }
-        if (!utils.isGenerator(source)) {
+    if (!utils.isGenerator(source)) {
         throw new Error("source must be an enumerable");
     }
 
