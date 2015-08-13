@@ -9,6 +9,7 @@ import select from "./modules/select";
 import orderBy from "./modules/orderBy";
 import orderByDescending from "./modules/orderByDescending";
 import concat from "./modules/concat";
+import range from "./modules/range";
 
 function setPrototype(prototype) {
 	//prototype.asEnumerable = asEnumerable;

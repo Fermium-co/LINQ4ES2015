@@ -10,3 +10,4 @@ import "./modules/utils.spec";
 import "./modules/orderBy.spec";
 import "./modules/orderByDescending.spec";
 import "./modules/concat.spec";
+import "./modules/range.spec";
