@@ -12,3 +12,4 @@ import "./modules/orderByDescending.spec";
 import "./modules/concat.spec";
 import "./modules/range.spec";
 import "./modules/empty.spec";
+import "./modules/repeat.spec";
