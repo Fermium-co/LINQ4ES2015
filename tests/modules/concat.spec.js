@@ -10,21 +10,12 @@ describe("concat", () => {
 
   it("should concat two arrays correctly", () => {
     let result = [1, 2, 3].asEnumerable().where(num => num % 2 == 0).concat([4, 5, 6].asEnumerable().where(num => num % 2 == 0)).toArray();
-    expect(result.length).toBe(3);
-    expect(result[0]).toBe(2);
-    expect(result[1]).toBe(4);
-    expect(result[2]).toBe(6);
+    expect(result).toEqual([2, 4, 6]);
   });
 
   it("should concat two filtered arrays correctly", () => {
     let result = [1, 2, 3].asEnumerable().concat([4, 5, 6]).toArray();
-    expect(result.length).toBe(6);
-    expect(result[0]).toBe(1);
-    expect(result[1]).toBe(2);
-    expect(result[2]).toBe(3);
-    expect(result[3]).toBe(4);
-    expect(result[4]).toBe(5);
-    expect(result[5]).toBe(6);
+    expect(result).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it("should throws an exception when the first source is null or undefined", () => {

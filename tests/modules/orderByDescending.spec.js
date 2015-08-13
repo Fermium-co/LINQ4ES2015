@@ -13,11 +13,7 @@ describe("orderByDescending", () => {
 
 	it("should retrn ordered items", () => {
 		let orderedItems = simpleArr.asEnumerable().orderByDescending(num => num).toArray();
-		expect(orderedItems.length).toBe(4);
-		expect(orderedItems[0]).toBe(6);
-		expect(orderedItems[1]).toBe(4);
-		expect(orderedItems[2]).toBe(3);
-		expect(orderedItems[3]).toBe(2);
+		expect(orderedItems).toEqual([6, 4, 3, 2]);
 	});
 
 	it("should retrn ordered set of complex items", () => {
@@ -37,10 +33,7 @@ describe("orderByDescending", () => {
 		expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(6);
 		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(3);
 		expect(fakeObject.fakeorderByDescending.calls.count()).toBe(6);
-		expect(result[0]).toBe(6);
-		expect(result[1]).toBe(4);
-		expect(result[2]).toBe(2);
-		expect(result.length).toBe(3);
+		expect(result).toEqual([6, 4, 2]);
 	});
 
 	it("should call order by descending function correctly because of take method", () => {
@@ -52,9 +45,7 @@ describe("orderByDescending", () => {
 		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(6);
 		expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(4);
 		expect(fakeObject.fakeorderByDescending.calls.count()).toBe(2);
-		expect(result[0]).toBe(3);
-		expect(result[1]).toBe(2);
-		expect(result.length).toBe(2);
+		expect(result).toEqual([3, 2]);
 	});
 
 	it("should throws an exception when the source is null or undefined", () => {

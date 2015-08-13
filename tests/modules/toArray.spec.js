@@ -10,10 +10,7 @@ describe("toArray", () => {
 
   it("should change the enumerable return values", () => {
     let result = [1, 2, 3].asEnumerable().toArray();
-    expect(result.length).toBe(3);
-    expect(result[0]).toBe(1);
-    expect(result[1]).toBe(2);
-    expect(result[2]).toBe(3);
+    expect(result).toEqual([1, 2, 3]);
   });
 
   it("should throws an exception when the source is null or undefined", () => {

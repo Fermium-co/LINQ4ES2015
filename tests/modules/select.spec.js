@@ -28,11 +28,9 @@ describe("select", () => {
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(1);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3);
     expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result[0]).toBe('[2]');
-    expect(result[1]).toBe('[4]');
-    expect(result.length).toBe(2);
+    expect(result).toEqual(['[2]', '[4]']);
   });
-  
+
   it("should call projection 2 times because of take method", () => {
     let fakeObject = { fakeProjection: num => '[' + num + ']' };
     spyOn(fakeObject, 'fakeProjection').and.callThrough();
@@ -42,9 +40,7 @@ describe("select", () => {
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(4);
     expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result[0]).toBe('[1]');
-    expect(result[1]).toBe('[2]');
-    expect(result.length).toBe(2);
+    expect(result).toEqual(['[1]', '[2]']);
   });
 
   it("should throws an exception when the source is null or undefined", () => {
