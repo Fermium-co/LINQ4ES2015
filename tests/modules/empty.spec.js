@@ -9,7 +9,7 @@ import empty from "../../src/modules/empty";
 describe("empty", () => {
 
 	it("should return an empty array", () => {
-		expect(() => empty().toArray()).toEqual([]);
+		expect(empty().toArray()).toEqual([]);
 	});
 
 });
