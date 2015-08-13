@@ -11,7 +11,7 @@ import orderByDescending from "./modules/orderByDescending";
 import concat from "./modules/concat";
 
 function setPrototype(prototype) {
-	prototype.asEnumerable = asEnumerable;
+	//prototype.asEnumerable = asEnumerable;
 	prototype.toArray = toArray;
 	prototype.where = where;
 	prototype.take = take;
