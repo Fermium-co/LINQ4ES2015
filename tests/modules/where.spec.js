@@ -21,6 +21,23 @@ describe("where", () => {
     expect(fakePredicate).not.toHaveBeenCalled();
   });
 
+  it("should enumerate again when toArray is called again", () => {
+    let variable = 2;
+    let firstResult = arr.asEnumerable().where(num => num % variable == 0).toArray();
+    variable = 3;
+    let anotherResult = arr.asEnumerable().where(num => num % variable == 0).toArray();
+    expect(firstResult).toEqual([2, 4, 6]);
+    expect(anotherResult).toEqual([3, 6]);
+  });
+
+  it("should use latest variable values while enumerating", () => {
+    let variable = 2;
+    let query = arr.asEnumerable().where(num => num % variable == 0);
+    variable = 3;
+    let results = query.toArray();
+    expect(results).toEqual([3, 6]);
+  });
+
   it("should call predicate when result is get enumerated", () => {
     let fakePredicate = jasmine.createSpy();
     arr.asEnumerable().where(fakePredicate).toArray();
