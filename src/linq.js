@@ -9,9 +9,12 @@ import select from "./modules/select";
 import orderBy from "./modules/orderBy";
 import orderByDescending from "./modules/orderByDescending";
 import concat from "./modules/concat";
+import range from "./modules/range";
+import empty from "./modules/empty";
+import repeat from "./modules/repeat";
 
 function setPrototype(prototype) {
-	prototype.asEnumerable = asEnumerable;
+	//prototype.asEnumerable = asEnumerable;
 	prototype.toArray = toArray;
 	prototype.where = where;
 	prototype.take = take;

@@ -12,16 +12,30 @@ describe("where", () => {
 
   it("should retrn an array with valid child count", () => {
     let evenNumbers = arr.asEnumerable().where(num => num % 2 == 0).toArray();
-    expect(evenNumbers.length).toBe(3);
-    expect(evenNumbers[0]).toBe(2);
-    expect(evenNumbers[1]).toBe(4);
-    expect(evenNumbers[2]).toBe(6);
+    expect(evenNumbers).toEqual([2, 4, 6]);
   });
 
   it("should not call predicate when result is not get enumerated", () => {
     let fakePredicate = jasmine.createSpy();
     arr.asEnumerable().where(fakePredicate);
     expect(fakePredicate).not.toHaveBeenCalled();
+  });
+
+  it("should enumerate again when toArray is called again", () => {
+    let variable = 2;
+    let firstResult = arr.asEnumerable().where(num => num % variable == 0).toArray();
+    variable = 3;
+    let anotherResult = arr.asEnumerable().where(num => num % variable == 0).toArray();
+    expect(firstResult).toEqual([2, 4, 6]);
+    expect(anotherResult).toEqual([3, 6]);
+  });
+
+  it("should use latest variable values while enumerating", () => {
+    let variable = 2;
+    let query = arr.asEnumerable().where(num => num % variable == 0);
+    variable = 3;
+    let results = query.toArray();
+    expect(results).toEqual([3, 6]);
   });
 
   it("should call predicate when result is get enumerated", () => {
@@ -46,9 +60,7 @@ describe("where", () => {
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(4);
     expect(fakeObject.fakePredicate).not.toHaveBeenCalledWith(5);
     expect(fakeObject.fakePredicate.calls.count()).toBe(4);
-    expect(firstTwoEvenNumbers[0]).toBe(2);
-    expect(firstTwoEvenNumbers[1]).toBe(4);
-    expect(firstTwoEvenNumbers.length).toBe(2);
+    expect(firstTwoEvenNumbers).toEqual([2, 4]);
   });
 
   it("should throws an exception when the source is null or undefined", () => {
