@@ -1,14 +1,10 @@
 <html>
 	<head>
 		<title>linq4es2015 Test Suite</title>
-		<link rel="stylesheet" type="text/css" href="/libs/jasmine/lib/jasmine-core/jasmine.css">
-		<script type="text/javascript" src="/libs/jasmine/lib/jasmine-core/jasmine.js"></script>
-		<script type="text/javascript" src="/libs/jasmine/lib/jasmine-core/jasmine-html.js"></script>
-		<script type="text/javascript" src="systemjsJasmineBoot.js"></script>
 		<script src="../jspm_packages/system.js"></script>
 		<script src="../config.js"></script>
 		<script>
-			System.import('./tests/app.spec').then(runJasmine); // see systemjsJasmineBoot.js
+			System.import('./tests/app.spec');
 		</script>
 	</head>
 	<body></body>
