@@ -3,8 +3,7 @@ Language Integrated Query for JavaScript based on ECMA Script 2015
 
 **Getting started:**
 
-1. > jspm install
-2. > bower install
+Only run jspm install
 
 Sample usage:
 
