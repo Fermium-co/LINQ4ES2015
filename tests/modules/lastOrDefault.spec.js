@@ -23,8 +23,8 @@ describe("lastOrDefault", () => {
   });
 
   it("should return null if there is no element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().lastOrDefault(n => n% 2 === 0)).toEqual(null);
-    expect(lastOrDefault([1, 3, 5], n => n% 2 === 0)).toEqual(null);
+    expect([1, 3, 5].asEnumerable().lastOrDefault(n => n % 2 === 0)).toEqual(null);
+    expect(lastOrDefault([1, 3, 5], n => n % 2 === 0)).toEqual(null);
   });
 
   it("should return the last element of an enumerable", () => {
