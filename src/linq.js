@@ -19,29 +19,35 @@ import last from "./modules/last";
 import lastOrDefault from "./modules/lastOrDefault";
 import single from "./modules/single";
 import singleOrDefault from "./modules/singleOrDefault";
+import any from "./modules/any.js";
+import all from "./modules/all.js";
+import defaultIfEmpty from "./modules/defaultIfEmpty.js";
 
 function setPrototype(prototype) {
-	//prototype.asEnumerable = asEnumerable;
-	prototype.toArray = toArray;
-	prototype.where = where;
-	prototype.take = take;
-	prototype.select = select;
-	prototype.orderBy = orderBy;
-	prototype.orderByDescending = orderByDescending;
-	prototype.concat = concat;
-	prototype.count = count;
-	prototype.first = first;
-	prototype.firstOrDefault = firstOrDefault;
-	prototype.last = last;
-	prototype.lastOrDefault = lastOrDefault;
-	prototype.single = single;
-	prototype.singleOrDefault = singleOrDefault;
+  //prototype.asEnumerable = asEnumerable;
+  prototype.toArray = toArray;
+  prototype.where = where;
+  prototype.take = take;
+  prototype.select = select;
+  prototype.orderBy = orderBy;
+  prototype.orderByDescending = orderByDescending;
+  prototype.concat = concat;
+  prototype.count = count;
+  prototype.first = first;
+  prototype.firstOrDefault = firstOrDefault;
+  prototype.last = last;
+  prototype.lastOrDefault = lastOrDefault;
+  prototype.single = single;
+  prototype.singleOrDefault = singleOrDefault;
+  prototype.any = any;
+  prototype.all = all;
+  prototype.defaultIfEmpty = defaultIfEmpty;
 }
 
 export default function () {
-	//setPrototype(Array.prototype);
-	setPrototype(utils.GeneratorFunctionProto);
-	setPrototype(utils.GeneratorFunctionPrototype);
+  //setPrototype(Array.prototype);
+  setPrototype(utils.GeneratorFunctionProto);
+  setPrototype(utils.GeneratorFunctionPrototype);
 
-	Array.prototype.asEnumerable = asEnumerable;
+  Array.prototype.asEnumerable = asEnumerable;
 }
