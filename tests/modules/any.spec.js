@@ -1,7 +1,7 @@
 "use strict";
 
-import linq from "../../src/linq.js";
-import any from "../../src/modules/any.js";
+import linq from "../../src/linq";
+import any from "../../src/modules/any";
 
 describe("any", () => {
 
