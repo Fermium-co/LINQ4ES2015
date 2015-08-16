@@ -2,6 +2,7 @@
 "use strict";
 
 import linq from "../src/linq";
+import * as jasmine from "jasmine";
 
 describe("linq", () => {
   it("should be a function", () => {
