@@ -18,6 +18,7 @@ import firstOrDefault from "./modules/firstOrDefault";
 import last from "./modules/last";
 import lastOrDefault from "./modules/lastOrDefault";
 import single from "./modules/single";
+import singleOrDefault from "./modules/singleOrDefault";
 
 function setPrototype(prototype) {
 	//prototype.asEnumerable = asEnumerable;
@@ -34,6 +35,7 @@ function setPrototype(prototype) {
 	prototype.last = last;
 	prototype.lastOrDefault = lastOrDefault;
 	prototype.single = single;
+	prototype.singleOrDefault = singleOrDefault;
 }
 
 export default function () {
