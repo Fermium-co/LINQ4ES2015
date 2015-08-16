@@ -1,13 +1,18 @@
 {
   "name": "linq4es2015",
   "version": "0.0.1",
+  "description": "Language Integrated Query for JavaScript based on ECMA Script 2015",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Fermium-co/LINQ4ES2015.git"
+  },
+  "main": "index.js",
   "jspm": {
     "directories": {},
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4",
-      "jasmine": "npm:jasmine@^2.3.2"
+      "core-js": "npm:core-js@^0.9.4"
     }
   }
 }
