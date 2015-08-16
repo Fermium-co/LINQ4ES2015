@@ -12,6 +12,7 @@ import concat from "./modules/concat";
 import range from "./modules/range";
 import empty from "./modules/empty";
 import repeat from "./modules/repeat";
+import count from "./modules/count";
 
 function setPrototype(prototype) {
 	//prototype.asEnumerable = asEnumerable;
@@ -22,6 +23,7 @@ function setPrototype(prototype) {
 	prototype.orderBy = orderBy;
 	prototype.orderByDescending = orderByDescending;
 	prototype.concat = concat;
+	prototype.count = count;
 }
 
 export default function () {

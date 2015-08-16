@@ -14,6 +14,6 @@ Sample usage:
 		.select(num => '[' + num + ']')
 		.toArray();
 
-Result will be [4, 2, 0] and where predicate will be executed only 6 times.
+Result will be ["[4]", "[2]", "[0]"] and where predicate will be executed only 6 times.
 	
 Contributions are welcomed.
