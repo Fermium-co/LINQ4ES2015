@@ -13,6 +13,7 @@ import range from "./modules/range";
 import empty from "./modules/empty";
 import repeat from "./modules/repeat";
 import count from "./modules/count";
+import first from "./modules/first";
 
 function setPrototype(prototype) {
 	//prototype.asEnumerable = asEnumerable;
@@ -24,6 +25,7 @@ function setPrototype(prototype) {
 	prototype.orderByDescending = orderByDescending;
 	prototype.concat = concat;
 	prototype.count = count;
+	prototype.first = first;
 }
 
 export default function () {
