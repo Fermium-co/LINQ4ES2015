@@ -24,17 +24,16 @@ export default function (source, predicate) {
 
     let next = source.next();
     if (!predicate) {
-        if (next.done) {
-            throw new Error("Sequence is empty");
-        }
-        return next.value;
-    }
-
-    while (!next.done) {
-        if (predicate(next.value)) {
+        if (!next.done) {
             return next.value;
         }
-        next = source.next();
+    } else {
+        while (!next.done) {
+            if (predicate(next.value)) {
+                return next.value;
+            }
+            next = source.next();
+        }
     }
-    throw new Error("No items matched the predicate");
+    return null;
 };

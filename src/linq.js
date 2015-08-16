@@ -14,6 +14,7 @@ import empty from "./modules/empty";
 import repeat from "./modules/repeat";
 import count from "./modules/count";
 import first from "./modules/first";
+import firstOrDefault from "./modules/firstOrDefault";
 
 function setPrototype(prototype) {
 	//prototype.asEnumerable = asEnumerable;
@@ -26,6 +27,7 @@ function setPrototype(prototype) {
 	prototype.concat = concat;
 	prototype.count = count;
 	prototype.first = first;
+	prototype.firstOrDefault = firstOrDefault;
 }
 
 export default function () {

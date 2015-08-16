@@ -9,12 +9,12 @@ import count from "../../src/modules/count";
 describe("count", () => {
 
   it("should throws an exception when the source is null or undefined", () => {
-    expect(() => count(null).toArray()).toThrowError("source is null or undefined");
-    expect(() => count(undefined).toArray()).toThrowError("source is null or undefined");
+    expect(() => count(null)).toThrowError("source is null or undefined");
+    expect(() => count(undefined)).toThrowError("source is null or undefined");
   });
 
   it("should throws an exception when the source is not and enumerable", () => {
-    expect(() => count({}).toArray()).toThrowError("source must be an enumerable");
+    expect(() => count({})).toThrowError("source must be an enumerable");
   });
   
   it("should return number of elements inside an enumerable", () => {
