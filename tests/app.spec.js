@@ -13,3 +13,13 @@ import "./modules/concat.spec";
 import "./modules/range.spec";
 import "./modules/empty.spec";
 import "./modules/repeat.spec";
+import "./modules/all.spec"
+import "./modules/any.spec"
+import "./modules/count.spec"
+import "./modules/defaultIfEmpty.spec"
+import "./modules/first.spec"
+import "./modules/firstOrDefault.spec"
+import "./modules/last.spec"
+import "./modules/lastOrDefault.sepc"
+import "./modules/single.spec"
+import "./modules/singleOrDefault.spec"
