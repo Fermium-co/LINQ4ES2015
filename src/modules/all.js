@@ -2,7 +2,7 @@
 
 import utils from "./utils";
 
-export default function* (source, predicate) {
+export default function (source, predicate) {
   if (arguments.length < 2) {
     predicate = source;
     source = this;
