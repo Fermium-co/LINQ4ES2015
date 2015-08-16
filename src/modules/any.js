@@ -2,9 +2,8 @@
 
 
 import utils from "./utils";
-import asEnumerable from "./asEnumberable";
 
-export default function (source, predicate) {
+export default function (source, predicate){
     if (arguments.length < 2) {
         predicate = source;
         source = this;
@@ -15,11 +14,11 @@ export default function (source, predicate) {
     if (predicate == undefined)
         return source[0] != undefined;
 
-    let i = 0;
-    while(true){
-        if(predicate(source[i]))
+    let next = source.next();
+    while(!next.done){
+        if(predicate(next.value))
             return true;
-        i++;
+        next = source.next();
     }
 
     return false;

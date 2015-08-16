@@ -1,7 +1,6 @@
 "use strict";
 
 import utils from "./utils";
-import asEnumerable from "./asEnumberable";
 
 export default function* (source, predicate) {
     if (arguments.length < 2) {
@@ -17,11 +16,12 @@ export default function* (source, predicate) {
     if (source.length == 0)
         return true;
 
-    let index = 0;
-    while(true){
-        if(!predicate(source[index]))
+    let next = source.next();
+
+    while(!next.done){
+        if(!predicate(next.value))
             return false;
-        index++;
+        next = source.next();
     }
 
     return true;
