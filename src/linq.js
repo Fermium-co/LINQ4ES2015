@@ -19,9 +19,9 @@ import last from "./modules/last";
 import lastOrDefault from "./modules/lastOrDefault";
 import single from "./modules/single";
 import singleOrDefault from "./modules/singleOrDefault";
-import any from "./modules/any.js";
-import all from "./modules/all.js";
-import defaultIfEmpty from "./modules/defaultIfEmpty.js";
+import any from "./modules/any";
+import all from "./modules/all";
+import defaultIfEmpty from "./modules/defaultIfEmpty";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
