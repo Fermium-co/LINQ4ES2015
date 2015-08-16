@@ -1,6 +1,6 @@
 "use strict";
 
-import utils from "./utils.js";
+import utils from "./utils";
 
 export default function* (source, defaultValue) {
   if (arguments.length < 2) {

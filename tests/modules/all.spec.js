@@ -1,7 +1,7 @@
 "use strict";
 
-import linq from "../../src/linq.js";
-import all from "../../src/modules/all.js";
+import linq from "../../src/linq";
+import all from "../../src/modules/all";
 
 describe("all", () => {
     it("should throw exception when source is null or undefined", () => {

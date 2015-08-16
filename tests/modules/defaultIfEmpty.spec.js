@@ -1,8 +1,8 @@
 
 "user strict";
 
-import linq from "../../src/linq.js";
-import defaultIfEmpty from "../../src/modules/defaultIfEmpty.js";
+import linq from "../../src/linq";
+import defaultIfEmpty from "../../src/modules/defaultIfEmpty";
 
 describe("defaultIfEmpty", () => {
 
