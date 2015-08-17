@@ -28,6 +28,7 @@ import sum from "./modules/sum";
 import min from "./modules/min";
 import max from "./modules/max";
 import average from "./modules/average";
+import contains from "./modules/contains";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -54,6 +55,7 @@ function setPrototype(prototype) {
   prototype.min = min;
   prototype.max = max;
   prototype.average = average;
+  prototype.contains = contains;
 }
 
 export default function () {

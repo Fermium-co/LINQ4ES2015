@@ -29,3 +29,4 @@ import "./modules/sum.spec";
 import "./modules/min.spec";
 import "./modules/max.spec";
 import "./modules/average.spec";
+import "./modules/contains.spec";
