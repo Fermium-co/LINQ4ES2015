@@ -15,5 +15,55 @@ Sample usage:
 		.toArray();
 
 Result will be ["[4]", "[2]", "[0]"] and where predicate will be executed only 6 times.
+
+Supported methods:
+* Aggregate
+* All
+* Any
+* AsEnumerable
+* Average
+* Concat
+* Contains
+* Count
+* DefaultIfEmpty
+* Empty
+* First
+* FirstOrDefault
+* Last
+* LastOrDefault
+* Max
+* Min
+* OrderBy
+* OrderByDescending
+* Range
+* Repeat
+* Select
+* SelectMany
+* SequenceEquals
+* Single
+* SingleOrDefault
+* Sum
+* Take
+* ToArray
+* Utils
+* Where
+
+In Progress Methods:
+* Distinct
+* Union
+* Intersect
+* Except
+* Join
+* GroupBy
+* GroupJoin
+* TakeWhile
+* SkipWhile
+* Skip
+* ThenBy
+* ThenByDescending
+* Reverse
+* ElementAt
+* ElementAtOrDefault
+* Zip
 	
 Contributions are welcomed.

@@ -6,7 +6,7 @@
   "repository": {
     "url": "https://github.com/Fermium-co/LINQ4ES2015.git"
   },
-  "main": "index.js",
+  "main": "src/linq.js",
   "jspm": {
     "directories": {},
     "devDependencies": {
