@@ -8,7 +8,7 @@ import orderBy from "../../src/modules/orderBy";
 
 describe("orderBy", () => {
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ FirstName: 'C' }, { FirstName: 'A' }, { FirstName: 'B' }];
+  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
 
   it("should retrn ordered items", () => {
     let orderedItems = simpleArr.asEnumerable().orderBy(num => num).toArray();
@@ -16,11 +16,11 @@ describe("orderBy", () => {
   });
 
   it("should retrn ordered set of complex items", () => {
-    let orderedItems = complexArr.asEnumerable().orderBy(item => item.FirstName).toArray();
+    let orderedItems = complexArr.asEnumerable().orderBy(item => item.firstName).toArray();
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].FirstName).toBe('A');
-    expect(orderedItems[1].FirstName).toBe('B');
-    expect(orderedItems[2].FirstName).toBe('C');
+    expect(orderedItems[0].firstName).toBe('A');
+    expect(orderedItems[1].firstName).toBe('B');
+    expect(orderedItems[2].firstName).toBe('C');
   });
 
   it("should call order by function correctly because of where method", () => {

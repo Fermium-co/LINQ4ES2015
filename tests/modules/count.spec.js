@@ -12,7 +12,7 @@ describe("count", () => {
   });
 
   it("should throws an exception when the source is not and enumerable", () => {
-    expect(() => count({})).toThrowError("source must be an enumerable");
+    expect(() => count({})).toThrowError("source can not be enumerated");
   });
 
   it("should return number of elements inside an enumerable", () => {

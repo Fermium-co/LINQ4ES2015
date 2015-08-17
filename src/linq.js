@@ -22,6 +22,14 @@ import singleOrDefault from "./modules/singleOrDefault";
 import any from "./modules/any";
 import all from "./modules/all";
 import defaultIfEmpty from "./modules/defaultIfEmpty";
+import selectMany from "./modules/selectMany";
+import aggregate from "./modules/aggregate";
+import sum from "./modules/sum";
+import min from "./modules/min";
+import max from "./modules/max";
+import average from "./modules/average";
+import contains from "./modules/contains";
+import sequenceEqual from "./modules/sequenceEqual";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -42,6 +50,14 @@ function setPrototype(prototype) {
   prototype.any = any;
   prototype.all = all;
   prototype.defaultIfEmpty = defaultIfEmpty;
+  prototype.selectMany = selectMany;
+  prototype.aggregate = aggregate;
+  prototype.sum = sum;
+  prototype.min = min;
+  prototype.max = max;
+  prototype.average = average;
+  prototype.contains = contains;
+  prototype.sequenceEqual = sequenceEqual;
 }
 
 export default function () {

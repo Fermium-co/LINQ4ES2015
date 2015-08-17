@@ -1,7 +1,7 @@
 "use strict";
 
 import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import asEnumerable from "./asEnumerable"
 
 export default function* (source, projection) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -24,7 +24,15 @@ export default function* (source, projection) {
   let next = source.next();
   let index = 0;
   while (!next.done) {
-    yield projection(next.value, index);
+    let innerEnumerable = projection(next.value, index);
+    if (!utils.isGenerator(innerEnumerable)) {
+      innerEnumerable = asEnumerable(innerEnumerable);
+    }
+    let innerNext = innerEnumerable.next();
+    while (!innerNext.done) {
+      yield innerNext.value;
+      innerNext = innerEnumerable.next();
+    }
     next = source.next();
     index++;
   }
