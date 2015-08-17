@@ -24,8 +24,9 @@ export default function* (source, predicate) {
   let next = source.next();
   let index = 0;
   while (!next.done) {
-    if (predicate(next.value, index))
+    if (predicate(next.value, index)) {
       yield next.value;
+    }
     next = source.next();
     index++;
   }

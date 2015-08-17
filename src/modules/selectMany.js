@@ -25,8 +25,9 @@ export default function* (source, projection) {
   let index = 0;
   while (!next.done) {
     let innerEnumerable = projection(next.value, index);
-    if (!utils.isGenerator(innerEnumerable))
+    if (!utils.isGenerator(innerEnumerable)) {
       innerEnumerable = asEnumerable(innerEnumerable);
+    }
     let innerNext = innerEnumerable.next();
     while (!innerNext.done) {
       yield innerNext.value;

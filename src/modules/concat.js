@@ -21,10 +21,12 @@ export default function* (firstSource, secondSource) {
     throw new Error("second source must be either an enumerable or an array");
   }
 
-  if (!utils.isGenerator(firstSource))
+  if (!utils.isGenerator(firstSource)) {
     firstSource = asEnumerable(firstSource);
-  if (!utils.isGenerator(secondSource))
+  }
+  if (!utils.isGenerator(secondSource)) {
     secondSource = asEnumerable(secondSource);
+  }
 
   let next = firstSource.next();
   while (!next.done) {

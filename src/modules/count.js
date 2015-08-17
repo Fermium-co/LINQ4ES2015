@@ -10,12 +10,15 @@ export default function (source, predicate) {
     predicate = source;
     source = this;
   }
-  if (!utils.isGenerator(source))
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
+  }
   let count = 0;
-  if (typeof predicate == "function")
+  if (typeof predicate == "function") {
     count = aggregate(where(source, predicate), 0, (result, current) => result += 1);
-  else
+  }
+  else {
     count = aggregate(source, 0, (result, current) => result += 1);
+  }
   return count;
 };

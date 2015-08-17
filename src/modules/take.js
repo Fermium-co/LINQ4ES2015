@@ -25,8 +25,9 @@ export default function* (source, totalCount) {
   let count = 0;
   while (true) {
     yield next.value;
-    if (++count >= totalCount)
+    if (++count >= totalCount) {
       break;
+    }
     next = source.next();
   }
 };
