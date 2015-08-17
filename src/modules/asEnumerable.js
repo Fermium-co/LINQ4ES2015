@@ -3,21 +3,21 @@
 import utils from "./utils";
 
 export default function* (source) {
-    source = source || this;
-    if (source == null || source == undefined) {
-        throw new Error("source is null or undefined");
-    }
-    if (utils.isGenerator(source)) {
-        throw new Error("enumerable may not be enumerated twice");
-    }
+  source = source || this;
+  if (source == null || source == undefined) {
+    throw new Error("source is null or undefined");
+  }
+  if (utils.isGenerator(source)) {
+    throw new Error("enumerable may not be enumerated twice");
+  }
 
-    if (Array.isArray(source)) {
-        for (let index = 0; index < source.length; index++) {
-            let element = source[index];
-            yield element;
-        }
+  if (Array.isArray(source)) {
+    for (let index = 0; index < source.length; index++) {
+      let element = source[index];
+      yield element;
     }
-    else {
-        throw new Error("source can not be enumerated");
-    }
+  }
+  else {
+    throw new Error("source can not be enumerated");
+  }
 };

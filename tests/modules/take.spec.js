@@ -1,4 +1,4 @@
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +7,6 @@ import toArray from "../../src/modules/toArray";
 import take from "../../src/modules/take";
 
 describe("take", () => {
-
   let arr = [1, 2, 3, 4, 5, 6];
 
   it("should retrn first two items", () => {

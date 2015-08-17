@@ -2,16 +2,13 @@
 
 import utils from "./utils";
 
-export default function* (source, predicate) {
+export default function* (source, defaultValue) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
+    defaultValue = source;
     source = this;
   }
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
-  }
-  if (!(predicate instanceof Function)) {
-    throw new Error("predicate must be a function");
   }
   if (Array.isArray(source)) {
     source = source.asEnumerable();
@@ -21,9 +18,11 @@ export default function* (source, predicate) {
   }
 
   let next = source.next();
+  if (next.done) {
+    yield defaultValue;
+  }
   while (!next.done) {
-    if (predicate(next.value))
-      yield next.value;
+    yield next.value;
     next = source.next();
   }
-};
+}

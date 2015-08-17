@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +6,6 @@ import linq from "../../src/linq";
 import toArray from "../../src/modules/toArray";
 
 describe("toArray", () => {
-
   it("should change the enumerable return values", () => {
     let result = [1, 2, 3].asEnumerable().toArray();
     expect(result).toEqual([1, 2, 3]);

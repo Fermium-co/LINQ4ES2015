@@ -1,6 +1,12 @@
 {
   "name": "linq4es2015",
   "version": "0.0.1",
+  "description": "Language Integrated Query for JavaScript based on ECMA Script 2015",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Fermium-co/LINQ4ES2015.git"
+  },
+  "main": "index.js",
   "jspm": {
     "directories": {},
     "devDependencies": {

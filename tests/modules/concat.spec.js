@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +6,6 @@ import linq from "../../src/linq";
 import concat from "../../src/modules/concat";
 
 describe("concat", () => {
-
   it("should concat two arrays correctly", () => {
     let result = [1, 2, 3].asEnumerable().where(num => num % 2 == 0).concat([4, 5, 6].asEnumerable().where(num => num % 2 == 0)).toArray();
     expect(result).toEqual([2, 4, 6]);
