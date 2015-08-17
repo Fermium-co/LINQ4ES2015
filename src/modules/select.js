@@ -21,8 +21,10 @@ export default function* (source, projection) {
   }
 
   let next = source.next();
+  let index = 0;
   while (!next.done) {
-    yield projection(next.value);
+    yield projection(next.value, index);
     next = source.next();
+    index++;
   }
 };
