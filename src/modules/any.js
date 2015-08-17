@@ -1,6 +1,7 @@
 "use strict";
 
 import utils from "./utils";
+import asEnumerable from "./asEnumerable";
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -14,7 +15,7 @@ export default function (source, predicate) {
     if (!predicate && source.length > 0) {
       return true;
     }
-    source = source.asEnumerable();
+    source = asEnumerable(source);
   }
   if (!utils.isGenerator(source)) {
     throw new Error("source must be an enumerable");

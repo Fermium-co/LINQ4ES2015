@@ -23,6 +23,8 @@ import any from "./modules/any";
 import all from "./modules/all";
 import defaultIfEmpty from "./modules/defaultIfEmpty";
 import selectMany from "./modules/selectMany";
+import aggregate from "./modules/aggregate";
+import sum from "./modules/sum";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -44,6 +46,8 @@ function setPrototype(prototype) {
   prototype.all = all;
   prototype.defaultIfEmpty = defaultIfEmpty;
   prototype.selectMany = selectMany;
+  prototype.aggregate = aggregate;
+  prototype.sum = sum;
 }
 
 export default function () {

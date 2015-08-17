@@ -24,3 +24,5 @@ import "./modules/lastOrDefault.spec";
 import "./modules/single.spec";
 import "./modules/singleOrDefault.spec";
 import "./modules/selectMany.spec";
+import "./modules/aggregate.spec";
+import "./modules/sum.spec";

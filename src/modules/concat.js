@@ -1,6 +1,7 @@
 "use strict";
 
 import utils from "./utils";
+import asEnumerable from "./asEnumerable";
 
 export default function* (firstSource, secondSource) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -21,9 +22,9 @@ export default function* (firstSource, secondSource) {
   }
 
   if (!utils.isGenerator(firstSource))
-    firstSource = firstSource.asEnumerable();
+    firstSource = asEnumerable(firstSource);
   if (!utils.isGenerator(secondSource))
-    secondSource = secondSource.asEnumerable();
+    secondSource = asEnumerable(secondSource);
 
   let next = firstSource.next();
   while (!next.done) {

@@ -1,6 +1,7 @@
 "use strict";
 
 import utils from "./utils";
+import asEnumerable from "./asEnumerable";
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -16,7 +17,7 @@ export default function (source, predicate) {
       if (source.length !== 1) throw new Error("Sequence contains more than one element");
       return source[0];
     }
-    source = source.asEnumerable();
+    source = asEnumerable(source);
   }
   if (!utils.isGenerator(source)) {
     throw new Error("source must be an enumerable");

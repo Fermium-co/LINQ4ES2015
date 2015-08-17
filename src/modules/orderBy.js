@@ -1,6 +1,7 @@
 "use strict";
 
 import utils from "./utils";
+import toArray from "./toArray";
 
 export default function* (source, orderByFunction) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -21,7 +22,7 @@ export default function* (source, orderByFunction) {
     throw new Error("source must be an enumerable");
   }
 
-  sortedResults = source.toArray().sort((a, b) => orderByFunction(a) > orderByFunction(b));
+  sortedResults = toArray(source).sort((a, b) => orderByFunction(a) > orderByFunction(b));
 
   for (let index = 0; index < sortedResults.length; index++) {
     let element = sortedResults[index];

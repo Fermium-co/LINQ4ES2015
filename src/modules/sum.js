@@ -14,8 +14,8 @@ export default function (source, predicate) {
     source = asEnumerable(source);
   let count = 0;
   if (typeof predicate == "function")
-    count = aggregate(where(source, predicate), 0, (result, current) => result += 1);
+    count = aggregate(where(source, predicate), 0, (result, current) => result += current);
   else
-    count = aggregate(source, 0, (result, current) => result += 1);
+    count = aggregate(source, 0, (result, current) => result += current);
   return count;
 };
