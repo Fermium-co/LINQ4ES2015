@@ -1,4 +1,4 @@
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +7,6 @@ import toArray from "../../src/modules/toArray";
 import select from "../../src/modules/select";
 
 describe("select", () => {
-
   let arr = [1, 2, 3, 4];
 
   it("should retrn items with provided projection format", () => {

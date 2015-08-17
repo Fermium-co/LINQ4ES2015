@@ -3,55 +3,55 @@
 import utils from "./utils";
 
 export default function (source, predicate) {
-    if (arguments.length < 2) {
-        predicate = source;
-        source = this;
-    }
-    if (source == null || source == undefined) {
-        throw new Error("source is null or undefined");
-    }
-    if (Array.isArray(source)) {
-        if (!predicate) {
-            if (source.length === 0) throw new Error("Sequence is empty");
-            if (source.length !== 1) throw new Error("Sequence contained multiple elements");
-            return source[0];
-        }
-        source = source.asEnumerable();
-    }
-    if (!utils.isGenerator(source)) {
-        throw new Error("source must be an enumerable");
-    }
-
-    if (!(predicate instanceof Function)) {
-        predicate = undefined;
-    }
-
-    let next = source.next();
-    let result = next.value;
+  if (arguments.length < 2) {
+    predicate = source;
+    source = this;
+  }
+  if (source == null || source == undefined) {
+    throw new Error("source is null or undefined");
+  }
+  if (Array.isArray(source)) {
     if (!predicate) {
-        if (next.done) {
-            throw new Error("Sequence is empty");
-        }
-        next = source.next();
-        if (!next.done) {
-            throw new Error("Sequence contained multiple elements");
-        }
-        return result;
+      if (source.length === 0) throw new Error("Sequence is empty");
+      if (source.length !== 1) throw new Error("Sequence contained multiple elements");
+      return source[0];
     }
+    source = source.asEnumerable();
+  }
+  if (!utils.isGenerator(source)) {
+    throw new Error("source must be an enumerable");
+  }
 
-    let found = false;
-    while (!next.done) {
-        if (predicate(next.value)) {
-            if (found) {
-                throw new Error("Sequence contained multiple matching elements");
-            }
-            found = true;
-            result = next.value;
-        }
-        next = source.next();
+  if (!(predicate instanceof Function)) {
+    predicate = undefined;
+  }
+
+  let next = source.next();
+  let result = next.value;
+  if (!predicate) {
+    if (next.done) {
+      throw new Error("Sequence is empty");
     }
-    if (!found) {
-        throw new Error("No items matched the predicate");
+    next = source.next();
+    if (!next.done) {
+      throw new Error("Sequence contained multiple elements");
     }
     return result;
+  }
+
+  let found = false;
+  while (!next.done) {
+    if (predicate(next.value)) {
+      if (found) {
+        throw new Error("Sequence contained multiple matching elements");
+      }
+      found = true;
+      result = next.value;
+    }
+    next = source.next();
+  }
+  if (!found) {
+    throw new Error("No items matched the predicate");
+  }
+  return result;
 };

@@ -10,15 +10,30 @@ export default function (source, predicate) {
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
-  if (predicate == undefined)
-    return source[0] != undefined;
-
-  let next = source.next();
-  while (!next.done) {
-    if (predicate(next.value))
+  if (Array.isArray(source)) {
+    if (!predicate && source.length > 0) {
       return true;
-    next = source.next();
+    }
+    source = source.asEnumerable();
+  }
+  if (!utils.isGenerator(source)) {
+    throw new Error("source must be an enumerable");
   }
 
+  if (!(predicate instanceof Function)) {
+    predicate = undefined;
+  }
+
+  let next = source.next();
+  if (!predicate) {
+    return !next.done;
+  }
+
+  while (!next.done) {
+    if (predicate(next.value)) {
+      return true;
+    }
+    next = source.next();
+  }
   return false;
 }

@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +6,6 @@ import linq from "../../src/linq";
 import asEnumerable from "../../src/modules/asEnumerable";
 
 describe("asEnumerable", () => {
-
   it("should throws an exception when the source is null or undefined", () => {
     expect(() => asEnumerable(null).toArray()).toThrowError("source is null or undefined");
     expect(() => asEnumerable(undefined).toArray()).toThrowError("source is null or undefined");

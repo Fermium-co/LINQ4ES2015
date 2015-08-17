@@ -1,3 +1,4 @@
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "user strict";
 
@@ -5,7 +6,6 @@ import linq from "../../src/linq";
 import defaultIfEmpty from "../../src/modules/defaultIfEmpty";
 
 describe("defaultIfEmpty", () => {
-
   it("should throw exception when source is null or empty", () => {
     expect(defaultIfEmpty(null)).toThrowError("source is null or undefined");
     expect(defaultIfEmpty(undefined)).toThrowError("source is null or undefined");

@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +6,6 @@ import linq from "../../src/linq";
 import count from "../../src/modules/count";
 
 describe("count", () => {
-
   it("should throws an exception when the source is null or undefined", () => {
     expect(() => count(null)).toThrowError("source is null or undefined");
     expect(() => count(undefined)).toThrowError("source is null or undefined");

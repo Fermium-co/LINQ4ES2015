@@ -8,21 +8,24 @@ export default function (source, predicate) {
     source = this;
   }
   if (source == null || source == undefined) {
-    throw  new Error("source is null or undefined");
+    throw new Error("source is null or undefined");
   }
   if (predicate == null || predicate == undefined) {
     throw new Error("predicate is null or undefined");
   }
-  if (source.length == 0)
-    return true;
-
-  let next = source.next();
-
-  while (!next.done) {
-    if (!predicate(next.value))
-      return false;
-    next = source.next();
+  if (Array.isArray(source)) {
+    source = source.asEnumerable();
+  }
+  if (!utils.isGenerator(source)) {
+    throw new Error("source must be an enumerable");
   }
 
+  let next = source.next();
+  while (!next.done) {
+    if (!predicate(next.value)) {
+      return false;
+    }
+    next = source.next();
+  }
   return true;
 }

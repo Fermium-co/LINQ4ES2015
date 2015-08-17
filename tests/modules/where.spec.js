@@ -1,4 +1,4 @@
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +7,6 @@ import toArray from "../../src/modules/toArray";
 import where from "../../src/modules/where";
 
 describe("where", () => {
-
   let arr = [1, 2, 3, 4, 5, 6];
 
   it("should retrn an array with valid child count", () => {

@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,13 +6,12 @@ import linq from "../../src/linq";
 import firstOrDefault from "../../src/modules/firstOrDefault";
 
 describe("firstOrDefault", () => {
-
   it("should throws an exception when the source is null or undefined", () => {
     expect(() => firstOrDefault(null)).toThrowError("source is null or undefined");
     expect(() => firstOrDefault(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not and enumerable", () => {
+  it("should throws an exception when the source is not an enumerable", () => {
     expect(() => firstOrDefault({})).toThrowError("source must be an enumerable");
   });
 

@@ -1,28 +1,34 @@
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
+
 "use strict";
 
 import linq from "../../src/linq";
 import all from "../../src/modules/all";
 
 describe("all", () => {
-    it("should throw exception when source is null or undefined", () => {
-        expect(all(null, item => item > 0).toThrowError("source is null or undefined"));
-        expect(all(undefined, item => item > 0)).toThrowError("source is null or undefined");
-    });
+  it("should throw exception when source is null or undefined", () => {
+    expect(all(null, item => item > 0).toThrowError("source is null or undefined"));
+    expect(all(undefined, item => item > 0)).toThrowError("source is null or undefined");
+  });
 
-    it("should throw exception when predicate is null or undefined", () => {
-        expect([1, 2, 3].all()).toThrowError("predicate is null or undefined");
-        expect([1, 2, 3].all(null)).toThrowError("predicate is null or undefined");
-    });
+  it("should throws an exception when the source is not an enumerable", () => {
+    expect(() => all({})).toThrowError("source must be an enumerable");
+  });
 
-    it("should return true when array is empty", () => {
-        expect([].all(item => item > 0)).toEqual(true);
-    });
+  it("should throw exception when predicate is null or undefined", () => {
+    expect([1, 2, 3].all()).toThrowError("predicate is null or undefined");
+    expect([1, 2, 3].all(null)).toThrowError("predicate is null or undefined");
+  });
 
-    it("should true when array items is smaller than 4", () => {
-        expect([1, 2, 3].all(item => item < 4)).toEqual(true);
-    });
+  it("should return true when enumerable is empty", () => {
+    expect([].all(item => item > 0)).toEqual(true);
+  });
 
-    it("should false when array items mimimum one of them is not smaller than 4", () => {
-        expect([1, 2, 3, 4].all(item => item < 4)).toEqual(false);
-    });
+  it("should return true when all items in enumerable passing the predicate", () => {
+    expect([1, 2, 3].all(item => item < 4)).toEqual(true);
+  });
+
+  it("should return false when at least one item doesn't pass the predicate", () => {
+    expect([1, 2, 3, 4].all(item => item < 4)).toEqual(false);
+  });
 });

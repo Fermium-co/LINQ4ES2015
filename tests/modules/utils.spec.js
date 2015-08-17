@@ -1,5 +1,4 @@
-/* global toThrowError */
-/* global describe, it, expect, spyOn, jasmine */
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
 
 "use strict";
 
@@ -7,7 +6,6 @@ import linq from "../../src/linq";
 import utils from "../../src/modules/utils";
 
 describe("utils", () => {
-
   it("should reurn true when the passed argument is a generator", () => {
     expect(utils.isGenerator((function* () { })())).toBe(true);
   });
