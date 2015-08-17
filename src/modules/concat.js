@@ -3,7 +3,7 @@
 import utils from "./utils";
 
 export default function* (firstSource, secondSource) {
-  if (arguments.length == 1) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     secondSource = firstSource;
     firstSource = this;
   }

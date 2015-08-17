@@ -16,13 +16,13 @@ describe("last", () => {
   });
 
   it("should throw if there is no element", () => {
-    expect([].asEnumerable().last()).toThrowError("Sequence is empty");
-    expect(last([])).toThrowError("Sequence is empty");
+    expect(() => [].asEnumerable().last()).toThrowError("Sequence is empty");
+    expect(() => last([])).toThrowError("Sequence is empty");
   });
 
   it("should throw if there is no element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().last(n => n % 2 === 0)).toThrowError("No items matched the predicate");
-    expect(last([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => [1, 3, 5].asEnumerable().last(n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => last([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
   });
 
   it("should return the last element of an enumerable", () => {

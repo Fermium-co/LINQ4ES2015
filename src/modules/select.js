@@ -3,7 +3,7 @@
 import utils from "./utils";
 
 export default function* (source, projection) {
-  if (arguments.length == 1) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     projection = source;
     source = this;
   }

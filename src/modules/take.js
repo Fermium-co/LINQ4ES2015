@@ -3,8 +3,7 @@
 import utils from "./utils";
 
 export default function* (source, totalCount) {
-
-  if (arguments.length == 1) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     totalCount = source;
     source = this;
   }

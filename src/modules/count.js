@@ -3,7 +3,7 @@
 import utils from "./utils";
 
 export default function (source, predicate) {
-  if (arguments.length < 2) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     predicate = source;
     source = this;
   }
@@ -25,7 +25,11 @@ export default function (source, predicate) {
   let count = 0
   let next = source.next();
   while (!next.done) {
-    if (predicate && predicate(next.value)) {
+    if (predicate) {
+      if (predicate(next.value)) {
+        count++;
+      }
+    } else {
       count++;
     }
     next = source.next();

@@ -3,7 +3,7 @@
 import utils from "./utils";
 
 export default function (source, predicate) {
-  if (arguments.length < 2) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     predicate = source;
     source = this;
   }

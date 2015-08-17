@@ -16,13 +16,13 @@ describe("first", () => {
   });
 
   it("should throw if there is no element", () => {
-    expect([].asEnumerable().first()).toThrowError("Sequence is empty");
-    expect(first([])).toThrowError("Sequence is empty");
+    expect(() => [].asEnumerable().first()).toThrowError("Sequence is empty");
+    expect(() => first([])).toThrowError("Sequence is empty");
   });
 
   it("should throw if there is no element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().first(n => n % 2 === 0)).toThrowError("No items matched the predicate");
-    expect(first([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => [1, 3, 5].asEnumerable().first(n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => first([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
   });
 
   it("should return the first element of an enumerable", () => {

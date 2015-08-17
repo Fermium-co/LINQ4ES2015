@@ -3,8 +3,7 @@
 import utils from "./utils";
 
 export default function* (source, orderByFunction) {
-
-  if (arguments.length == 1) {
+  if (this !== undefined && this !== null && arguments.length < 2) {
     orderByFunction = source;
     source = this;
   }

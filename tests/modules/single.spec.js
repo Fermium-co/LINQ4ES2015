@@ -16,23 +16,23 @@ describe("single", () => {
   });
 
   it("should throw if there is no element", () => {
-    expect([].asEnumerable().single()).toThrowError("Sequence is empty");
-    expect(single([])).toThrowError("Sequence is empty");
+    expect(() => [].asEnumerable().single()).toThrowError("Sequence is empty");
+    expect(() => single([])).toThrowError("Sequence is empty");
   });
 
   it("should throw if there is no element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().single(n => n % 2 === 0)).toThrowError("No items matched the predicate");
-    expect(single([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => [1, 3, 5].asEnumerable().single(n => n % 2 === 0)).toThrowError("No items matched the predicate");
+    expect(() => single([1, 3, 5], n => n % 2 === 0)).toThrowError("No items matched the predicate");
   });
 
   it("should throw if there is more than one element", () => {
-    expect([1, 2].asEnumerable().single()).toThrowError("Sequence contained multiple elements");
-    expect(single([1, 2])).toThrowError("Sequence contained multiple elements");
+    expect(() => [1, 2].asEnumerable().single()).toThrowError("Sequence contained multiple elements");
+    expect(() => single([1, 2])).toThrowError("Sequence contained multiple elements");
   });
 
   it("should throw if there is  more than one element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().single(n => n % 2 !== 0)).toThrowError("Sequence contained multiple matching elements");
-    expect(single([1, 3, 5], n => n % 2 !== 0)).toThrowError("Sequence contained multiple matching elements");
+    expect(() => [1, 3, 5].asEnumerable().single(n => n % 2 !== 0)).toThrowError("Sequence contained multiple matching elements");
+    expect(() => single([1, 3, 5], n => n % 2 !== 0)).toThrowError("Sequence contained multiple matching elements");
   });
 
   it("should return the single element of an enumerable", () => {
