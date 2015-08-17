@@ -22,6 +22,7 @@ import singleOrDefault from "./modules/singleOrDefault";
 import any from "./modules/any";
 import all from "./modules/all";
 import defaultIfEmpty from "./modules/defaultIfEmpty";
+import selectMany from "./modules/selectMany";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -42,6 +43,7 @@ function setPrototype(prototype) {
   prototype.any = any;
   prototype.all = all;
   prototype.defaultIfEmpty = defaultIfEmpty;
+  prototype.selectMany = selectMany;
 }
 
 export default function () {

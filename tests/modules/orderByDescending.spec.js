@@ -8,7 +8,7 @@ import orderByDescending from "../../src/modules/orderByDescending";
 
 describe("orderByDescending", () => {
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ FirstName: 'C' }, { FirstName: 'A' }, { FirstName: 'B' }];
+  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
 
   it("should retrn ordered items", () => {
     let orderedItems = simpleArr.asEnumerable().orderByDescending(num => num).toArray();
@@ -16,11 +16,11 @@ describe("orderByDescending", () => {
   });
 
   it("should retrn ordered set of complex items", () => {
-    let orderedItems = complexArr.asEnumerable().orderByDescending(item => item.FirstName).toArray();
+    let orderedItems = complexArr.asEnumerable().orderByDescending(item => item.firstName).toArray();
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].FirstName).toBe('C');
-    expect(orderedItems[1].FirstName).toBe('B');
-    expect(orderedItems[2].FirstName).toBe('A');
+    expect(orderedItems[0].firstName).toBe('C');
+    expect(orderedItems[1].firstName).toBe('B');
+    expect(orderedItems[2].firstName).toBe('A');
   });
 
   it("should call order by descending function correctly because of where method", () => {
