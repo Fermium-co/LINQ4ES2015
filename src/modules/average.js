@@ -13,11 +13,12 @@ export default function (source, predicate) {
   if (!utils.isGenerator(source))
     source = asEnumerable(source);
   let sum = 0;
+  let count = 0;
   if (typeof predicate == "function") {
-    sum = aggregate(where(source, predicate), 0, (result, current) => result += current);
+    sum = aggregate(where(source, predicate), 0, (result, current) => { count++; return result += current; });
   }
   else {
-    sum = aggregate(source, 0, (result, current) => result += current);
+    sum = aggregate(source, 0, (result, current) => { count++; return result += current; });
   }
-  return sum;
+  return sum / count;
 };

@@ -10,14 +10,15 @@ export default function (source, predicate) {
     predicate = source;
     source = this;
   }
-  if (!utils.isGenerator(source))
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
-  let sum = 0;
+  }
+  let max = 0;
   if (typeof predicate == "function") {
-    sum = aggregate(where(source, predicate), 0, (result, current) => result += current);
+    max = aggregate(where(source, predicate), undefined, (result, current) => result >= current ? result : current);
   }
   else {
-    sum = aggregate(source, 0, (result, current) => result += current);
+    max = aggregate(source, undefined, (result, current) => result >= current ? result : current);
   }
-  return sum;
+  return max;
 };
