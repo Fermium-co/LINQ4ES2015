@@ -14,6 +14,11 @@ describe("where", () => {
     expect(evenNumbers).toEqual([2, 4, 6]);
   });
 
+  it("should retrn an array with valid child count", () => {
+    let someEvenNumbers = arr.asEnumerable().where((num, index) => num % 2 == 0 && index % 3 == 0).toArray();
+    expect(someEvenNumbers).toEqual([4]);
+  });
+
   it("should not call predicate when result is not get enumerated", () => {
     let fakePredicate = jasmine.createSpy();
     arr.asEnumerable().where(fakePredicate);
@@ -40,12 +45,12 @@ describe("where", () => {
   it("should call predicate when result is get enumerated", () => {
     let fakePredicate = jasmine.createSpy();
     arr.asEnumerable().where(fakePredicate).toArray();
-    expect(fakePredicate).toHaveBeenCalledWith(1);
-    expect(fakePredicate).toHaveBeenCalledWith(2);
-    expect(fakePredicate).toHaveBeenCalledWith(3);
-    expect(fakePredicate).toHaveBeenCalledWith(4);
-    expect(fakePredicate).toHaveBeenCalledWith(5);
-    expect(fakePredicate).toHaveBeenCalledWith(6);
+    expect(fakePredicate).toHaveBeenCalledWith(1, 0);
+    expect(fakePredicate).toHaveBeenCalledWith(2, 1);
+    expect(fakePredicate).toHaveBeenCalledWith(3, 2);
+    expect(fakePredicate).toHaveBeenCalledWith(4, 3);
+    expect(fakePredicate).toHaveBeenCalledWith(5, 4);
+    expect(fakePredicate).toHaveBeenCalledWith(6, 5);
     expect(fakePredicate.calls.count()).toBe(6);
   });
 
@@ -53,11 +58,11 @@ describe("where", () => {
     let fakeObject = { fakePredicate: num => num % 2 == 0 };
     spyOn(fakeObject, 'fakePredicate').and.callThrough();
     let firstTwoEvenNumbers = arr.asEnumerable().where(fakeObject.fakePredicate).take(2).toArray();
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(3);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(4);
-    expect(fakeObject.fakePredicate).not.toHaveBeenCalledWith(5);
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2, 1);
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(3, 2);
+    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(4, 3);
+    expect(fakeObject.fakePredicate).not.toHaveBeenCalledWith(5, 4);
     expect(fakeObject.fakePredicate.calls.count()).toBe(4);
     expect(firstTwoEvenNumbers).toEqual([2, 4]);
   });
