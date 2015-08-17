@@ -12,8 +12,8 @@ export default function (source, predicate) {
   }
   if (Array.isArray(source)) {
     if (!predicate) {
-      if (source.length === 0) throw new Error("Sequence is empty");
-      if (source.length !== 1) throw new Error("Sequence contained multiple elements");
+      if (source.length === 0) throw new Error("Sequence contains no elements");
+      if (source.length !== 1) throw new Error("Sequence contains more than one element");
       return source[0];
     }
     source = source.asEnumerable();
@@ -30,11 +30,11 @@ export default function (source, predicate) {
   let result = next.value;
   if (!predicate) {
     if (next.done) {
-      throw new Error("Sequence is empty");
+      throw new Error("Sequence contains no elements");
     }
     next = source.next();
     if (!next.done) {
-      throw new Error("Sequence contained multiple elements");
+      throw new Error("Sequence contains more than one element");
     }
     return result;
   }
@@ -43,7 +43,7 @@ export default function (source, predicate) {
   while (!next.done) {
     if (predicate(next.value)) {
       if (found) {
-        throw new Error("Sequence contained multiple matching elements");
+        throw new Error("Sequence contains no matching element");
       }
       found = true;
       result = next.value;
@@ -51,7 +51,7 @@ export default function (source, predicate) {
     next = source.next();
   }
   if (!found) {
-    throw new Error("No items matched the predicate");
+    throw new Error("Sequence contains no matching element");
   }
   return result;
 };

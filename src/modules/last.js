@@ -13,7 +13,7 @@ export default function (source, predicate) {
   if (Array.isArray(source)) {
     if (!predicate) {
       if (source.length === 0) {
-        throw new Error("Sequence is empty");
+        throw new Error("Sequence contains no elements");
       }
       return source[source.length - 1];
     }
@@ -29,7 +29,7 @@ export default function (source, predicate) {
 
   let next = source.next();
   if (next.done) {
-    throw new Error("Sequence is empty");
+    throw new Error("Sequence contains no elements");
   }
 
   let last = null;
@@ -50,7 +50,7 @@ export default function (source, predicate) {
     next = source.next();
   }
   if (!found) {
-    throw new Error("No items matched the predicate");
+    throw new Error("Sequence contains no matching element");
   }
   return last;
 };

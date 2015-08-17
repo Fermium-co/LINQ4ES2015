@@ -36,5 +36,5 @@ export default function (source, predicate) {
     }
     next = source.next();
   }
-  throw new Error("No items matched the predicate");
+  throw new Error("Sequence contains no matching element");
 };
