@@ -35,6 +35,13 @@ import "./modules/distinct.spec";
 import "./modules/union.spec";
 import "./modules/intersect.spec";
 import "./modules/except.spec";
+<<<<<<< HEAD
 import "./modules/thenBy.spec";
 import "./modules/thenByDescending.spec";
 import "./modules/toLookup.spec";
+=======
+//import "./modules/thenBy.spec";
+//import "./modules/thenByDescending.spec";
+import "./modules/elementAt.spec";
+import "./modules/elementAtOrDefault.spec";
+>>>>>>> 0bc8a34159779195fe56c8437c2f69508a6332ca

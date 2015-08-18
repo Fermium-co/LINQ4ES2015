@@ -36,7 +36,12 @@ import intersect from "./modules/intersect";
 import except from "./modules/except";
 import thenBy from "./modules/thenBy";
 import thenByDescending from "./modules/thenByDescending";
+<<<<<<< HEAD
 import toLookup from "./modules/toLookup";
+=======
+import elementAt from "./modules/elementAt";
+import elementAtOrDefault from "./modules/elementAtOrDefault";
+>>>>>>> 0bc8a34159779195fe56c8437c2f69508a6332ca
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -71,7 +76,12 @@ function setPrototype(prototype) {
   prototype.except = except;
   prototype.thenBy = thenBy;
   prototype.thenByDescending = thenByDescending;
+<<<<<<< HEAD
   prototype.toLookup = toLookup;
+=======
+  prototype.elementAt = elementAt;
+  prototype.elementAtOrDefault = elementAtOrDefault;
+>>>>>>> 0bc8a34159779195fe56c8437c2f69508a6332ca
 }
 
 export default function () {
