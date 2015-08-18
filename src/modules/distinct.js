@@ -24,20 +24,9 @@ export default function* (source, comparer) {
   let next = source.next();
   let result = [];
   while (!next.done) {
-    if (pushDistinct(result, next.value, comparer)) {
+    if (utils.safePush(result, next.value, comparer)) {
       yield next.value;
     }
     next = source.next();
   }
 };
-
-function pushDistinct(array, item, comparer) {
-  for (let i = 0; i < array.length; i++) {
-    let element = array[i];
-    if (comparer(element, item)) {
-      return false
-    }
-  }
-  array.push(item);
-  return true;
-}

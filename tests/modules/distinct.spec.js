@@ -20,7 +20,7 @@ describe("distinct", () => {
     expect(distinct([1, 2, 2, 3, 3, 3]).toArray()).toEqual([1, 2, 3]);
   });
 
-  it("should return the distinct elements of an enumerable passing based on a comparer", () => {
+  it("should return the distinct elements of an enumerable based on a comparer", () => {
     expect([
       { id: 1, name: 'saleh' },
       { id: 2, name: 'yasser' },

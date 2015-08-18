@@ -31,6 +31,7 @@ import average from "./modules/average";
 import contains from "./modules/contains";
 import sequenceEqual from "./modules/sequenceEqual";
 import distinct from "./modules/distinct";
+import union from "./modules/union";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -60,6 +61,7 @@ function setPrototype(prototype) {
   prototype.contains = contains;
   prototype.sequenceEqual = sequenceEqual;
   prototype.distinct = distinct;
+  prototype.union = union;
 }
 
 export default function () {
