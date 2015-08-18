@@ -49,7 +49,6 @@ Supported methods:
 * Take
 * ToArray
 * Union
-* Utils
 * Where
 
 In Progress Methods:
