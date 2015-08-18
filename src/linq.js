@@ -32,6 +32,7 @@ import contains from "./modules/contains";
 import sequenceEqual from "./modules/sequenceEqual";
 import distinct from "./modules/distinct";
 import union from "./modules/union";
+import intersect from "./modules/intersect";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -62,6 +63,7 @@ function setPrototype(prototype) {
   prototype.sequenceEqual = sequenceEqual;
   prototype.distinct = distinct;
   prototype.union = union;
+  prototype.intersect = intersect;
 }
 
 export default function () {

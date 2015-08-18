@@ -18,7 +18,7 @@ export default {
     for (let i = 0; i < array.length; i++) {
       let element = array[i];
       if (comparer(element, item)) {
-        return false
+        return false;
       }
     }
     array.push(item);

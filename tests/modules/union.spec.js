@@ -29,7 +29,7 @@ describe("union", () => {
     expect(union([1, 2, 2, 3, 3, 3], [3, 4, 5, 6]).toArray()).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
-  it("should return the union and distinct elements of two enumerables based on a comparer", () => {
+  it("should return union and distinct elements of two enumerables based on a comparer", () => {
     expect([
       { id: 1, name: 'saleh' },
       { id: 2, name: 'yasser' },
