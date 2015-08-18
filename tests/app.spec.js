@@ -38,7 +38,6 @@ import "./modules/except.spec";
 import "./modules/thenBy.spec";
 import "./modules/thenByDescending.spec";
 import "./modules/toLookup.spec";
-//import "./modules/thenBy.spec";
-//import "./modules/thenByDescending.spec";
 import "./modules/elementAt.spec";
 import "./modules/elementAtOrDefault.spec";
+import "./modules/takeWhile.spec";

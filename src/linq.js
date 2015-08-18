@@ -39,6 +39,7 @@ import thenByDescending from "./modules/thenByDescending";
 import elementAt from "./modules/elementAt";
 import elementAtOrDefault from "./modules/elementAtOrDefault";
 import toLookup from "./modules/toLookup";
+import takeWhile from "./modules/takeWhile"
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -76,6 +77,7 @@ function setPrototype(prototype) {
   prototype.elementAt = elementAt;
   prototype.elementAtOrDefault = elementAtOrDefault;
   prototype.toLookup = toLookup;
+  prototype.takeWhile = takeWhile;
 }
 
 export default function () {

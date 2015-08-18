@@ -81,22 +81,22 @@ Supported methods:
 * singleOrDefault
 * sum
 * take
+* takeWhile
 * toArray
 * toLookup
 * union
 * where
+* zip
 
 In Progress Methods:
 * join
 * groupBy
 * groupJoin
-* takeWhile
 * skipWhile
 * skip
 * thenBy
 * thenByDescending
 * reverse
-* zip
 
 ## Contribute
 
