@@ -28,6 +28,7 @@ Supported methods:
 * DefaultIfEmpty
 * Distinct
 * Empty
+* Except
 * First
 * FirstOrDefault
 * Intersect
@@ -52,7 +53,6 @@ Supported methods:
 * Where
 
 In Progress Methods:
-* Except
 * Join
 * GroupBy
 * GroupJoin
