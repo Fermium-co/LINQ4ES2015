@@ -26,6 +26,7 @@ Supported methods:
 * Contains
 * Count
 * DefaultIfEmpty
+* Distinct
 * Empty
 * First
 * FirstOrDefault
@@ -49,7 +50,6 @@ Supported methods:
 * Where
 
 In Progress Methods:
-* Distinct
 * Union
 * Intersect
 * Except
