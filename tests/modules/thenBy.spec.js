@@ -35,9 +35,9 @@ describe("thenBy", () => {
       .toArray();
 
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0]).EqualTo({ firstName: 'A', lastName: 'B' });
-    expect(orderedItems[1]).EqualTo({ firstName: 'A', lastName: 'C' });
-    expect(orderedItems[2]).EqualTo({ firstName: 'C', lastName: 'D' });
+    expect(orderedItems[0]).toEqual({ firstName: 'A', lastName: 'B' });
+    expect(orderedItems[1]).toEqual({ firstName: 'A', lastName: 'C' });
+    expect(orderedItems[2]).toEqual({ firstName: 'C', lastName: 'D' });
   });
 
   it("should call then by comparer function correctly because of order by method", () => {

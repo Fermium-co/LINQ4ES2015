@@ -68,8 +68,8 @@ function setPrototype(prototype) {
   prototype.union = union;
   prototype.intersect = intersect;
   prototype.except = except;
-  prototype.thenBy = except;
-  prototype.thenByDescending = except;
+  prototype.thenBy = thenBy;
+  prototype.thenByDescending = thenByDescending;
 }
 
 export default function () {
