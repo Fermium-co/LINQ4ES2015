@@ -39,6 +39,7 @@ import thenByDescending from "./modules/thenByDescending";
 import elementAt from "./modules/elementAt";
 import elementAtOrDefault from "./modules/elementAtOrDefault";
 import toLookup from "./modules/toLookup";
+import join from "./modules/join";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -76,6 +77,8 @@ function setPrototype(prototype) {
   prototype.elementAt = elementAt;
   prototype.elementAtOrDefault = elementAtOrDefault;
   prototype.toLookup = toLookup;
+  prototype.join = join;
+  
 }
 
 export default function () {
