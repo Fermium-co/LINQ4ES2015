@@ -15,7 +15,7 @@ Sample usage:
     .distinct()
 		.toArray();
 
-Result will be ['[2]', '[0]'] and where predicate will be executed only 6 times.
+Result will be ['[2]', '[0]'] and where predicate will be executed only 4 times.
 
 Supported methods:
 * Aggregate
