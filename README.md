@@ -46,11 +46,11 @@ Supported methods:
 * Sum
 * Take
 * ToArray
+* Union
 * Utils
 * Where
 
 In Progress Methods:
-* Union
 * Intersect
 * Except
 * Join
