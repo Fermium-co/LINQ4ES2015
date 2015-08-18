@@ -3,7 +3,7 @@ Language Integrated Query for JavaScript based on ECMA Script 2015
 
 **Getting started:**
 
-Only run jspm install
+    jspm install
 
 Sample usage:
 
