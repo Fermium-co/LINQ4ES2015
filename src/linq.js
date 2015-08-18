@@ -34,6 +34,8 @@ import distinct from "./modules/distinct";
 import union from "./modules/union";
 import intersect from "./modules/intersect";
 import except from "./modules/except";
+import thenBy from "./modules/thenBy";
+import thenByDescending from "./modules/thenByDescending";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -66,6 +68,8 @@ function setPrototype(prototype) {
   prototype.union = union;
   prototype.intersect = intersect;
   prototype.except = except;
+  prototype.thenBy = except;
+  prototype.thenByDescending = except;
 }
 
 export default function () {
