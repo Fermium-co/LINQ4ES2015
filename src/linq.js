@@ -36,6 +36,7 @@ import intersect from "./modules/intersect";
 import except from "./modules/except";
 import thenBy from "./modules/thenBy";
 import thenByDescending from "./modules/thenByDescending";
+import toLookup from "./modules/toLookup";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -70,6 +71,7 @@ function setPrototype(prototype) {
   prototype.except = except;
   prototype.thenBy = thenBy;
   prototype.thenByDescending = thenByDescending;
+  prototype.toLookup = toLookup;
 }
 
 export default function () {
