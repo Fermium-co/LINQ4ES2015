@@ -34,3 +34,4 @@ import "./modules/sequenceEqual.spec";
 import "./modules/distinct.spec";
 import "./modules/union.spec";
 import "./modules/intersect.spec";
+import "./modules/except.spec";
