@@ -35,3 +35,5 @@ import "./modules/distinct.spec";
 import "./modules/union.spec";
 import "./modules/intersect.spec";
 import "./modules/except.spec";
+import "./modules/thenBy.spec";
+import "./modules/thenByDescending.spec";
