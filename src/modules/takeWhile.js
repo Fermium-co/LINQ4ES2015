@@ -16,19 +16,17 @@ export default function* (source, predicate) {
   }
   if (Array.isArray(source)) {
     source = asEnumerable(source);
+  }
+  if (!util.isGenerator(source))
+    throw new Error("source must be an enumerable");
 
-    if (!util.isGenerator(source))
-      throw new Error("source must be an enumerable");
+  let next = source.next();
 
-    let next = source.next();
-
-    while (next.done) {
-      if (predicate(next.value)) {
-        yield next.value;
-        break;
-      }
-      yield next.value;
-      next = source.next();
+  while (!next.done) {
+    if (!predicate(next.value)) {
+      break;
     }
+    yield next.value;
+    next = source.next();
   }
 }
