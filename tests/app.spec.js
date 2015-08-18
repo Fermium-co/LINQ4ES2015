@@ -31,3 +31,4 @@ import "./modules/max.spec";
 import "./modules/average.spec";
 import "./modules/contains.spec";
 import "./modules/sequenceEqual.spec";
+import "./modules/distinct.spec";

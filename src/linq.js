@@ -30,6 +30,7 @@ import max from "./modules/max";
 import average from "./modules/average";
 import contains from "./modules/contains";
 import sequenceEqual from "./modules/sequenceEqual";
+import distinct from "./modules/distinct";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -58,6 +59,7 @@ function setPrototype(prototype) {
   prototype.average = average;
   prototype.contains = contains;
   prototype.sequenceEqual = sequenceEqual;
+  prototype.distinct = distinct;
 }
 
 export default function () {

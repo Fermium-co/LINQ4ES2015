@@ -6,12 +6,12 @@ import linq from "../../src/linq";
 import singleOrDefault from "../../src/modules/singleOrDefault";
 
 describe("singleOrDefault", () => {
-  it("should throws an exception when the source is null or undefined", () => {
+  it("should throw an exception when the source is null or undefined", () => {
     expect(() => singleOrDefault(null)).toThrowError("source is null or undefined");
     expect(() => singleOrDefault(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not an enumerable", () => {
+  it("should throw an exception when the source is not an enumerable", () => {
     expect(() => singleOrDefault({})).toThrowError("source must be an enumerable");
   });
 
