@@ -1,8 +1,9 @@
 import linq from './src/linq';
 linq();
 
-let result = [0, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
-  .where(num => num % 2 == 0)
+let count = 0;
+let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
+  .where(num => { count++; return num % 2 == 0; })
   .take(3)
   .orderByDescending(num => num)
   .select(num => '[' + num + ']')
@@ -10,3 +11,4 @@ let result = [0, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
   .toArray();
 
 console.log(result);
+console.log(count);
