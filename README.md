@@ -1,5 +1,5 @@
 # LINQ4ES2015
-Linq for ECMA Script 2015 (formerly know as ES6)
+Linq for ECMA Script 2015 (formerly known as ES6)
 
 Language Integrated Query for JavaScript based on ECMA Script 2015
 
@@ -49,53 +49,54 @@ Result will be ['[2]', '[0]'] and where predicate will be executed only 4 times.
 ## Roadmap
 
 Supported methods:
-* Aggregate
-* All
-* Any
-* AsEnumerable
-* Average
-* Concat
-* Contains
-* Count
-* DefaultIfEmpty
-* Distinct
-* ElementAt
-* ElementAtOrDefault
-* Empty
-* Except
-* First
-* FirstOrDefault
-* Intersect
-* Last
-* LastOrDefault
-* Max
-* Min
-* OrderBy
-* OrderByDescending
-* Range
-* Repeat
-* Select
-* SelectMany
-* SequenceEquals
-* Single
-* SingleOrDefault
-* Sum
-* Take
-* ToArray
-* Union
-* Where
+* aggregate
+* all
+* any
+* asEnumerable
+* average
+* concat
+* contains
+* count
+* defaultIfEmpty
+* distinct
+* elementAt
+* elementAtOrDefault
+* empty
+* except
+* first
+* firstOrDefault
+* intersect
+* last
+* lastOrDefault
+* max
+* min
+* orderBy
+* orderByDescending
+* range
+* repeat
+* select
+* selectMany
+* sequenceEquals
+* single
+* singleOrDefault
+* sum
+* take
+* toArray
+* toLookup
+* union
+* where
 
 In Progress Methods:
-* Join
-* GroupBy
-* GroupJoin
-* TakeWhile
-* SkipWhile
-* Skip
-* ThenBy
-* ThenByDescending
-* Reverse
-* Zip
+* join
+* groupBy
+* groupJoin
+* takeWhile
+* skipWhile
+* skip
+* thenBy
+* thenByDescending
+* reverse
+* zip
 
 ## Contribute
 
