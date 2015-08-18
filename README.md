@@ -1,9 +1,38 @@
 # LINQ4ES2015
+Linq for ECMA Script 2015 (formerly know as ES6)
+
 Language Integrated Query for JavaScript based on ECMA Script 2015
 
-**Getting started:**
+## Installing
+
+create a copy of the master branch:
+
+    git clone https://github.com/Fermium-co/LINQ4ES2015.git
+
+or the lastest version from dev branch:
+
+    git clone https://github.com/Fermium-co/LINQ4ES2015.git -b dev
+
+change to the LINQ4ES2015 directory:
+
+    cd LINQ4ES2015
+
+and run the following command:
 
     jspm install
+
+install http-server with the following command:
+
+    npm install http-server -g
+
+open a new command line in the root folder of LINQ4ES2015 and run the http-server:
+
+    http-server
+    
+open the browser and go to localhost:8080, this opens the index.html file.
+see the browser console for the results.
+
+## Usage
 
 Sample usage:
 
@@ -16,6 +45,8 @@ Sample usage:
 		.toArray();
 
 Result will be ['[2]', '[0]'] and where predicate will be executed only 4 times.
+
+## Roadmap
 
 Supported methods:
 * Aggregate
