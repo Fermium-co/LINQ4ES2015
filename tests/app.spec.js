@@ -35,11 +35,19 @@ import "./modules/distinct.spec";
 import "./modules/union.spec";
 import "./modules/intersect.spec";
 import "./modules/except.spec";
+<<<<<<< HEAD
 import "./modules/thenBy.spec";
 import "./modules/thenByDescending.spec";
+=======
+>>>>>>> 30a66ac06e76405b44b797df917c9543a48c0152
 //import "./modules/thenBy.spec";
 //import "./modules/thenByDescending.spec";
+import "./modules/toLookup.spec";
 import "./modules/elementAt.spec";
 import "./modules/elementAtOrDefault.spec";
+<<<<<<< HEAD
 import "./modules/toLookup.spec";
 import "./modules/join.spec";
+=======
+import "./modules/takeWhile.spec";
+>>>>>>> 30a66ac06e76405b44b797df917c9543a48c0152

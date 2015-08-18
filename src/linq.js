@@ -39,7 +39,11 @@ import thenByDescending from "./modules/thenByDescending";
 import elementAt from "./modules/elementAt";
 import elementAtOrDefault from "./modules/elementAtOrDefault";
 import toLookup from "./modules/toLookup";
+<<<<<<< HEAD
 import join from "./modules/join";
+=======
+import takeWhile from "./modules/takeWhile"
+>>>>>>> 30a66ac06e76405b44b797df917c9543a48c0152
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -77,8 +81,12 @@ function setPrototype(prototype) {
   prototype.elementAt = elementAt;
   prototype.elementAtOrDefault = elementAtOrDefault;
   prototype.toLookup = toLookup;
+<<<<<<< HEAD
   prototype.join = join;
   
+=======
+  prototype.takeWhile = takeWhile;
+>>>>>>> 30a66ac06e76405b44b797df917c9543a48c0152
 }
 
 export default function () {
