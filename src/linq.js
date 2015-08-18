@@ -36,6 +36,8 @@ import intersect from "./modules/intersect";
 import except from "./modules/except";
 import thenBy from "./modules/thenBy";
 import thenByDescending from "./modules/thenByDescending";
+import elementAt from "./modules/elementAt";
+import elementAtOrDefault from "./modules/elementAtOrDefault";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -70,6 +72,8 @@ function setPrototype(prototype) {
   prototype.except = except;
   prototype.thenBy = thenBy;
   prototype.thenByDescending = thenByDescending;
+  prototype.elementAt = elementAt;
+  prototype.elementAtOrDefault = elementAtOrDefault;
 }
 
 export default function () {
