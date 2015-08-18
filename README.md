@@ -12,7 +12,7 @@ Sample usage:
 		.take(3)
 		.orderByDescending(num => num)
 		.select(num => '[' + num + ']')
-    .distinct()
+		.distinct()
 		.toArray();
 
 Result will be ['[2]', '[0]'] and where predicate will be executed only 4 times.
