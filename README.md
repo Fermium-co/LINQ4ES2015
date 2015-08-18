@@ -59,6 +59,8 @@ Supported methods:
 * Count
 * DefaultIfEmpty
 * Distinct
+* ElementAt
+* ElementAtOrDefault
 * Empty
 * Except
 * First
@@ -93,8 +95,6 @@ In Progress Methods:
 * ThenBy
 * ThenByDescending
 * Reverse
-* ElementAt
-* ElementAtOrDefault
 * Zip
 
 ## Contribute
