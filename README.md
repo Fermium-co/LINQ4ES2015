@@ -30,6 +30,7 @@ Supported methods:
 * Empty
 * First
 * FirstOrDefault
+* Intersect
 * Last
 * LastOrDefault
 * Max
@@ -51,7 +52,6 @@ Supported methods:
 * Where
 
 In Progress Methods:
-* Intersect
 * Except
 * Join
 * GroupBy
