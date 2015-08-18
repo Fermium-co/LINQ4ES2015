@@ -1,18 +1,19 @@
+/* global describe, it, expect, spyOn, jasmine, toThrowError */
+
 "use strict";
 
 import linq from "../../src/linq";
-import takeWhile from "./../../src/modules/takeWhile";
-import toArray from "./../../src/modules/toArray";
+import takeWhile from "../../src/modules/takeWhile";
 
 describe("takeWhile", () => {
   it("should throw exception when source is null or undefined", () => {
-    expect(() => takeWhile(null, n => n > 0)).toThrowError("source is null or undefined");
-    expect(() => takeWhile(undefined, n=> n > 0)).toThrowError("source is null or undefined");
+    expect(() => takeWhile(null, n => n > 0).toArray()).toThrowError("source is null or undefined");
+    expect(() => takeWhile(undefined, n=> n > 0).toArray()).toThrowError("source is null or undefined");
   });
 
   it("should throw exception when predicate is null or undefined", () => {
-    expect(() => takeWhile([1, 2], null)).toThrowError("predicate is null or undefined");
-    expect(() => takeWhile([1, 2], undefined)).toThrowError("predicate is null or undefined");
+    expect(() => takeWhile([1, 2], null).toArray()).toThrowError("predicate is null or undefined");
+    expect(() => takeWhile([1, 2], undefined).toArray()).toThrowError("predicate is null or undefined");
   });
 
   it("should return 3 first items which is match", () => {
