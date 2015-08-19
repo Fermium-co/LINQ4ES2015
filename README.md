@@ -65,6 +65,7 @@ Supported methods:
 * except
 * first
 * firstOrDefault
+* groupBy
 * intersect
 * join
 * last
@@ -77,7 +78,7 @@ Supported methods:
 * repeat
 * select
 * selectMany
-* sequenceEquals
+* sequenceEqual
 * single
 * singleOrDefault
 * skipWhile
@@ -89,14 +90,13 @@ Supported methods:
 * toLookup
 * union
 * where
-* zip
 
 In Progress Methods:
-* groupBy
 * groupJoin
 * thenBy
 * thenByDescending
 * reverse
+* zip
 
 ## Contribute
 
