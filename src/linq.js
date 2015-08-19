@@ -41,6 +41,8 @@ import elementAtOrDefault from "./modules/elementAtOrDefault";
 import takeWhile from "./modules/takeWhile"
 import toLookup from "./modules/toLookup";
 import join from "./modules/join";
+import skip from "./modules/skip";
+import skipWhile from "./modules/skipWhile";
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -80,6 +82,8 @@ function setPrototype(prototype) {
   prototype.takeWhile = takeWhile;
   prototype.toLookup = toLookup;
   prototype.join = join;
+  prototype.skip = skip;
+  prototype.skipWhile = skipWhile;
 }
 
 export default function () {

@@ -3,9 +3,9 @@
 import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
-export default function* (source, takeCount) {
+export default function* (source, skipCount) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    takeCount = source;
+    skipCount = source;
     source = this;
   }
   if (source == null || source == undefined) {
@@ -17,16 +17,15 @@ export default function* (source, takeCount) {
   if (!utils.isGenerator(source)) {
     throw new Error("source must be an enumerable");
   }
-  if (isNaN(takeCount) || takeCount == null) {
-    throw new Error("take number must be a number");
+  if (isNaN(skipCount) || skipCount == null) {
+    throw new Error("skip number must be a number");
   }
 
   let next = source.next();
   let count = 0;
-  while (true) {
-    yield next.value;
-    if (++count >= takeCount) {
-      break;
+  while (!next.done) {
+    if (++count > skipCount) {
+      yield next.value;
     }
     next = source.next();
   }

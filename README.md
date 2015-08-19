@@ -80,6 +80,8 @@ Supported methods:
 * sequenceEquals
 * single
 * singleOrDefault
+* skipWhile
+* skip
 * sum
 * take
 * takeWhile
@@ -92,8 +94,6 @@ Supported methods:
 In Progress Methods:
 * groupBy
 * groupJoin
-* skipWhile
-* skip
 * thenBy
 * thenByDescending
 * reverse
