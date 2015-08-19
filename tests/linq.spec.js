@@ -1,12 +1,12 @@
 /* global describe, it, expect */
 "use strict";
 
-import linq from "../src/linq";
+import Linq from "../src/linq";
 
 describe("linq", () => {
-  it("should be a function", () => {
-    expect((typeof linq)).toBe("function");
+  it("should have a function named initLinqExtensions", () => {
+    expect((typeof Linq.initLinqExtensions)).toBe("function");
   });
 });
 
-linq();
+Linq.initLinqExtensions();
