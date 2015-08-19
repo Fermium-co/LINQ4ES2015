@@ -66,6 +66,7 @@ Supported methods:
 * first
 * firstOrDefault
 * intersect
+* join
 * last
 * lastOrDefault
 * max
@@ -89,7 +90,6 @@ Supported methods:
 * zip
 
 In Progress Methods:
-* join
 * groupBy
 * groupJoin
 * skipWhile
