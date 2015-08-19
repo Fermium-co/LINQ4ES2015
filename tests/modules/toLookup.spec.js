@@ -35,8 +35,7 @@ describe("toLookup", () => {
       { first: 'sali', last: 'YUSEFNEJAD' },
       { first: 'saloo', last: 'yusefnejad' },
     ].asEnumerable()
-      .toLookup(p => p.last, p => p.first, (a, b) => a.toLowerCase() == b.toLowerCase())
-      .toArray())
+      .toLookup(p => p.last, p => p.first, (a, b) => a.toLowerCase() == b.toLowerCase()))
       .toEqual([
         { key: 'yusefnejad', elements: ['saleh', 'sali', 'saloo'] },
         { key: 'moradi', elements: ['yasser', 'yass'] },

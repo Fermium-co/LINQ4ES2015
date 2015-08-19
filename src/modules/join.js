@@ -51,7 +51,7 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     comparer = (a, b) => a == b;
   }
 
-  let lookupArray = inner.toLookup(innerKeySelector, a => a, comparer).toArray();
+  let lookupArray = inner.toLookup(innerKeySelector, a => a, comparer);
   let outerEnumerator = outer.next();
   while (!outerEnumerator.done) {
     let outerElement = outerEnumerator.value;

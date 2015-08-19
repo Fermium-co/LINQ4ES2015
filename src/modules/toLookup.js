@@ -3,7 +3,7 @@
 import utils from "./utils";
 import asEnumerable from './asEnumerable';
 
-export default function* (source, keySelector, elementSelector, comparer) {
+export default function (source, keySelector, elementSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length === 3) {
     comparer = elementSelector;
     elementSelector = keySelector;
@@ -44,12 +44,7 @@ export default function* (source, keySelector, elementSelector, comparer) {
     next = source.next();
   }
 
-  let result = lookup.getEnumerable();
-  next = result.next();
-  while (!next.done) {
-    yield next.value;
-    next = result.next();
-  }
+  return lookup.getArray();
 };
 
 // ====================================================================================
@@ -106,12 +101,12 @@ class Lookup {
     return !!this.getKey(key);
   }
 
-  getEnumerable() {
+  getArray() {
     let result = [];
     for (var index = 0; index < this.keys.length; index++) {
       let key = this.keys[index];
       result.push({ key: key, elements: this.map[index] });
     }
-    return asEnumerable(result);
+    return result;
   }
 }
