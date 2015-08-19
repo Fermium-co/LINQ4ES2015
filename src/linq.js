@@ -1,46 +1,48 @@
-"use strict";
+'use strict';
 
-import utils from "./modules/utils";
-import asEnumerable from "./modules/asEnumerable";
-import toArray from "./modules/toArray";
-import where from "./modules/where";
-import take from "./modules/take";
-import select from "./modules/select";
-import orderBy from "./modules/orderBy";
-import orderByDescending from "./modules/orderByDescending";
-import concat from "./modules/concat";
-import range from "./modules/range";
-import empty from "./modules/empty";
-import repeat from "./modules/repeat";
-import count from "./modules/count";
-import first from "./modules/first";
-import firstOrDefault from "./modules/firstOrDefault";
-import last from "./modules/last";
-import lastOrDefault from "./modules/lastOrDefault";
-import single from "./modules/single";
-import singleOrDefault from "./modules/singleOrDefault";
-import any from "./modules/any";
-import all from "./modules/all";
-import defaultIfEmpty from "./modules/defaultIfEmpty";
-import selectMany from "./modules/selectMany";
-import aggregate from "./modules/aggregate";
-import sum from "./modules/sum";
-import min from "./modules/min";
-import max from "./modules/max";
-import average from "./modules/average";
-import contains from "./modules/contains";
-import sequenceEqual from "./modules/sequenceEqual";
-import distinct from "./modules/distinct";
-import union from "./modules/union";
-import intersect from "./modules/intersect";
-import except from "./modules/except";
-import thenBy from "./modules/thenBy";
-import thenByDescending from "./modules/thenByDescending";
-import elementAt from "./modules/elementAt";
-import elementAtOrDefault from "./modules/elementAtOrDefault";
-import takeWhile from "./modules/takeWhile"
-import toLookup from "./modules/toLookup";
-import join from "./modules/join";
+import utils from './modules/utils';
+import asEnumerable from './modules/asEnumerable';
+import toArray from './modules/toArray';
+import where from './modules/where';
+import take from './modules/take';
+import select from './modules/select';
+import orderBy from './modules/orderBy';
+import orderByDescending from './modules/orderByDescending';
+import concat from './modules/concat';
+import range from './modules/range';
+import empty from './modules/empty';
+import repeat from './modules/repeat';
+import count from './modules/count';
+import first from './modules/first';
+import firstOrDefault from './modules/firstOrDefault';
+import last from './modules/last';
+import lastOrDefault from './modules/lastOrDefault';
+import single from './modules/single';
+import singleOrDefault from './modules/singleOrDefault';
+import any from './modules/any';
+import all from './modules/all';
+import defaultIfEmpty from './modules/defaultIfEmpty';
+import selectMany from './modules/selectMany';
+import aggregate from './modules/aggregate';
+import sum from './modules/sum';
+import min from './modules/min';
+import max from './modules/max';
+import average from './modules/average';
+import contains from './modules/contains';
+import sequenceEqual from './modules/sequenceEqual';
+import distinct from './modules/distinct';
+import union from './modules/union';
+import intersect from './modules/intersect';
+import except from './modules/except';
+import thenBy from './modules/thenBy';
+import thenByDescending from './modules/thenByDescending';
+import toLookup from './modules/toLookup';
+import join from './modules/join';
+import elementAt from './modules/elementAt';
+import elementAtOrDefault from './modules/elementAtOrDefault';
+import takeWhile from './modules/takeWhile'
+import groupBy from './modules/groupBy';
+
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -75,11 +77,12 @@ function setPrototype(prototype) {
   prototype.except = except;
   prototype.thenBy = thenBy;
   prototype.thenByDescending = thenByDescending;
+  prototype.toLookup = toLookup;
+  prototype.join = join;
   prototype.elementAt = elementAt;
   prototype.elementAtOrDefault = elementAtOrDefault;
   prototype.takeWhile = takeWhile;
-  prototype.toLookup = toLookup;
-  prototype.join = join;
+  prototype.groupBy = groupBy;
 }
 
 export default function () {

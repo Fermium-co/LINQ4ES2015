@@ -24,7 +24,7 @@ describe("toLookup", () => {
     expect(() => toLookup([], {}).toArray()).toThrowError("keySelector must be a Function");
   });
 
-  it("should return a lookup of an enumerables based on a comparer", () => {
+  it("should return a lookup of an enumerable based on a comparer", () => {
     expect([
       { first: 'saleh', last: 'yusefnejad' },
       { first: 'yasser', last: 'moradi' },
