@@ -11,7 +11,7 @@ describe("defaultIfEmpty", () => {
     expect(() => defaultIfEmpty(undefined).toArray()).toThrowError("source is null or undefined");
   });
   
-  it("should throws an exception when the source is not and enumerable", () => {
+  it("should throw an exception when the source is not and enumerable", () => {
     expect(() => defaultIfEmpty({}).toArray()).toThrowError("source must be an enumerable");
   });
 

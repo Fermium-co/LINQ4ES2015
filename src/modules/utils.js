@@ -12,5 +12,16 @@ export default {
     }
 
     return source instanceof this.GeneratorFunctionPrototype;
+  },
+
+  safePush: function (array, item, comparer) {
+    for (let i = 0; i < array.length; i++) {
+      let element = array[i];
+      if (comparer(element, item)) {
+        return false;
+      }
+    }
+    array.push(item);
+    return true;
   }
 };

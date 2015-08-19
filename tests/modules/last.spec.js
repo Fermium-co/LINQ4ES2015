@@ -6,12 +6,12 @@ import linq from "../../src/linq";
 import last from "../../src/modules/last";
 
 describe("last", () => {
-  it("should throws an exception when the source is null or undefined", () => {
+  it("should throw an exception when the source is null or undefined", () => {
     expect(() => last(null)).toThrowError("source is null or undefined");
     expect(() => last(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not an enumerable", () => {
+  it("should throw an exception when the source is not an enumerable", () => {
     expect(() => last({})).toThrowError("source must be an enumerable");
   });
 

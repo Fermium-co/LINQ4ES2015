@@ -16,21 +16,21 @@ describe("concat", () => {
     expect(result).toEqual([2, 4, 6]);
   });
 
-  it("should throws an exception when the first source is null or undefined", () => {
+  it("should throw an exception when the first source is null or undefined", () => {
     expect(() => concat(null, []).toArray()).toThrowError("first source is null or undefined");
     expect(() => concat(undefined, []).toArray()).toThrowError("first source is null or undefined");
   });
 
-  it("should throws an exception when the second source is null or undefined", () => {
+  it("should throw an exception when the second source is null or undefined", () => {
     expect(() => concat([], null).toArray()).toThrowError("second source is null or undefined");
     expect(() => concat([], undefined).toArray()).toThrowError("second source is null or undefined");
   });
 
-  it("should throws an exception when the first source is not either an array or an enumerable", () => {
+  it("should throw an exception when the first source is not either an array or an enumerable", () => {
     expect(() => concat({}, []).toArray()).toThrowError("first source must be either an enumerable or an array");
   });
 
-  it("should throws an exception when the second source is not either an array or an enumerable", () => {
+  it("should throw an exception when the second source is not either an array or an enumerable", () => {
     expect(() => concat([], {}).toArray()).toThrowError("second source must be either an enumerable or an array");
   });
 

@@ -10,7 +10,7 @@ describe("repeat", () => {
     expect(repeat(1, 5).toArray()).toEqual([1, 1, 1, 1, 1]);
   });
 
-  it("should throws an exception when count is negative", () => {
+  it("should throw an exception when count is negative", () => {
     expect(() => repeat(1, -5).toArray()).toThrowError("count may not be negative");
     expect(() => repeat(-1, -5).toArray()).toThrowError("count may not be negative");
     expect(repeat(-1, 3).toArray()).toEqual([-1, -1, -1]);
