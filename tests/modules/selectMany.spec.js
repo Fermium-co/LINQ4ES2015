@@ -9,6 +9,19 @@ import selectMany from "../../src/modules/selectMany";
 describe("selectMany", () => {
   let items = [{ name: 'A', orders: [{ name: 'A', price: 1000 }, { name: 'B', price: 2000 }] }, { name: 'B', orders: [{ name: 'C', price: 3000 }, { name: 'D', price: 4000 }] }];
 
+  it("should throw an exception when the source is null or undefined", () => {
+    expect(() => toArray(selectMany(null, item => item))).toThrowError("source is null or undefined");
+    expect(() => toArray(selectMany(undefined, item => item))).toThrowError("source is null or undefined");
+  });
+
+  it("should throw an exception when the source is not an enumerable", () => {
+    expect(() => toArray(selectMany({}, item => item))).toThrowError("source must be an enumerable");
+  });
+
+  it("should throw an exception when the projection format is not a function", () => {
+    expect(() => toArray(selectMany([], {}))).toThrowError("projection format must be a function");
+  });
+
   it("should retrn all orders", () => {
     let orders = items.asEnumerable().selectMany(item => item.orders).toArray();
     expect(orders.length).toBe(4);
@@ -39,18 +52,5 @@ describe("selectMany", () => {
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith({ name: 'B', orders: [{ name: 'C', price: 1000 }, { name: 'D', price: 2000 }] }, 1);
     expect(fakeObject.fakeProjection.calls.count()).toBe(1);
     expect(orders).toEqual([{ name: 'A', price: 1000 }]);
-  });
-
-  it("should throws an exception when the source is null or undefined", () => {
-    expect(() => toArray(selectMany(null, item => item))).toThrowError("source is null or undefined");
-    expect(() => toArray(selectMany(undefined, item => item))).toThrowError("source is null or undefined");
-  });
-
-  it("should throws an exception when the source is not an enumerable", () => {
-    expect(() => toArray(selectMany({}, item => item))).toThrowError("source must be an enumerable");
-  });
-
-  it("should throws an exception when the projection format is not a function", () => {
-    expect(() => toArray(selectMany([], {}))).toThrowError("projection format must be a function");
   });
 });

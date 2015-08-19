@@ -6,12 +6,12 @@ import linq from "../../src/linq";
 import min from "../../src/modules/min";
 
 describe("min", () => {
-  it("should throws an exception when the source is null or undefined", () => {
+  it("should throw an exception when the source is null or undefined", () => {
     expect(() => min(null)).toThrowError("source is null or undefined");
     expect(() => min(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not and enumerable", () => {
+  it("should throw an exception when the source is not and enumerable", () => {
     expect(() => min({})).toThrowError("source can not be enumerated");
   });
 

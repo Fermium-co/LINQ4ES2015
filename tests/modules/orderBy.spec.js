@@ -10,6 +10,19 @@ describe("orderBy", () => {
   let simpleArr = [3, 2, 6, 4];
   let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
 
+  it("should throw an exception when the source is null or undefined", () => {
+    expect(() => toArray(orderBy(null, item => item))).toThrowError("source is null or undefined");
+    expect(() => toArray(orderBy(undefined, item => item))).toThrowError("source is null or undefined");
+  });
+
+  it("should throw an exception when the source is not an enumerable", () => {
+    expect(() => toArray(orderBy({}, item => item))).toThrowError("source must be an enumerable");
+  });
+
+  it("should throw an exception when the order by column is not a function", () => {
+    expect(() => toArray(orderBy([], {}))).toThrowError("order by column must be a function");
+  });
+
   it("should retrn ordered items", () => {
     let orderedItems = simpleArr.asEnumerable().orderBy(num => num).toArray();
     expect(orderedItems).toEqual([2, 3, 4, 6]);
@@ -45,18 +58,5 @@ describe("orderBy", () => {
     expect(fakeObject.fakeOrderBy).not.toHaveBeenCalledWith(4);
     expect(fakeObject.fakeOrderBy.calls.count()).toBe(2);
     expect(result).toEqual([2, 3]);
-  });
-
-  it("should throws an exception when the source is null or undefined", () => {
-    expect(() => toArray(orderBy(null, item => item))).toThrowError("source is null or undefined");
-    expect(() => toArray(orderBy(undefined, item => item))).toThrowError("source is null or undefined");
-  });
-
-  it("should throws an exception when the source is not an enumerable", () => {
-    expect(() => toArray(orderBy({}, item => item))).toThrowError("source must be an enumerable");
-  });
-
-  it("should throws an exception when the order by column is not a function", () => {
-    expect(() => toArray(orderBy([], {}))).toThrowError("order by column must be a function");
   });
 });

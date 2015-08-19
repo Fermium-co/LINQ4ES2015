@@ -10,6 +10,19 @@ describe("orderByDescending", () => {
   let simpleArr = [3, 2, 6, 4];
   let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
 
+  it("should throw an exception when the source is null or undefined", () => {
+    expect(() => toArray(orderByDescending(null, item => item))).toThrowError("source is null or undefined");
+    expect(() => toArray(orderByDescending(undefined, item => item))).toThrowError("source is null or undefined");
+  });
+
+  it("should throw an exception when the source is not an enumerable", () => {
+    expect(() => toArray(orderByDescending({}, item => item))).toThrowError("source must be an enumerable");
+  });
+
+  it("should throw an exception when the order descending by column is not a function", () => {
+    expect(() => toArray(orderByDescending([], {}))).toThrowError("order by descending column must be a function");
+  });
+
   it("should retrn ordered items", () => {
     let orderedItems = simpleArr.asEnumerable().orderByDescending(num => num).toArray();
     expect(orderedItems).toEqual([6, 4, 3, 2]);
@@ -45,18 +58,5 @@ describe("orderByDescending", () => {
     expect(fakeObject.fakeorderByDescending).not.toHaveBeenCalledWith(4);
     expect(fakeObject.fakeorderByDescending.calls.count()).toBe(2);
     expect(result).toEqual([3, 2]);
-  });
-
-  it("should throws an exception when the source is null or undefined", () => {
-    expect(() => toArray(orderByDescending(null, item => item))).toThrowError("source is null or undefined");
-    expect(() => toArray(orderByDescending(undefined, item => item))).toThrowError("source is null or undefined");
-  });
-
-  it("should throws an exception when the source is not an enumerable", () => {
-    expect(() => toArray(orderByDescending({}, item => item))).toThrowError("source must be an enumerable");
-  });
-
-  it("should throws an exception when the order descending by column is not a function", () => {
-    expect(() => toArray(orderByDescending([], {}))).toThrowError("order by descending column must be a function");
   });
 });

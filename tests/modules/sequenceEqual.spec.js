@@ -6,6 +6,24 @@ import linq from "../../src/linq";
 import sequenceEqual from "../../src/modules/sequenceEqual";
 
 describe("sequenceEqual", () => {
+  it("should throw an exception when the first source is null or undefined", () => {
+    expect(() => sequenceEqual(null, []).toArray()).toThrowError("first source is null or undefined");
+    expect(() => sequenceEqual(undefined, []).toArray()).toThrowError("first source is null or undefined");
+  });
+
+  it("should throw an exception when the second source is null or undefined", () => {
+    expect(() => sequenceEqual([], null).toArray()).toThrowError("second source is null or undefined");
+    expect(() => sequenceEqual([], undefined).toArray()).toThrowError("second source is null or undefined");
+  });
+
+  it("should throw an exception when the first source is not either an array or an enumerable", () => {
+    expect(() => sequenceEqual({}, []).toArray()).toThrowError("first source must be either an enumerable or an array");
+  });
+
+  it("should throw an exception when the second source is not either an array or an enumerable", () => {
+    expect(() => sequenceEqual([], {}).toArray()).toThrowError("second source must be either an enumerable or an array");
+  });
+
   it("should check two arrays are sequence equal or not", () => {
     let result = [1, 2, 3].asEnumerable().sequenceEqual([1, 2, 3]);
     expect(result).toEqual(true);
@@ -52,23 +70,4 @@ describe("sequenceEqual", () => {
     expect(result).toBe(false);
     expect(fakeObject.fakeCustomComparer.calls.count()).toBe(2);
   });
-
-  it("should throws an exception when the first source is null or undefined", () => {
-    expect(() => sequenceEqual(null, []).toArray()).toThrowError("first source is null or undefined");
-    expect(() => sequenceEqual(undefined, []).toArray()).toThrowError("first source is null or undefined");
-  });
-
-  it("should throws an exception when the second source is null or undefined", () => {
-    expect(() => sequenceEqual([], null).toArray()).toThrowError("second source is null or undefined");
-    expect(() => sequenceEqual([], undefined).toArray()).toThrowError("second source is null or undefined");
-  });
-
-  it("should throws an exception when the first source is not either an array or an enumerable", () => {
-    expect(() => sequenceEqual({}, []).toArray()).toThrowError("first source must be either an enumerable or an array");
-  });
-
-  it("should throws an exception when the second source is not either an array or an enumerable", () => {
-    expect(() => sequenceEqual([], {}).toArray()).toThrowError("second source must be either an enumerable or an array");
-  });
-
 });

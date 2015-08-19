@@ -11,7 +11,7 @@ describe("all", () => {
     expect(() => all(undefined, n => n > 0)).toThrowError("source is null or undefined");
   });
   
-  it("should throws an exception when the source is not an enumerable", () => {
+  it("should throw an exception when the source is not an enumerable", () => {
     expect(() => all({}, n => n > 0)).toThrowError("source must be an enumerable");
   });
 

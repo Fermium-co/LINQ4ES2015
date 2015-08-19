@@ -6,12 +6,12 @@ import linq from "../../src/linq";
 import count from "../../src/modules/count";
 
 describe("count", () => {
-  it("should throws an exception when the source is null or undefined", () => {
+  it("should throw an exception when the source is null or undefined", () => {
     expect(() => count(null)).toThrowError("source is null or undefined");
     expect(() => count(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not and enumerable", () => {
+  it("should throw an exception when the source is not and enumerable", () => {
     expect(() => count({})).toThrowError("source can not be enumerated");
   });
 

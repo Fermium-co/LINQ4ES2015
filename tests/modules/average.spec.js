@@ -6,12 +6,12 @@ import linq from "../../src/linq";
 import average from "../../src/modules/average";
 
 describe("average", () => {
-  it("should throws an exception when the source is null or undefined", () => {
+  it("should throw an exception when the source is null or undefined", () => {
     expect(() => average(null)).toThrowError("source is null or undefined");
     expect(() => average(undefined)).toThrowError("source is null or undefined");
   });
 
-  it("should throws an exception when the source is not and enumerable", () => {
+  it("should throw an exception when the source is not and enumerable", () => {
     expect(() => average({})).toThrowError("source can not be enumerated");
   });
 

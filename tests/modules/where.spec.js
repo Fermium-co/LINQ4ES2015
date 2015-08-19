@@ -9,6 +9,19 @@ import where from "../../src/modules/where";
 describe("where", () => {
   let arr = [1, 2, 3, 4, 5, 6];
 
+  it("should throw an exception when the source is null or undefined", () => {
+    expect(() => toArray(where(null, () => true))).toThrowError("source is null or undefined");
+    expect(() => toArray(where(undefined, () => true))).toThrowError("source is null or undefined");
+  });
+
+  it("should throw an exception when the source is not an enumerable", () => {
+    expect(() => toArray(where({}, () => true))).toThrowError("source must be an enumerable");
+  });
+
+  it("should throw an exception when the predicate is not a function", () => {
+    expect(() => toArray(where([], null))).toThrowError("predicate must be a function");
+  });
+
   it("should retrn an array with valid child count", () => {
     let evenNumbers = arr.asEnumerable().where(num => num % 2 == 0).toArray();
     expect(evenNumbers).toEqual([2, 4, 6]);
@@ -66,18 +79,4 @@ describe("where", () => {
     expect(fakeObject.fakePredicate.calls.count()).toBe(4);
     expect(firstTwoEvenNumbers).toEqual([2, 4]);
   });
-
-  it("should throws an exception when the source is null or undefined", () => {
-    expect(() => toArray(where(null, () => true))).toThrowError("source is null or undefined");
-    expect(() => toArray(where(undefined, () => true))).toThrowError("source is null or undefined");
-  });
-
-  it("should throws an exception when the source is not an enumerable", () => {
-    expect(() => toArray(where({}, () => true))).toThrowError("source must be an enumerable");
-  });
-
-  it("should throws an exception when the predicate is not a function", () => {
-    expect(() => toArray(where([], null))).toThrowError("predicate must be a function");
-  });
-
 });
