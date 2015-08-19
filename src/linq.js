@@ -42,7 +42,8 @@ import elementAt from './modules/elementAt';
 import elementAtOrDefault from './modules/elementAtOrDefault';
 import takeWhile from './modules/takeWhile'
 import groupBy from './modules/groupBy';
-
+import skip from './modules/skip';
+import skipWhile from './modules/skipWhile';
 
 function setPrototype(prototype) {
   //prototype.asEnumerable = asEnumerable;
@@ -83,6 +84,8 @@ function setPrototype(prototype) {
   prototype.elementAtOrDefault = elementAtOrDefault;
   prototype.takeWhile = takeWhile;
   prototype.groupBy = groupBy;
+  prototype.skip = skip;
+  prototype.skipWhile = skipWhile;
 }
 
 export default function () {

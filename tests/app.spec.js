@@ -41,3 +41,5 @@ import "./modules/elementAt.spec";
 import "./modules/elementAtOrDefault.spec";
 import "./modules/takeWhile.spec";
 import "./modules/groupBy.spec";
+import "./modules/skip.spec";
+import "./modules/skipWhile.spec";

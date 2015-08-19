@@ -1,35 +1,32 @@
 "use strict";
 
-import util from "./utils";
+import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
-export default function* (source, predicate) {
+export default function* (source, skipCount) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
+    skipCount = source;
     source = this;
   }
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
-  if (predicate == null || predicate == undefined) {
-    throw new Error("predicate is null or undefined");
-  }
-  if (typeof predicate != 'function') {
-    throw new Error('predicate must be a function');
-  }
   if (Array.isArray(source)) {
     source = asEnumerable(source);
   }
-  if (!util.isGenerator(source))
+  if (!utils.isGenerator(source)) {
     throw new Error("source must be an enumerable");
+  }
+  if (isNaN(skipCount) || skipCount == null) {
+    throw new Error("skip number must be a number");
+  }
 
   let next = source.next();
-
+  let count = 0;
   while (!next.done) {
-    if (!predicate(next.value)) {
-      break;
+    if (++count > skipCount) {
+      yield next.value;
     }
-    yield next.value;
     next = source.next();
   }
-}
+};

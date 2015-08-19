@@ -24,12 +24,14 @@ export default function* (source, predicate) {
     throw new Error("source must be an enumerable");
 
   let next = source.next();
-
+  let startYielding = false;
   while (!next.done) {
     if (!predicate(next.value)) {
-      break;
+      startYielding = true;
     }
-    yield next.value;
+    if (startYielding) {
+      yield next.value;
+    }
     next = source.next();
   }
 }

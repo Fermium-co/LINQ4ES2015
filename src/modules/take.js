@@ -3,9 +3,9 @@
 import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
-export default function* (source, totalCount) {
+export default function* (source, takeCount) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    totalCount = source;
+    takeCount = source;
     source = this;
   }
   if (source == null || source == undefined) {
@@ -17,7 +17,7 @@ export default function* (source, totalCount) {
   if (!utils.isGenerator(source)) {
     throw new Error("source must be an enumerable");
   }
-  if (isNaN(totalCount) || totalCount == null) {
+  if (isNaN(takeCount) || takeCount == null) {
     throw new Error("take number must be a number");
   }
 
@@ -25,7 +25,7 @@ export default function* (source, totalCount) {
   let count = 0;
   while (true) {
     yield next.value;
-    if (++count >= totalCount) {
+    if (++count >= takeCount) {
       break;
     }
     next = source.next();
