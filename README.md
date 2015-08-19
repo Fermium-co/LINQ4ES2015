@@ -81,8 +81,8 @@ Supported methods:
 * sequenceEqual
 * single
 * singleOrDefault
-* skipWhile
 * skip
+* skipWhile
 * sum
 * take
 * takeWhile
