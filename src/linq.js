@@ -89,10 +89,17 @@ function setPrototype(prototype) {
   prototype.thenByDescending = thenByDescending;
 }
 
-export default function () {
-  //setPrototype(Array.prototype);
-  setPrototype(utils.GeneratorFunctionProto);
-  setPrototype(utils.GeneratorFunctionPrototype);
+export default class Linq {
+  static initLinqExtensions() {
+    setPrototype(utils.GeneratorFunctionProto);
+    setPrototype(utils.GeneratorFunctionPrototype);
+    Array.prototype.asEnumerable = asEnumerable;
+  }
+  static repeat() {
+    return repeat.apply(this, arguments);
+  }
+  static range() {
+    return range.apply(this, arguments);
+  }
+}  
 
-  Array.prototype.asEnumerable = asEnumerable;
-}
