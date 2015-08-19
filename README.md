@@ -21,6 +21,10 @@ and run the following command:
 
     jspm install
 
+before ruuning this command make sure jspm is installed with the followig command:
+
+    npm install jspm -g
+
 install http-server with the following command:
 
     npm install http-server -g
