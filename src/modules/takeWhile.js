@@ -12,7 +12,10 @@ export default function* (source, predicate) {
     throw new Error("source is null or undefined");
   }
   if (predicate == null || predicate == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error("predicate is null or undefined");
+  }
+  if (typeof predicate != 'function') {
+    throw new Error('predicate must be a function');
   }
   if (Array.isArray(source)) {
     source = asEnumerable(source);
