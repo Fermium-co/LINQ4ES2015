@@ -81,6 +81,7 @@ Supported methods:
 * orderByDescending
 * range
 * repeat
+* reverse
 * select
 * selectMany
 * sequenceEqual
@@ -95,13 +96,13 @@ Supported methods:
 * toLookup
 * union
 * where
+* zip
 
 In Progress Methods:
 * groupJoin
 * thenBy
 * thenByDescending
-* reverse
-* zip
+
 
 ## Contribute
 

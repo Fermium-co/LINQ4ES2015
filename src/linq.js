@@ -45,6 +45,7 @@ import where from './modules/where';
 import utils from './modules/utils';
 import thenBy from './modules/thenBy';
 import thenByDescending from './modules/thenByDescending';
+import reverse from "./modules/reverse";
 
 function setPrototype(prototype) {
   prototype.aggregate = aggregate;
@@ -87,6 +88,7 @@ function setPrototype(prototype) {
 
   prototype.thenBy = thenBy;
   prototype.thenByDescending = thenByDescending;
+  prototype.reverse = reverse;
 }
 
 export default function () {
