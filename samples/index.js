@@ -1,4 +1,4 @@
-import Linq from "../src/linq";
+import Linq from "Fermium-co/LINQ4ES2015/linq";
 Linq.setExtensions();
 
 let count = 0;
