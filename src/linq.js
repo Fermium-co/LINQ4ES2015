@@ -91,10 +91,136 @@ function setPrototype(prototype) {
   prototype.reverse = reverse;
 }
 
-export default function () {
-  //setPrototype(Array.prototype);
-  setPrototype(utils.GeneratorFunctionProto);
-  setPrototype(utils.GeneratorFunctionPrototype);
+export default class Linq {
+  static setExtensions() {
+    setPrototype(utils.GeneratorFunctionProto);
+    setPrototype(utils.GeneratorFunctionPrototype);
+    Array.prototype.asEnumerable = asEnumerable;
+  }
+  static repeat() {
+    return repeat.apply(this, arguments);
+  }
+  static range() {
+    return range.apply(this, arguments);
+  }
+  
+  
+  static aggregate() {
+    return aggregate.apply(this, arguments);
+  }
+  static all() {
+    return all.apply(this, arguments);
+  }
+  static any() {
+    return any.apply(this, arguments);
+  }
+  static average() {
+    return average.apply(this, arguments);
+  }
+  static concat() {
+    return concat.apply(this, arguments);
+  }
+  static contains() {
+    return contains.apply(this, arguments);
+  }
+  static count() {
+    return count.apply(this, arguments);
+  }
+  static defaultIfEmpty() {
+    return defaultIfEmpty.apply(this, arguments);
+  }
+  static distinct() {
+    return distinct.apply(this, arguments);
+  }
+  static elementAt() {
+    return elementAt.apply(this, arguments);
+  }
+  static elementAtOrDefault() {
+    return elementAtOrDefault.apply(this, arguments);
+  }
+  static except() {
+    return except.apply(this, arguments);
+  }
+  static first() {
+    return first.apply(this, arguments);
+  }
+  static firstOrDefault() {
+    return firstOrDefault.apply(this, arguments);
+  }
+  static groupBy() {
+    return groupBy.apply(this, arguments);
+  }
+  static intersect() {
+    return intersect.apply(this, arguments);
+  }
+  static join() {
+    return join.apply(this, arguments);
+  }
+  static last() {
+    return last.apply(this, arguments);
+  }
+  static lastOrDefault() {
+    return lastOrDefault.apply(this, arguments);
+  }
+  static max() {
+    return max.apply(this, arguments);
+  }
+  static min() {
+    return min.apply(this, arguments);
+  }
+  static orderBy() {
+    return orderBy.apply(this, arguments);
+  }
+  static orderByDescending() {
+    return orderByDescending.apply(this, arguments);
+  }
+  static select() {
+    return select.apply(this, arguments);
+  }
+  static selectMany() {
+    return selectMany.apply(this, arguments);
+  }
+  static sequenceEqual() {
+    return sequenceEqual.apply(this, arguments);
+  }
+  static single() {
+    return single.apply(this, arguments);
+  }
+  static singleOrDefault() {
+    return singleOrDefault.apply(this, arguments);
+  }
+  static skip() {
+    return skip.apply(this, arguments);
+  }
+  static skipWhile() {
+    return skipWhile.apply(this, arguments);
+  }
+  static sum() {
+    return sum.apply(this, arguments);
+  }
+  static take() {
+    return take.apply(this, arguments);
+  }
+  static takeWhile() {
+    return takeWhile.apply(this, arguments);
+  }
+  static toArray() {
+    return toArray.apply(this, arguments);
+  }
+  static toLookup() {
+    return toLookup.apply(this, arguments);
+  }
+  static union() {
+    return union.apply(this, arguments);
+  }
+  static where() {
+    return where.apply(this, arguments);
+  }
+  static thenBy() {
+    return thenBy.apply(this, arguments);
+  }
+  static thenByDescending() {
+    return thenByDescending.apply(this, arguments);
+  }
+}  
 
-  Array.prototype.asEnumerable = asEnumerable;
-}
