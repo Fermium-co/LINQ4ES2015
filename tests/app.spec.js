@@ -44,5 +44,5 @@ import './modules/toLookup.spec';
 import './modules/union.spec';
 import './modules/where.spec';
 import './modules/reverse.spec'
-
 import './modules/utils.spec';
+import './modules/zip.spec';

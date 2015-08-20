@@ -41,11 +41,9 @@ import toArray from './modules/toArray';
 import toLookup from './modules/toLookup';
 import union from './modules/union';
 import where from './modules/where';
-
 import utils from './modules/utils';
-import thenBy from './modules/thenBy';
-import thenByDescending from './modules/thenByDescending';
 import reverse from "./modules/reverse";
+import zip from "./modules/zip";
 
 function setPrototype(prototype) {
   prototype.aggregate = aggregate;
@@ -85,10 +83,8 @@ function setPrototype(prototype) {
   prototype.toLookup = toLookup;
   prototype.union = union;
   prototype.where = where;
-
-  prototype.thenBy = thenBy;
-  prototype.thenByDescending = thenByDescending;
   prototype.reverse = reverse;
+  prototype.zip = zip;
 }
 
 export default class Linq {
@@ -103,8 +99,6 @@ export default class Linq {
   static range() {
     return range.apply(this, arguments);
   }
-  
-  
   static aggregate() {
     return aggregate.apply(this, arguments);
   }
@@ -216,11 +210,8 @@ export default class Linq {
   static where() {
     return where.apply(this, arguments);
   }
-  static thenBy() {
-    return thenBy.apply(this, arguments);
-  }
-  static thenByDescending() {
-    return thenByDescending.apply(this, arguments);
+  static zip() {
+    return zip.apply(this, arguments);
   }
 }  
 
