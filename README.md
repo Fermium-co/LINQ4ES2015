@@ -5,41 +5,21 @@ Language Integrated Query for JavaScript based on ECMA Script 2015
 
 ## Installing
 
-create a copy of the master branch:
+[Node JS](https://nodejs.org) must be install on your machine.
 
-    git clone https://github.com/Fermium-co/LINQ4ES2015.git
-
-or the lastest version from dev branch:
-
-    git clone https://github.com/Fermium-co/LINQ4ES2015.git -b dev
-
-change to the LINQ4ES2015 directory:
-
-    cd LINQ4ES2015
-
-and run the following command:
-
-    jspm install
-
-before running this command make sure [jspm](http://jspm.io) is installed with the followig command:
+Ensure [jspm](http://jspm.io) and [http-server](https://github.com/indexzero/http-server) are available by running following commands:
 
     npm install jspm -g
-
-install [http-server](https://github.com/indexzero/http-server) with the following command:
-
     npm install http-server -g
-
-open a new command line in the root folder of LINQ4ES2015 and run the http-server:
-
-    http-server
     
-open the browser and go to [localhost:8080](http://localhost:8080), this opens the index.html file.
+Run jspm install github/Fermium-co/LINQ4ES2015@0.0.1
 
-And see the browser console for the results.
+You can use any version instead of 0.0.1
 
-## Usage
+then write following codes:
 
-Sample usage:
+	import Linq from "Fermium-co/LINQ4ES2015/linq";
+	Linq.setExtensions();
 
 	let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
 		.where(num => num % 2 == 0)
@@ -105,6 +85,16 @@ In Progress Methods:
 
 
 ## Contribute
+
+Fork our repository or clone our dev branch from
+
+    git clone https://github.com/Fermium-co/LINQ4ES2015.git -b dev
+    
+Run jspm install & http-server.
+    
+Open the browser and go to [localhost:8080/tests/tests.html](http://localhost:8080/tests/tests.html), this opens the tests.html file.
+
+And wait for test results.
 
 There are many ways to contribute to LINQ4ES2015.
 
