@@ -71,6 +71,7 @@ Supported methods:
 * first
 * firstOrDefault
 * groupBy
+* groupJoin
 * intersect
 * join
 * last
@@ -99,7 +100,6 @@ Supported methods:
 * zip
 
 In Progress Methods:
-* groupJoin
 * thenBy
 * thenByDescending
 

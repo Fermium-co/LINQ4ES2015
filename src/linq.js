@@ -17,6 +17,7 @@ import except from './modules/except';
 import first from './modules/first';
 import firstOrDefault from './modules/firstOrDefault';
 import groupBy from './modules/groupBy';
+import groupJoin from './modules/groupJoin';
 import intersect from './modules/intersect';
 import join from './modules/join';
 import last from './modules/last';
@@ -61,6 +62,7 @@ function setPrototype(prototype) {
   prototype.first = first;
   prototype.firstOrDefault = firstOrDefault;
   prototype.groupBy = groupBy;
+  prototype.groupJoin = groupJoin;
   prototype.intersect = intersect;
   prototype.join = join;
   prototype.last = last;
@@ -143,6 +145,9 @@ export default class Linq {
   }
   static groupBy() {
     return groupBy.apply(this, arguments);
+  }
+  static groupJoin() {
+    return groupJoin.apply(this, arguments);
   }
   static intersect() {
     return intersect.apply(this, arguments);

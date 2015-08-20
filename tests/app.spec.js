@@ -19,6 +19,7 @@ import './modules/except.spec';
 import './modules/first.spec';
 import './modules/firstOrDefault.spec';
 import './modules/groupBy.spec';
+import './modules/groupJoin.spec';
 import './modules/intersect.spec';
 import './modules/join.spec';
 import './modules/last.spec';

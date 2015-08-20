@@ -53,7 +53,7 @@ describe("join", () => {
     expect(() => join([], [], fn, fn, {}).toArray()).toThrowError("resultSelector must be a Function");
   });
 
-  it("should return a lookup of an enumerables based on a comparer", () => {
+  it("should return a joined result of an enumerables based on a comparer", () => {
     let outer = [5, 3, 7].asEnumerable();
     let inner = ["bee", "giraffe", "tiger", "badger", "ox", "cat", "dog"].asEnumerable();
 
