@@ -1,5 +1,5 @@
 # LINQ4ES2015
-Linq for ECMA Script 2015 (formerly known as ES6)
+Linq for ECMA Script 2015 (formerly known as [ES6](https://github.com/lukehoban/es6features))
 
 Language Integrated Query for JavaScript based on ECMA Script 2015
 
@@ -21,7 +21,11 @@ and run the following command:
 
     jspm install
 
-install http-server with the following command:
+before running this command make sure [jspm](http://jspm.io) is installed with the followig command:
+
+    npm install jspm -g
+
+install [http-server](https://github.com/indexzero/http-server) with the following command:
 
     npm install http-server -g
 
@@ -29,8 +33,9 @@ open a new command line in the root folder of LINQ4ES2015 and run the http-serve
 
     http-server
     
-open the browser and go to localhost:8080, this opens the index.html file.
-see the browser console for the results.
+open the browser and go to [localhost:8080](http://localhost:8080), this opens the index.html file.
+
+And see the browser console for the results.
 
 ## Usage
 
@@ -44,7 +49,7 @@ Sample usage:
 		.distinct()
 		.toArray();
 
-Result will be ['[2]', '[0]'] and where predicate will be executed only 4 times.
+Result will be [ '[2]', '[0]' ] and where predicate will be executed only 4 times.
 
 ## Roadmap
 
@@ -76,13 +81,14 @@ Supported methods:
 * orderByDescending
 * range
 * repeat
+* reverse
 * select
 * selectMany
 * sequenceEqual
 * single
 * singleOrDefault
-* skipWhile
 * skip
+* skipWhile
 * sum
 * take
 * takeWhile
@@ -90,13 +96,13 @@ Supported methods:
 * toLookup
 * union
 * where
+* zip
 
 In Progress Methods:
 * groupJoin
 * thenBy
 * thenByDescending
-* reverse
-* zip
+
 
 ## Contribute
 

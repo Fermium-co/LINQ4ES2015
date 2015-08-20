@@ -35,4 +35,13 @@ describe("skip", () => {
     let evenNumbers = arr.asEnumerable().where(num => num % 2 == 0).skip(2).toArray();
     expect(evenNumbers).toEqual([6]);
   });
+
+  it("should return all elements when skipCount is zero", () => {
+    expect(arr.asEnumerable().skip(0).toArray()).toEqual(arr);
+  });
+
+  it("should return empty array when skipCount is equal to array length or larger than" , ()=>{
+    expect(arr.asEnumerable().skip(arr.length).toArray()).toEqual([]);
+    expect(arr.asEnumerable().skip(arr.length + 1).toArray()).toEqual([]);
+  })
 });
