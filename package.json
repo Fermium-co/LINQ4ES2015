@@ -9,6 +9,7 @@
   "main": "src/linq.js",
   "jspm": {
     "format": "es6",
+    "main": "linq.js",
     "directories": {
       "lib": "src"
     },
