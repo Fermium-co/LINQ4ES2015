@@ -8,7 +8,10 @@
   },
   "main": "src/linq.js",
   "jspm": {
-    "directories": {},
+    "format": "es6",
+    "directories": {
+      "lib": "src"
+    },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
