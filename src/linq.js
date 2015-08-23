@@ -28,6 +28,7 @@ import orderBy from './modules/orderBy';
 import orderByDescending from './modules/orderByDescending';
 import range from './modules/range';
 import repeat from './modules/repeat';
+import reverse from "./modules/reverse";
 import select from './modules/select';
 import selectMany from './modules/selectMany';
 import sequenceEqual from './modules/sequenceEqual';
@@ -43,7 +44,6 @@ import toLookup from './modules/toLookup';
 import union from './modules/union';
 import where from './modules/where';
 import utils from './modules/utils';
-import reverse from "./modules/reverse";
 import zip from "./modules/zip";
 
 function setPrototype(prototype) {
@@ -71,6 +71,7 @@ function setPrototype(prototype) {
   prototype.min = min;
   prototype.orderBy = orderBy;
   prototype.orderByDescending = orderByDescending;
+  prototype.reverse = reverse;
   prototype.select = select;
   prototype.selectMany = selectMany;
   prototype.sequenceEqual = sequenceEqual;
@@ -85,7 +86,6 @@ function setPrototype(prototype) {
   prototype.toLookup = toLookup;
   prototype.union = union;
   prototype.where = where;
-  prototype.reverse = reverse;
   prototype.zip = zip;
 }
 
@@ -101,6 +101,11 @@ export default class Linq {
   static range() {
     return range.apply(this, arguments);
   }
+  
+  static asEnumerable() {
+    return asEnumerable.apply(this, arguments);
+  }
+  
   static aggregate() {
     return aggregate.apply(this, arguments);
   }
