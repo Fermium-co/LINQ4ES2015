@@ -126,36 +126,70 @@ console.log("*** using groupBy method to group category property ...");
 for (let index = 0; index < groups.length; index++)
   console.log(groups[index]);
   
-  /*Join
-  A join can be achieved on any data as long as both data sources share a common column value.
-  Although the concept of joining in-memory collections isn’t a common pattern today.
-  We add to above stock list category list which has common property 
-   */
+/*Join
+A join can be achieved on any data as long as both data sources share a common column value.
+Although the concept of joining in-memory collections isn’t a common pattern today.
+We add to above stock list category list which has common property 
+ */
+
+let categories = [
+  { name: 'Dairy', majorCategory: 'Chilled' },
+  { name: 'Fruit', majorCategory: 'Fresh' },
+  { name: 'Vegetable', majorCategory: 'Fresh' }
+];
+
+let joints = stock.asEnumerable()
+  .join(
+    categories.asEnumerable(),
+    stockItem => stockItem.category,
+    cat => cat.name,
+    (stockItem, cat) =>
+      "[" +
+      "Name = " + stockItem.name + "," +
+      "Price = " + stockItem.price + "," +
+      "Category = " + cat.name + "," +
+      "MajorCategory = " + cat.majorCategory +
+      "]"
+    ).toArray();
+
+console.log("*** using join method for joining stockItems and categories");
+
+for (let index = 0; index < joints.length; index++)
+  console.log(joints[index]);
    
-   let categories = [
-     {name: 'Dairy', majorCategory: 'Chilled'},
-     {name: 'Fruit', majorCategory: 'Fresh'},
-     {name: 'Vegetable', majorCategory: 'Fresh'}
-   ];
-   
-   let joints = stock.asEnumerable()
-   .join(
-     categories.asEnumerable(),
-     stockItem => stockItem.category,
-     cat => cat.name,
-     (stockItem , cat) => 
-     "["+ 
-     "Name = " + stockItem.name +"," +
-     "Price = " + stockItem.price + "," +
-     "Category = " + cat.name + "," +
-     "MajorCategory = " + cat.majorCategory +
-     "]"
-   ).toArray();
-   
-   console.log("*** using join method for joining stockItems and categories");
-   
-   for (let index = 0; index < joints.length; index++)
-     console.log(joints[index]);
-   
-   
+/*GroupJoin
+These allow two collections to be combined in a join operation based on matching key values. 
+The results are then grouped into keyed collections that may be aggregated.
+A grouped join provides similar functionality to grouping and joining. An outer list and 
+an inner list are joined into a single entity and then grouped so that each outer element 
+is paired with the list of matching inner items
+ */
+
+let groupJoins = categories.asEnumerable()
+  .groupJoin(
+    stock.asEnumerable(),
+    cat => cat.name,
+    stock => stock.category,
+    (cat, stocks) => ({
+      category: cat.name,
+      major: cat.majorCategory,
+      stocks: stocks
+    })
+    ).toArray();
+
+console.log('*** using groupJoin method to show each category and its stocks related ...');
+
+for (let index = 0; index < groupJoins.length; index++) {
+  let cat = groupJoins[index];
+  console.log('Category name : ' + cat.category + ' , Major : ' + cat.major);
+  for (let stockIndex = 0; stockIndex < cat.stocks.length; stockIndex++) {
+    let stock = cat.stocks[stockIndex];
+
+    console.log("[" +
+      "Name = " + stock.name + "," +
+      "Price = " + stock.price + 
+      "]")
+  }
+}
+debugger;
   
