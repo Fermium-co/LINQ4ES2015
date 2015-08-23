@@ -1,6 +1,7 @@
 # LINQ4ES2015
 
-Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015 (formerly known as [ES6](https://github.com/lukehoban/es6features))
+Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015
+(formerly known as [ES6](https://github.com/lukehoban/es6features))
 
 ## Installing
 
@@ -37,11 +38,10 @@ or wihtout extentions (No prototype modification is required):
 ```javascript
     let enumerable = Linq.asEnumerable([0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
     let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.take(Linq.where(enumerable, n => n % 2 == 0), 3), n => n), n => '[' + n ']')));
+    // You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 ```
 
 result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.
-    
-You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 
 ## Samples
 
