@@ -203,8 +203,8 @@ let fruits = ['Apple', 'Banana', 'Cherry', 'Damson', 'Elderberry', 'Grape', 'Kiw
 let takePartitioned = fruits.asEnumerable().take(5).toArray();
 
 console.log('*** Extracting the first five elements of the array by take method ...');
-for (let index = 0; index < takePartitioned.length; index++) 
-    console.log(takePartitioned[index]);
+for (let index = 0; index < takePartitioned.length; index++)
+  console.log(takePartitioned[index]);
     
 /*Skip
 The Skip method returns all of the items that the Take method would not return 
@@ -213,11 +213,11 @@ source sequence are ignored and the remaining items are returned. In the followi
 the first five elements of the string array are skipped and the remaining items are included in 
 the results.
  */
-  
+
 let skipPartitioned = fruits.asEnumerable().skip(5).toArray();
 console.log('*** The first five elements of the strings array are skipped and the remaining items extacted ...');
-for (let index = 0; index < skipPartitioned.length; index++) 
-    console.log(skipPartitioned[index]);
+for (let index = 0; index < skipPartitioned.length; index++)
+  console.log(skipPartitioned[index]);
     
 /*TakeWhile
 As the name may suggest, this method retrieves items from the start of a sequence. Instead of specifying 
@@ -228,21 +228,60 @@ The following sample code retrieves items from the start of the array until a st
 or more characters is encountered.Even though further items exist in the array that pass the condition, 
 these are not returned.
  */
- 
- console.log('TakeWhile method continues retrieving items unti string length be bigger or equal than 10 ...');
- let takeWhilePartitioned = fruits.asEnumerable().takeWhile(f => f.length < 10).toArray();
- for (let index = 0; index < takeWhilePartitioned.length; index++) 
-    console.log(takeWhilePartitioned[index]);
+
+console.log('TakeWhile method continues retrieving items unti string length be bigger or equal than 10 ...');
+let takeWhilePartitioned = fruits.asEnumerable().takeWhile(f => f.length < 10).toArray();
+for (let index = 0; index < takeWhilePartitioned.length; index++)
+  console.log(takeWhilePartitioned[index]);
     
 /*SkipWhile
 SkipWhile is the opposite of TakeWhile. Again a predicate is specified but this time items that meet 
 the condition are skipped. When an item is encountered that causes the predicate to return false, 
 this item and all that follow it are returned.
- */   
- 
-  console.log('SkipWhile method continues skiping items unti string length be bigger or equal than 10 then return remaining items ...');
- let skipWhilePartitioned = fruits.asEnumerable().skipWhile(f => f.length < 10).toArray();
- for (let index = 0; index < skipWhilePartitioned.length; index++) 
-    console.log(skipWhilePartitioned[index]);
+ */
+
+console.log('SkipWhile method continues skiping items unti string length be bigger or equal than 10 then return remaining items ...');
+let skipWhilePartitioned = fruits.asEnumerable().skipWhile(f => f.length < 10).toArray();
+for (let index = 0; index < skipWhilePartitioned.length; index++)
+  console.log(skipWhilePartitioned[index]);
     
+/*Concat
+Concatenation is the act of combining the elements from two sequences into one larger set of data
+ */
+
+fruits = ['Apple', 'Orange', 'Grape'];
+let vegs = ['Broccoli', 'Carrot', 'Potato'];
+
+let fruitsAndVegs = fruits.asEnumerable().concat(vegs).toArray();
+
+console.log('*** Cancat method combines both fruits and vegs into one array ...');
+for (let index = 0; index < fruitsAndVegs.length; index++)
+  console.log(fruitsAndVegs[index]);
+  
+/*Distinct 
+This method is used to generate a list of unique items from a single collection, filtering out any 
+duplicate data.
+The sample code below finds all of the distinct values from the first example array. Note that the 
+duplicated D has been removed but the two A's are still present because one is lower case and the 
+other is capitalised.
+*/
+
+let set1 = ['A', 'a', 'B', 'C', 'D', 'D', 'E'];
+let distinct1 = set1.asEnumerable().distinct().toArray();
+
+console.log('Distinct method remove duplicated items ...');
+
+for (var index = 0; index < distinct1.length; index++)
+  console.log(distinct1[index]);
     
+/*The above sample uses the default comparer for the data type being processed. You can use an alternative 
+comparer by providing it as a second parameter.Below the comparison is case-insensitive and the lower case
+ letter A has been removed from the results accordingly.
+ */
+
+let distinct2 = set1.asEnumerable().distinct((a, b) => a.toLowerCase() === b.toLowerCase())
+  .toArray();
+  
+  console.log('Distinct method remove duplicated items using comparer ...');
+for (var index = 0; index < distinct2.length; index++)
+  console.log(distinct2[index]);
