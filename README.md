@@ -89,7 +89,7 @@ then run the following command in the sample's directory:
 
     elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,
     
-    [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), skipWhile, [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), takeWhile 
+    [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), [skipWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile), [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), [takeWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile) 
 * **Enumerable methods**:
 
     asEnumerable, empty, range, repeat
