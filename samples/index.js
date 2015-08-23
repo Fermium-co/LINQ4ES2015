@@ -281,7 +281,63 @@ comparer by providing it as a second parameter.Below the comparison is case-inse
 
 let distinct2 = set1.asEnumerable().distinct((a, b) => a.toLowerCase() === b.toLowerCase())
   .toArray();
-  
-  console.log('Distinct method remove duplicated items using comparer ...');
+
+console.log('Distinct method remove duplicated items using comparer ...');
 for (var index = 0; index < distinct2.length; index++)
   console.log(distinct2[index]);
+  
+/*Union
+The Union operator allows the contents of two collections to be combined into a single resultant list. 
+If any duplicated items are identified, they are removed. This gives the same results
+Distinct method and Concat method.
+ */
+
+let set2 = ['a', 'B', 'C', 'D', 'E', 'e', 'F'];
+let union = set1.asEnumerable().union(set2, (a, b) => a.toLowerCase() === b.toLowerCase()).toArray();
+
+console.log('Union method combines two list set1 and set2 as a unique list using comparer ...');
+for (var index = 0; index < union.length; index++)
+  console.log(union[index]);
+   
+   
+/*Intersect
+This method using 2 collections as an argument, It returns items whiche exists in both collections.
+If an element is present in only one of the them method then it will be removed.
+ */
+
+let intersectionWithoutComparer = set1.asEnumerable().intersect(set2).toArray();
+
+console.log('Intersect method without comparer');
+
+for (var index = 0; index < intersectionWithoutComparer.length; index++)
+  console.log(intersectionWithoutComparer[index]);
+
+console.log('Intersect method with comparer');
+
+let intersectWithComparer = set1.asEnumerable().intersect(set2, (a, b) => a.toLowerCase() === b.toLowerCase())
+  .toArray();
+
+for (var index = 0; index < intersectWithComparer.length; index++)
+  console.log(intersectWithComparer[index]);
+  
+/*Except
+This method compares the elements of two collections. It returns all elements of first collection 
+which are not present in the second collection. The following example return all elements of set1 
+which is not present in set2.
+ */
+
+let exceptWithoutComparer = set1.asEnumerable().except(set2).toArray();
+
+
+console.log('Except method without comparer ...');
+
+for (var index = 0; index < exceptWithoutComparer.length; index++)
+  console.log(exceptWithoutComparer[index]);
+
+let exceptWithComparer = set1.asEnumerable().except(set2, (a, b) => a.toLowerCase() === b.toLowerCase()).toArray();
+
+console.log('Except method with comparer ...')
+
+console.log('Result is empty');
+    
+    
