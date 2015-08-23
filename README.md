@@ -113,4 +113,4 @@ There are many ways to contribute to LINQ4ES2015.
 
 ## Documentation
 
-documentaion will be available soon.
+See [Wiki pages](https://github.com/Fermium-co/LINQ4ES2015/wiki)
