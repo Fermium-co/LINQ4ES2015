@@ -187,9 +187,62 @@ for (let index = 0; index < groupJoins.length; index++) {
 
     console.log("[" +
       "Name = " + stock.name + "," +
-      "Price = " + stock.price + 
+      "Price = " + stock.price +
       "]")
   }
 }
-debugger;
+
+/*Take
+Take returns a number from the beginning of the source collection.The number is specified 
+as the only parameter to the method.In the sample code below, the first five elements of 
+the array of fruit names are extracted.
+ */
+
+let fruits = ['Apple', 'Banana', 'Cherry', 'Damson', 'Elderberry', 'Grape', 'Kiwi', 'Lemon', 'Melon', 'Orange'];
+
+let takePartitioned = fruits.asEnumerable().take(5).toArray();
+
+console.log('*** Extracting the first five elements of the array by take method ...');
+for (let index = 0; index < takePartitioned.length; index++) 
+    console.log(takePartitioned[index]);
+    
+/*Skip
+The Skip method returns all of the items that the Take method would not return 
+when used with the same argument. In the case of Skip, a number of items from the start of the 
+source sequence are ignored and the remaining items are returned. In the following example, 
+the first five elements of the string array are skipped and the remaining items are included in 
+the results.
+ */
   
+let skipPartitioned = fruits.asEnumerable().skip(5).toArray();
+console.log('*** The first five elements of the strings array are skipped and the remaining items extacted ...');
+for (let index = 0; index < skipPartitioned.length; index++) 
+    console.log(skipPartitioned[index]);
+    
+/*TakeWhile
+As the name may suggest, this method retrieves items from the start of a sequence. Instead of specifying 
+a fixed number of results, a predicate is provided using a function. This condition is evaluated for each 
+item in the collection until the first time that it returns false. The items up to but not including the false 
+result are returned.
+The following sample code retrieves items from the start of the array until a string with a length of ten 
+or more characters is encountered.Even though further items exist in the array that pass the condition, 
+these are not returned.
+ */
+ 
+ console.log('TakeWhile method continues retrieving items unti string length be bigger or equal than 10 ...');
+ let takeWhilePartitioned = fruits.asEnumerable().takeWhile(f => f.length < 10).toArray();
+ for (let index = 0; index < takeWhilePartitioned.length; index++) 
+    console.log(takeWhilePartitioned[index]);
+    
+/*SkipWhile
+SkipWhile is the opposite of TakeWhile. Again a predicate is specified but this time items that meet 
+the condition are skipped. When an item is encountered that causes the predicate to return false, 
+this item and all that follow it are returned.
+ */   
+ 
+  console.log('SkipWhile method continues skiping items unti string length be bigger or equal than 10 then return remaining items ...');
+ let skipWhilePartitioned = fruits.asEnumerable().skipWhile(f => f.length < 10).toArray();
+ for (let index = 0; index < skipWhilePartitioned.length; index++) 
+    console.log(skipWhilePartitioned[index]);
+    
+    
