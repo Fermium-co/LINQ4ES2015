@@ -22,7 +22,7 @@ export default function (source, index) {
   }
 
   if (isNaN(index)) {
-    throw new Error('index must be a number');
+    throw new Error("index must be a number");
   }
 
   let next = source.next();

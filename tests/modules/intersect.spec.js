@@ -31,28 +31,28 @@ describe("intersect", () => {
 
   it("should return distinct intersection of two enumerables based on a comparer", () => {
     expect([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ].asEnumerable()
       .intersect([
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 1, name: 'salooo' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 1, name: "salooo" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
 
     expect(intersect([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ], [
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 1, name: 'salooo' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 1, name: "salooo" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
   });
 });

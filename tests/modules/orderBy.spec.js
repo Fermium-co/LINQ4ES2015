@@ -8,7 +8,7 @@ import orderBy from "../../src/modules/orderBy";
 
 describe("orderBy", () => {
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
+  let complexArr = [{ firstName: "C" }, { firstName: "A" }, { firstName: "B" }];
 
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(orderBy(null, item => item))).toThrowError("source is null or undefined");
@@ -31,14 +31,14 @@ describe("orderBy", () => {
   it("should retrn ordered set of complex items", () => {
     let orderedItems = complexArr.asEnumerable().orderBy(item => item.firstName).toArray();
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].firstName).toBe('A');
-    expect(orderedItems[1].firstName).toBe('B');
-    expect(orderedItems[2].firstName).toBe('C');
+    expect(orderedItems[0].firstName).toBe("A");
+    expect(orderedItems[1].firstName).toBe("B");
+    expect(orderedItems[2].firstName).toBe("C");
   });
 
   it("should call order by function correctly because of where method", () => {
     let fakeObject = { fakeOrderBy: num => num };
-    spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
+    spyOn(fakeObject, "fakeOrderBy").and.callThrough();
     let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderBy(fakeObject.fakeOrderBy).toArray();
     expect(fakeObject.fakeOrderBy).toHaveBeenCalledWith(2);
     expect(fakeObject.fakeOrderBy).toHaveBeenCalledWith(4);
@@ -50,7 +50,7 @@ describe("orderBy", () => {
 
   it("should call order by function correctly because of take method", () => {
     let fakeObject = { fakeOrderBy: num => num };
-    spyOn(fakeObject, 'fakeOrderBy').and.callThrough();
+    spyOn(fakeObject, "fakeOrderBy").and.callThrough();
     let result = simpleArr.asEnumerable().take(2).orderBy(fakeObject.fakeOrderBy).toArray();
     expect(fakeObject.fakeOrderBy).toHaveBeenCalledWith(3);
     expect(fakeObject.fakeOrderBy).toHaveBeenCalledWith(2);

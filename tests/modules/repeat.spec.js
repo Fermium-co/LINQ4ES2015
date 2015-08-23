@@ -17,8 +17,8 @@ describe("repeat", () => {
   });
 
   it("should throw an exception when count is not a number", () => {
-    expect(repeat('A', 3).toArray()).toEqual(['A', 'A', 'A']);
-    expect(() => repeat('A', {}).toArray()).toThrowError("count must be a number type");
+    expect(repeat("A", 3).toArray()).toEqual(["A", "A", "A"]);
+    expect(() => repeat("A", {}).toArray()).toThrowError("count must be a number type");
   });
 
   it("should return an empty array with count zero", () => {

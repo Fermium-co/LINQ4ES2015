@@ -1,6 +1,8 @@
 # LINQ4ES2015
 
-Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015 (formerly known as [ES6](https://github.com/lukehoban/es6features))
+Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015
+
+(formerly known as [ES6](https://github.com/lukehoban/es6features))
 
 ## Installing
 
@@ -31,17 +33,19 @@ a simple usage is shown in the following code (Prototype based approach):
       .select(num => '[' + num + ']')
       .distinct()
       .toArray();
+      
+    let sum = 'a2r3'.asEnumerable().where(chr => !isNan(chr)).select(num => Number(num)).sum();
+    // sum will be 5  
 ```
 
 or wihtout extentions (No prototype modification is required):
 ```javascript
     let enumerable = Linq.asEnumerable([0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
     let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.take(Linq.where(enumerable, n => n % 2 == 0), 3), n => n), n => '[' + n ']')));
+    // You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 ```
 
 result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.
-    
-You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 
 ## Samples
 
@@ -59,55 +63,42 @@ then run the following command in the sample's directory:
 
 ## Roadmap
 
-Supported methods:
-* aggregate
-* all
-* any
-* asEnumerable
-* average
-* concat
-* contains
-* count
-* defaultIfEmpty
-* distinct
-* elementAt
-* elementAtOrDefault
-* empty
-* except
-* first
-* firstOrDefault
-* groupBy
-* groupJoin
-* intersect
-* join
-* last
-* lastOrDefault
-* max
-* min
-* orderBy
-* orderByDescending
-* range
-* repeat
-* reverse
-* select
-* selectMany
-* sequenceEqual
-* single
-* singleOrDefault
-* skip
-* skipWhile
-* sum
-* take
-* takeWhile
-* toArray
-* toLookup
-* union
-* where
-* zip
+***Supported methods***:
 
-In Progress Methods:
-* thenBy
-* thenByDescending
+* **Projection and restriction methods**:
+
+    select, selectMany, where
+* **Join methods**:
+
+    groupJoin, join
+* **Set methods**:
+
+    all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
+* **Ordering methods**:
+
+    orderBy, orderByDescending, reverse
+* **Grouping methods**:
+
+    groupBy
+* **Aggregate Methods**:
+
+    aggregate, average, count, max, min, sum, 
+* **Paging methods**:
+
+    elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,
+    
+    skip, skipWhile, take, takeWhile 
+* **Enumerable methods**:
+
+    asEnumerable, empty, range, repeat
+* **Other methods**:
+
+    zip, toLooup, toArray, sequenceEqual
+
+***In Progress Methods***:
+
+thenBy
+thenByDescending
 
 
 ## Contribute

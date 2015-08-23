@@ -19,7 +19,7 @@ export default function (source, index) {
       return source[index];
     }
     else if (source.length < index) {
-      throw new Error('Index was out of range. Must be non-negative and less than the size of the collection');
+      throw new Error("Index was out of range. Must be non-negative and less than the size of the collection");
     }
     source = asEnumerable(source);
   }
@@ -28,7 +28,7 @@ export default function (source, index) {
   }
 
   if (isNaN(index)) {
-    throw new Error('index must be a number');
+    throw new Error("index must be a number");
   }
 
   let next = source.next();

@@ -61,7 +61,7 @@ describe("groupJoin", () => {
       inner,
       outerElement => outerElement,
       innerElement => innerElement.length,
-      (outerElement, innerElements) => outerElement + ':' + innerElements.join(';')
+      (outerElement, innerElements) => outerElement + ":" + innerElements.join(";")
       );
 
     expect(query.toArray()).toEqual(["5:tiger", "3:bee;cat;dog", "7:giraffe"]);

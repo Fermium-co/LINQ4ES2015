@@ -9,7 +9,7 @@ import thenByDescending from "../../src/modules/thenByDescending";
 
 describe("thenByDescending", () => {
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C', lastName: 'D' }, { firstName: 'A', lastName: 'C' }, { firstName: 'A', lastName: 'B' }];
+  let complexArr = [{ firstName: "C", lastName: "D" }, { firstName: "A", lastName: "C" }, { firstName: "A", lastName: "B" }];
 
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(thenByDescending(null, item => item))).toThrowError("source is null or undefined");
@@ -35,22 +35,22 @@ describe("thenByDescending", () => {
       .toArray();
 
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0]).toEqual({ firstName: 'C', lastName: 'D' });
-    expect(orderedItems[1]).toEqual({ firstName: 'A', lastName: 'C' });
-    expect(orderedItems[2]).toEqual({ firstName: 'A', lastName: 'B' });
+    expect(orderedItems[0]).toEqual({ firstName: "C", lastName: "D" });
+    expect(orderedItems[1]).toEqual({ firstName: "A", lastName: "C" });
+    expect(orderedItems[2]).toEqual({ firstName: "A", lastName: "B" });
   });
 
   it("should call then by comparer function correctly because of order by method", () => {
     let fakeObject = { fakeThenByDescending: item => item.lastName };
-    spyOn(fakeObject, 'fakeThenByDescending').and.callThrough();
+    spyOn(fakeObject, "fakeThenByDescending").and.callThrough();
     complexArr.asEnumerable()
       .orderBy(item => item.firstName)
       .thenByDescending(item => fakeObject.fakeThenByDescending)
       .toArray();
     
-    expect(fakeObject.fakeThenByDescending).toHaveBeenCalledWith('B');
-    expect(fakeObject.fakeThenByDescending).toHaveBeenCalledWith('C');
-    expect(fakeObject.fakeThenByDescending).not.toHaveBeenCalledWith('D');
+    expect(fakeObject.fakeThenByDescending).toHaveBeenCalledWith("B");
+    expect(fakeObject.fakeThenByDescending).toHaveBeenCalledWith("C");
+    expect(fakeObject.fakeThenByDescending).not.toHaveBeenCalledWith("D");
     expect(fakeObject.fakeThenByDescending.calls.count()).toBe(2);    
   });
 });

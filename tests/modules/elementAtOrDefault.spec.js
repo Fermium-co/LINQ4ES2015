@@ -30,7 +30,7 @@ describe("elementAtOrDefault", () => {
 
   it("should execute where predicate as much as needed to return valid item", () => {
     let fakeObject = { fakePredicate: num => num % 2 == 0 };
-    spyOn(fakeObject, 'fakePredicate').and.callThrough();
+    spyOn(fakeObject, "fakePredicate").and.callThrough();
     expect([1, 2, 3, 4, 5, 6].asEnumerable().where(fakeObject.fakePredicate).elementAtOrDefault(1)).toEqual(4);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2, 1);
