@@ -11,7 +11,7 @@ export default function* (source) {
     throw new Error("enumerable may not be enumerated twice");
   }
 
-  if (Array.isArray(source)) {
+  if (Array.isArray(source) || typeof (source) === 'string') {
     for (let index = 0; index < source.length; index++) {
       let element = source[index];
       yield element;

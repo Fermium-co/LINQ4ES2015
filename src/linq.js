@@ -94,6 +94,7 @@ export default class Linq {
     setPrototype(utils.GeneratorFunctionProto);
     setPrototype(utils.GeneratorFunctionPrototype);
     Array.prototype.asEnumerable = asEnumerable;
+    String.prototype.asEnumerable = asEnumerable;
   }
   static repeat() {
     return repeat.apply(this, arguments);
@@ -101,11 +102,11 @@ export default class Linq {
   static range() {
     return range.apply(this, arguments);
   }
-  
+
   static asEnumerable() {
     return asEnumerable.apply(this, arguments);
   }
-  
+
   static aggregate() {
     return aggregate.apply(this, arguments);
   }
