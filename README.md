@@ -65,12 +65,14 @@ then run the following command in the sample's directory:
 
 ***Supported methods***:
 
+**Click on each method hyperlink to see description and samples.**
+
 * **Projection and restriction methods**:
 
-    select, selectMany, where
+    [select](https://github.com/Fermium-co/LINQ4ES2015/wiki/Select), [selectMany](https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany), [where](https://github.com/Fermium-co/LINQ4ES2015/wiki/Where)
 * **Join methods**:
 
-    groupJoin, join
+    [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
     all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
@@ -79,7 +81,7 @@ then run the following command in the sample's directory:
     orderBy, orderByDescending, reverse
 * **Grouping methods**:
 
-    groupBy
+    [groupBy](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupBy)
 * **Aggregate Methods**:
 
     aggregate, average, count, max, min, sum, 
@@ -87,7 +89,7 @@ then run the following command in the sample's directory:
 
     elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,
     
-    skip, skipWhile, take, takeWhile 
+    [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), skipWhile, [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), takeWhile 
 * **Enumerable methods**:
 
     asEnumerable, empty, range, repeat
