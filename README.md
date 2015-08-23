@@ -62,23 +62,34 @@ then run the following command in the sample's directory:
 
 Supported methods:
 
-* Projection and restriction methods:
+* **Projection and restriction methods**:
+
     select, selectMany, where
-* Join methods:
+* **Join methods**:
+
     groupJoin, join
-* Set methods:
+* **Set methods**:
+
     all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
-* Ordering methods:
+* **Ordering methods**:
+
     orderBy, orderByDescending, reverse
-* Grouping methods:
+* **Grouping methods**:
+
     groupBy
-* Aggregate Methods:
+* **Aggregate Methods**:
+
     aggregate, average, count, max, min, sum, 
-* Paging methods:
-    elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault, skip, skipWhile, take, takeWhile 
-* Enumerable methods:
+* **Paging methods**:
+
+    elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,
+    
+    skip, skipWhile, take, takeWhile 
+* **Enumerable methods**:
+
     asEnumerable, empty, range, repeat
-* Other methods:
+* **Other methods**:
+
     zip, toLooup, toArray, sequenceEqual
 
 In Progress Methods:
