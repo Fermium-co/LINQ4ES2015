@@ -17,7 +17,7 @@ go to the root directory of the project and run the following command to install
 
 You can use any version instead of 0.0.1 (see [releases](https://github.com/Fermium-co/LINQ4ES2015/releases)).
 
-after running the command, answer all the questionsjspm asking with default values (just press enter).
+after running the command, answer all the questions jspm asking with default values (just press enter).
 
 be sure to select **babel** as the ES6 transpiler. 
 
@@ -30,8 +30,9 @@ after installing LINQ4ES2015 you can use the following javascript code to import
 a simple usage is shown in the following code:
 
     Linq.setExtensions();
+    let count = 0;
     let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
-      .where(num => num % 2 == 0)
+      .where(num => { count++; return num % 2 == 0; })
       .take(3)
       .orderByDescending(num => num)
       .select(num => '[' + num + ']')
@@ -51,7 +52,7 @@ download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/sample
 
     jspm insatll
 
-we need a webserver to run the sample. [http-server](https://github.com/indexzero/http-server) is a simple one. install it by runnting the following command:
+we need a webserver to run the sample. [http-server](https://github.com/indexzero/http-server) is a simple one. install it by runnting this command:
 
     npm install http-server -g  
 
@@ -113,16 +114,6 @@ In Progress Methods:
 
 
 ## Contribute
-
-Fork our repository or clone our dev branch from
-
-    git clone https://github.com/Fermium-co/LINQ4ES2015.git -b dev
-    
-Run jspm install & http-server.
-    
-Open the browser and go to [localhost:8080/tests/tests.html](http://localhost:8080/tests/tests.html), this opens the tests.html file.
-
-And wait for test results.
 
 There are many ways to contribute to LINQ4ES2015.
 
