@@ -1,7 +1,7 @@
 "use strict";
 
 import utils from "./utils";
-import asEnumerable from './asEnumerable';
+import asEnumerable from "./asEnumerable";
 
 export default function (source, keySelector, elementSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length === 3) {
@@ -23,7 +23,7 @@ export default function (source, keySelector, elementSelector, comparer) {
   }
 
   if (!(keySelector instanceof Function)) {
-    throw new Error('keySelector must be a Function');
+    throw new Error("keySelector must be a Function");
   }
 
   if (!(elementSelector instanceof Function)) {

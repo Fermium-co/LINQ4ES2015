@@ -23,35 +23,35 @@ describe("select", () => {
   });
 
   it("should retrn items with provided projection format", () => {
-    let evenNumbers = arr.asEnumerable().select(num => '[' + num + ']').toArray();
+    let evenNumbers = arr.asEnumerable().select(num => "[" + num + "]").toArray();
     expect(evenNumbers.length).toBe(4);
-    expect(evenNumbers[0]).toBe('[1]');
-    expect(evenNumbers[1]).toBe('[2]');
-    expect(evenNumbers[2]).toBe('[3]');
-    expect(evenNumbers[3]).toBe('[4]');
+    expect(evenNumbers[0]).toBe("[1]");
+    expect(evenNumbers[1]).toBe("[2]");
+    expect(evenNumbers[2]).toBe("[3]");
+    expect(evenNumbers[3]).toBe("[4]");
   });
 
   it("should call projection 2 times because of where method", () => {
-    let fakeObject = { fakeProjection: num => '[' + num + ']' };
-    spyOn(fakeObject, 'fakeProjection').and.callThrough();
+    let fakeObject = { fakeProjection: num => "[" + num + "]" };
+    spyOn(fakeObject, "fakeProjection").and.callThrough();
     let result = arr.asEnumerable().where(num => num % 2 == 0).select(fakeObject.fakeProjection).toArray();
     expect(fakeObject.fakeProjection).toHaveBeenCalledWith(2, 0);
     expect(fakeObject.fakeProjection).toHaveBeenCalledWith(4, 1);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(1, 2);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3, 3);
     expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result).toEqual(['[2]', '[4]']);
+    expect(result).toEqual(["[2]", "[4]"]);
   });
 
   it("should call projection 2 times because of take method", () => {
-    let fakeObject = { fakeProjection: num => '[' + num + ']' };
-    spyOn(fakeObject, 'fakeProjection').and.callThrough();
+    let fakeObject = { fakeProjection: num => "[" + num + "]" };
+    spyOn(fakeObject, "fakeProjection").and.callThrough();
     let result = arr.asEnumerable().take(2).select(fakeObject.fakeProjection).toArray();
     expect(fakeObject.fakeProjection).toHaveBeenCalledWith(1, 0);
     expect(fakeObject.fakeProjection).toHaveBeenCalledWith(2, 1);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3, 2);
     expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(4, 3);
     expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result).toEqual(['[1]', '[2]']);
+    expect(result).toEqual(["[1]", "[2]"]);
   });
 });

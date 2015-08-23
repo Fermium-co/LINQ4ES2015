@@ -31,30 +31,30 @@ describe("except", () => {
 
   it("should return distinct exception of two enumerables based on a comparer", () => {
     expect([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' },
-      { id: 5, name: 'iman' },
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" },
+      { id: 5, name: "iman" },
     ].asEnumerable()
       .except([
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 4, name: 'amin' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 4, name: "amin" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 5, name: 'iman' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 5, name: "iman" }]);
 
     expect(except([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' },
-      { id: 5, name: 'iman' },
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" },
+      { id: 5, name: "iman" },
     ], [
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 4, name: 'amin' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 4, name: "amin" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 5, name: 'iman' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 5, name: "iman" }]);
   });
 });

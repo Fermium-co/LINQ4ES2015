@@ -31,8 +31,8 @@ export default function* (firstSource, secondSource, selector) {
   if (!utils.isGenerator(secondSource)) {
     secondSource = asEnumerable(secondSource);
   }
-  if (typeof (selector) != 'function') {
-    throw new Error('selector must be a function');
+  if (typeof (selector) != "function") {
+    throw new Error("selector must be a function");
   }
 
   let next = firstSource.next();

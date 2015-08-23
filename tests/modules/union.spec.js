@@ -31,28 +31,28 @@ describe("union", () => {
 
   it("should return union and distinct elements of two enumerables based on a comparer", () => {
     expect([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ].asEnumerable()
       .union([
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 1, name: 'salooo' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 1, name: "salooo" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }, { id: 3, name: 'farshad' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }, { id: 3, name: "farshad" }]);
 
     expect(union([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ], [
-        { id: 3, name: 'farshad' },
-        { id: 2, name: 'yasi' },
-        { id: 1, name: 'salooo' }
+        { id: 3, name: "farshad" },
+        { id: 2, name: "yasi" },
+        { id: 1, name: "salooo" }
       ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }, { id: 3, name: 'farshad' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }, { id: 3, name: "farshad" }]);
   });
 });

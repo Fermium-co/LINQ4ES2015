@@ -26,21 +26,21 @@ describe("toLookup", () => {
 
   it("should return a lookup of an enumerable based on a comparer", () => {
     expect([
-      { first: 'saleh', last: 'yusefnejad' },
-      { first: 'yasser', last: 'moradi' },
-      { first: 'farshad', last: 'abdolzadeh' },
-      { first: 'yass', last: 'moradi' },
-      { first: 'amin', last: 'sheikhi' },
-      { first: 'am', last: 'sheikhi' },
-      { first: 'sali', last: 'YUSEFNEJAD' },
-      { first: 'saloo', last: 'yusefnejad' },
+      { first: "saleh", last: "yusefnejad" },
+      { first: "yasser", last: "moradi" },
+      { first: "farshad", last: "abdolzadeh" },
+      { first: "yass", last: "moradi" },
+      { first: "amin", last: "sheikhi" },
+      { first: "am", last: "sheikhi" },
+      { first: "sali", last: "YUSEFNEJAD" },
+      { first: "saloo", last: "yusefnejad" },
     ].asEnumerable()
       .toLookup(p => p.last, p => p.first, (a, b) => a.toLowerCase() == b.toLowerCase()))
       .toEqual([
-        { key: 'yusefnejad', elements: ['saleh', 'sali', 'saloo'] },
-        { key: 'moradi', elements: ['yasser', 'yass'] },
-        { key: 'abdolzadeh', elements: ['farshad'] },
-        { key: 'sheikhi', elements: ['amin', 'am'] }
+        { key: "yusefnejad", elements: ["saleh", "sali", "saloo"] },
+        { key: "moradi", elements: ["yasser", "yass"] },
+        { key: "abdolzadeh", elements: ["farshad"] },
+        { key: "sheikhi", elements: ["amin", "am"] }
       ]);
   });
 });

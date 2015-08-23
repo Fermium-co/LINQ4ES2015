@@ -21,7 +21,7 @@ describe("asEnumerable", () => {
   });
 
   it("should enumerate an enumerable correctly", () => {
-    expect('Test'.asEnumerable().toArray()).toEqual(["T", "e", "s", "t"]);
+    expect("Test".asEnumerable().toArray()).toEqual(["T", "e", "s", "t"]);
     expect([1, 2, 3].asEnumerable().toArray()).toEqual([1, 2, 3]);
   });
 

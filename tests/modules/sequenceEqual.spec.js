@@ -36,9 +36,9 @@ describe("sequenceEqual", () => {
   });
 
   it("should check two arrays are sequence equal or not by custom comparer", () => {
-    let result = ['A', 'B', 'C'].asEnumerable().sequenceEqual(['a', 'b', 'c'], (first, second) => first == second.toUpperCase());
+    let result = ["A", "B", "C"].asEnumerable().sequenceEqual(["a", "b", "c"], (first, second) => first == second.toUpperCase());
     expect(result).toEqual(true);
-    let result2 = ['A', 'D', 'C'].asEnumerable().sequenceEqual(['a', 'b', 'c'], (first, second) => first == second.toUpperCase());
+    let result2 = ["A", "D", "C"].asEnumerable().sequenceEqual(["a", "b", "c"], (first, second) => first == second.toUpperCase());
     expect(result2).toEqual(false);
   });
 
@@ -51,7 +51,7 @@ describe("sequenceEqual", () => {
 
   it("should call where predicate as much as sequence equals needs", () => {
     let fakeObject = { fakePredicate: (num) => num % 2 == 0 };
-    spyOn(fakeObject, 'fakePredicate').and.callThrough();
+    spyOn(fakeObject, "fakePredicate").and.callThrough();
     let result2 = [1, 2, 3, 6].asEnumerable().where(fakeObject.fakePredicate).sequenceEqual([1, 4, 3, 6].asEnumerable().where(fakeObject.fakePredicate));
     expect(result2).toEqual(false);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
@@ -65,7 +65,7 @@ describe("sequenceEqual", () => {
 
   it("should call custom comparer as much as sequence equals needs", () => {
     let fakeObject = { fakeCustomComparer: (first, second) => first - second < 1 };
-    spyOn(fakeObject, 'fakeCustomComparer').and.callThrough();
+    spyOn(fakeObject, "fakeCustomComparer").and.callThrough();
     let result = [1, 6, 3, 4].asEnumerable().sequenceEqual([1, 2, 3, 4].asEnumerable(), fakeObject.fakeCustomComparer);
     expect(result).toBe(false);
     expect(fakeObject.fakeCustomComparer.calls.count()).toBe(2);

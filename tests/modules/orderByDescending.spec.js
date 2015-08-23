@@ -8,7 +8,7 @@ import orderByDescending from "../../src/modules/orderByDescending";
 
 describe("orderByDescending", () => {
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
+  let complexArr = [{ firstName: "C" }, { firstName: "A" }, { firstName: "B" }];
 
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(orderByDescending(null, item => item))).toThrowError("source is null or undefined");
@@ -31,14 +31,14 @@ describe("orderByDescending", () => {
   it("should retrn ordered set of complex items", () => {
     let orderedItems = complexArr.asEnumerable().orderByDescending(item => item.firstName).toArray();
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].firstName).toBe('C');
-    expect(orderedItems[1].firstName).toBe('B');
-    expect(orderedItems[2].firstName).toBe('A');
+    expect(orderedItems[0].firstName).toBe("C");
+    expect(orderedItems[1].firstName).toBe("B");
+    expect(orderedItems[2].firstName).toBe("A");
   });
 
   it("should call order by descending function correctly because of where method", () => {
     let fakeObject = { fakeorderByDescending: num => num };
-    spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
+    spyOn(fakeObject, "fakeorderByDescending").and.callThrough();
     let result = simpleArr.asEnumerable().where(num => num % 2 == 0).orderByDescending(fakeObject.fakeorderByDescending).toArray();
     expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(2);
     expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(4);
@@ -50,7 +50,7 @@ describe("orderByDescending", () => {
 
   it("should call order by descending function correctly because of take method", () => {
     let fakeObject = { fakeorderByDescending: num => num };
-    spyOn(fakeObject, 'fakeorderByDescending').and.callThrough();
+    spyOn(fakeObject, "fakeorderByDescending").and.callThrough();
     let result = simpleArr.asEnumerable().take(2).orderByDescending(fakeObject.fakeorderByDescending).toArray();
     expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(3);
     expect(fakeObject.fakeorderByDescending).toHaveBeenCalledWith(2);

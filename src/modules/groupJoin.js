@@ -1,8 +1,8 @@
 "use strict";
 
 import utils from "./utils";
-import asEnumerable from './asEnumerable';
-import toLookup from './toLookup';
+import asEnumerable from "./asEnumerable";
+import toLookup from "./toLookup";
 
 export default function* (outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length < 6) {
@@ -37,14 +37,14 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
   }
 
   if (!(outerKeySelector instanceof Function)) {
-    throw new Error('outerKeySelector must be a Function');
+    throw new Error("outerKeySelector must be a Function");
   }
   if (!(innerKeySelector instanceof Function)) {
-    throw new Error('innerKeySelector must be a Function');
+    throw new Error("innerKeySelector must be a Function");
   }
 
   if (!(resultSelector instanceof Function)) {
-    throw new Error('resultSelector must be a Function');
+    throw new Error("resultSelector must be a Function");
   }
 
   if (!(comparer instanceof Function)) {
