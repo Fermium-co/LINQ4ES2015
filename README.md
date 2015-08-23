@@ -8,7 +8,7 @@ Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015
 
 To install LINQ4ES2015, [Node JS](https://nodejs.org) is required.
 
-If you've not configured [jspm](http://jspm.io) yet, follow [K Scott Allen's blog post](http://odetocode.com/blogs/scott/archive/2015/02/18/using-jspm-with-visual-studio-2015-and-asp-net-5.aspx)
+If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http://fermium.co/post/1c6546ba-891d-479d-8731-896fbbae61fa/JSPM)
 
 Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
