@@ -126,3 +126,36 @@ console.log("*** using groupBy method to group category property ...");
 for (let index = 0; index < groups.length; index++)
   console.log(groups[index]);
   
+  /*Join
+  A join can be achieved on any data as long as both data sources share a common column value.
+  Although the concept of joining in-memory collections isn’t a common pattern today.
+  We add to above stock list category list which has common property 
+   */
+   
+   let categories = [
+     {name: 'Dairy', majorCategory: 'Chilled'},
+     {name: 'Fruit', majorCategory: 'Fresh'},
+     {name: 'Vegetable', majorCategory: 'Fresh'}
+   ];
+   
+   let joints = stock.asEnumerable()
+   .join(
+     categories.asEnumerable(),
+     stockItem => stockItem.category,
+     cat => cat.name,
+     (stockItem , cat) => 
+     "["+ 
+     "Name = " + stockItem.name +"," +
+     "Price = " + stockItem.price + "," +
+     "Category = " + cat.name + "," +
+     "MajorCategory = " + cat.majorCategory +
+     "]"
+   ).toArray();
+   
+   console.log("*** using join method for joining stockItems and categories");
+   
+   for (let index = 0; index < joints.length; index++)
+     console.log(joints[index]);
+   
+   
+  
