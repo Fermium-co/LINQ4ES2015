@@ -33,8 +33,8 @@ a simple usage is shown in the following code (Prototype based approach):
       .select(num => '[' + num + ']')
       .distinct()
       .toArray();
-      
-    let sum = 'a2r3'.asEnumerable().where(chr => !isNan(chr)).select(num => Number(num)).sum();
+    
+    let sum = 'a2r3'.asEnumerable().where(chr => !isNaN(chr)).select(num => Number(num)).sum();
     // sum will be 5  
 ```
 
@@ -103,14 +103,8 @@ thenByDescending
 
 ## Contribute
 
-There are many ways to contribute to LINQ4ES2015.
-
-* Submit bugs and help us verify fixes as they are checked in.
-* Review the source code changes.
-* Contribute bug fixes and implementaion improvements.
-* Contribute developing new features.
-* Contribute adding more specific test specs. 
+See [CONTRIBUTING.md](https://github.com/Fermium-co/LINQ4ES2015/blob/master/CONTRIBUTING.md)
 
 ## Documentation
 
-documentaion will be available soon.
+See [Wiki pages](https://github.com/Fermium-co/LINQ4ES2015/wiki)
