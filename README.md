@@ -103,13 +103,7 @@ thenByDescending
 
 ## Contribute
 
-There are many ways to contribute to LINQ4ES2015.
-
-* Submit bugs and help us verify fixes as they are checked in.
-* Review the source code changes.
-* Contribute bug fixes and implementaion improvements.
-* Contribute developing new features.
-* Contribute adding more specific test specs. 
+See [CONTRIBUTING.md](https://github.com/Fermium-co/LINQ4ES2015/blob/master/CONTRIBUTING.md)
 
 ## Documentation
 
