@@ -33,8 +33,8 @@ a simple usage is shown in the following code (Prototype based approach):
       .select(num => '[' + num + ']')
       .distinct()
       .toArray();
-      
-    let sum = 'a2r3'.asEnumerable().where(chr => !isNan(chr)).select(num => Number(num)).sum();
+    
+    let sum = 'a2r3'.asEnumerable().where(chr => !isNaN(chr)).select(num => Number(num)).sum();
     // sum will be 5  
 ```
 
