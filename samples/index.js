@@ -89,3 +89,40 @@ let skills = employeesIncudeSkills.asEnumerable()
 console.log("*** using selectMany method to combine skills ...");
 for (let index = 0; index < skills.length; index++)
   console.log(skills[index]);
+  
+  
+/*Grouping
+Grouping operators return collections of the source elements grouped by some algorithm.
+This method provides the ability to organise information into groups.
+you can specify a key based on the data held in a collection. The source data is then 
+segregated into several enumerable lists, each containing all of the items with a matching key.
+For example, you may group a collection of stock items by their categories. The result is a 
+group of collections, one for each unique category, each containing all of the products in 
+that category.
+Grouping of data has many uses. You may decide to group a large data set and display one group 
+at a time through the user interface. The user may be able to change the visible group using a 
+combo box or selection of radio buttons. You may also group the information so that you can aggregate 
+the data, obtaining sums, averages or other aggregations for each group.
+ */
+
+let stock = [
+  { name: 'Apple', category: 'Fruit', price: 0.30 },
+  { name: 'Banana', category: 'Fruit', price: 0.35 },
+  { name: 'Orange', category: 'Fruit', price: 0.29 },
+  { name: 'Cabbage', category: 'Vegetable', price: 0.49 },
+  { name: 'Carrot', category: 'Vegetable', price: 0.29 },
+  { name: 'Lettuce', category: 'Vegetable', price: 0.30 },
+  { name: 'Milk', category: 'Dairy', price: 1.12 }
+];
+
+let groups = stock.asEnumerable()
+  .groupBy(
+    s => s.category, //key selector
+    s => s.name, //element selector
+    (key, elements) => key + " : " + "[" + elements.join(",") + "]")//result selector
+  .toArray();
+
+console.log("*** using groupBy method to group category property ...");
+for (let index = 0; index < groups.length; index++)
+  console.log(groups[index]);
+  
