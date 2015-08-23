@@ -60,7 +60,7 @@ then run the following command in the sample's directory:
 
 ## Roadmap
 
-Supported methods:
+***Supported methods***:
 
 * **Projection and restriction methods**:
 
@@ -92,9 +92,10 @@ Supported methods:
 
     zip, toLooup, toArray, sequenceEqual
 
-In Progress Methods:
-* thenBy
-* thenByDescending
+***In Progress Methods***:
+
+thenBy
+thenByDescending
 
 
 ## Contribute
