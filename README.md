@@ -1,35 +1,28 @@
 # LINQ4ES2015
-Linq for ECMA Script 2015 (formerly known as [ES6](https://github.com/lukehoban/es6features))
 
-Language Integrated Query for JavaScript based on ECMA Script 2015
+Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015 (formerly known as [ES6](https://github.com/lukehoban/es6features))
 
 ## Installing
 
 To install LINQ4ES2015, [Node JS](https://nodejs.org) is required.
 
-first install [jspm](http://jspm.io) by running following command:
+If you've not configured [jspm](http://jspm.io) yet, follow [K Scott Allen's blog post](http://odetocode.com/blogs/scott/archive/2015/02/18/using-jspm-with-visual-studio-2015-and-asp-net-5.aspx)
 
-    npm install jspm -g
-    
-go to the root directory of the project and run the following command to install LINQ4ES2015:
+Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
     jspm install github:Fermium-co/LINQ4ES2015@0.0.1
 
 You can use any version instead of 0.0.1 (see [releases](https://github.com/Fermium-co/LINQ4ES2015/releases)).
 
-after running the command, answer all the questions jspm asking with default values (just press enter).
-
-be sure to select **babel** as the ES6 transpiler. 
-
 ## Usage
 
-after installing LINQ4ES2015 you can use the following javascript code to import it:
-
+After installing LINQ4ES2015 you can use the following JavaScript code to import it:
+```javascript
 	import Linq from "Fermium-co/LINQ4ES2015/linq";
-
-a simple usage is shown in the following code:
-
-    Linq.setExtensions();
+```
+a simple usage is shown in the following code (Prototype based approach):
+```javascript
+    Linq.setExtensions(); // You've to run this, if you're interested in prototype based approach.
     let count = 0;
     let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
       .where(num => { count++; return num % 2 == 0; })
@@ -38,21 +31,25 @@ a simple usage is shown in the following code:
       .select(num => '[' + num + ']')
       .distinct()
       .toArray();
+```
 
-or wihtout extentions:
-
+or wihtout extentions (No prototype modification is required):
+```javascript
     let enumerable = Linq.asEnumerable([0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
     let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.take(Linq.where(enumerable, n => n % 2 == 0), 3), n => n), n => '[' + n ']')));
+```
 
 result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.
+    
+You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 
 ## Samples
 
-download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples) folder and run the following command in the sample's directory:
+Download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples) folder and run the following command in the sample's directory:
 
     jspm insatll
 
-we need a webserver to run the sample. [http-server](https://github.com/indexzero/http-server) is a simple one. install it by runnting this command:
+We need a webserver to run the sample. [http-server](https://github.com/indexzero/http-server) is a simple one. install it by runnting this command:
 
     npm install http-server -g  
 
