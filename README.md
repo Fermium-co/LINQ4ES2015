@@ -12,9 +12,7 @@ If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http
 
 Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
-    jspm install github:Fermium-co/LINQ4ES2015@0.0.1
-
-You can use any version instead of 0.0.1 (see [releases](https://github.com/Fermium-co/LINQ4ES2015/releases)).
+    jspm install github:Fermium-co/LINQ4ES2015
 
 ## Usage
 
