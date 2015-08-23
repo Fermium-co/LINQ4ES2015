@@ -49,6 +49,8 @@ result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 time
 
 ## Samples
 
+Note: Each method has its own Wiki page, contains description and samples about that method.
+
 Download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples) folder and run the following command in the sample's directory:
 
     jspm insatll
@@ -65,12 +67,14 @@ then run the following command in the sample's directory:
 
 ***Supported methods***:
 
+**Click on each method hyperlink to see description and samples.**
+
 * **Projection and restriction methods**:
 
-    select, selectMany, where
+    [select](https://github.com/Fermium-co/LINQ4ES2015/wiki/Select), [selectMany](https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany), [where](https://github.com/Fermium-co/LINQ4ES2015/wiki/Where)
 * **Join methods**:
 
-    groupJoin, join
+    [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
     all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
@@ -79,7 +83,7 @@ then run the following command in the sample's directory:
     orderBy, orderByDescending, reverse
 * **Grouping methods**:
 
-    groupBy
+    [groupBy](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupBy)
 * **Aggregate Methods**:
 
     aggregate, average, count, max, min, sum, 
@@ -87,7 +91,7 @@ then run the following command in the sample's directory:
 
     elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,
     
-    skip, skipWhile, take, takeWhile 
+    [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), [skipWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile), [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), [takeWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile) 
 * **Enumerable methods**:
 
     asEnumerable, empty, range, repeat
