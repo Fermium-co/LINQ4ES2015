@@ -1,6 +1,7 @@
 # LINQ4ES2015
 
 Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015
+
 (formerly known as [ES6](https://github.com/lukehoban/es6features))
 
 ## Installing
@@ -60,50 +61,25 @@ then run the following command in the sample's directory:
 ## Roadmap
 
 Supported methods:
-* aggregate
-* all
-* any
-* asEnumerable
-* average
-* concat
-* contains
-* count
-* defaultIfEmpty
-* distinct
-* elementAt
-* elementAtOrDefault
-* empty
-* except
-* first
-* firstOrDefault
-* groupBy
-* groupJoin
-* intersect
-* join
-* last
-* lastOrDefault
-* max
-* min
-* orderBy
-* orderByDescending
-* range
-* repeat
-* reverse
-* select
-* selectMany
-* sequenceEqual
-* single
-* singleOrDefault
-* skip
-* skipWhile
-* sum
-* take
-* takeWhile
-* toArray
-* toLookup
-* union
-* where
-* zip
+
+* Projection and restriction methods:
+    select, selectMany, where
+* Join methods:
+    groupJoin, join
+* Set methods:
+    all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
+* Ordering methods:
+    orderBy, orderByDescending, reverse
+* Grouping methods:
+    groupBy
+* Aggregate Methods:
+    aggregate, average, count, max, min, sum, 
+* Paging methods:
+    elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault, skip, skipWhile, take, takeWhile 
+* Enumerable methods:
+    asEnumerable, empty, range, repeat
+* Other methods:
+    zip, toLooup, toArray, sequenceEqual
 
 In Progress Methods:
 * thenBy
