@@ -7,7 +7,6 @@
 	"exclude": [
 		"jspm_packages",
 		"node_modules",
-		"libs",
-    "samples"
+		"libs"
 	]
 }

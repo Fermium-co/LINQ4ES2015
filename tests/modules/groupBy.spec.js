@@ -38,7 +38,7 @@ describe("groupBy", () => {
   it("should return a grouped result of an enumerable based on a comparer", () => {
     expect(["abc", "hello", "def", "there", "four"]
       .asEnumerable()
-      .groupBy(x => x.length, x=> x[0], (key, elements) => key + ':' + elements.join(';'))
+      .groupBy(x => x.length, x=> x[0], (key, elements) => key + ":" + elements.join(";"))
       .toArray())
       .toEqual(["3:a;d", "5:h;t", "4:f"]);
   });

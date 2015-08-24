@@ -57,10 +57,7 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     let outerElement = outerEnumerator.value;
     let key = outerKeySelector(outerElement);
     let innerElements = findByKey(lookupArray, key, comparer);
-    for (let index = 0; index < innerElements.length; index++) {
-      let innerElement = innerElements[index];
-      yield resultSelector(outerElement, innerElement);
-    }
+    yield resultSelector(outerElement, innerElements);
     outerEnumerator = outer.next();
   }
 };

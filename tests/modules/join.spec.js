@@ -53,7 +53,7 @@ describe("join", () => {
     expect(() => join([], [], fn, fn, {}).toArray()).toThrowError("resultSelector must be a Function");
   });
 
-  it("should return a lookup of an enumerables based on a comparer", () => {
+  it("should return a joined result of an enumerables based on a comparer", () => {
     let outer = [5, 3, 7].asEnumerable();
     let inner = ["bee", "giraffe", "tiger", "badger", "ox", "cat", "dog"].asEnumerable();
 
@@ -61,7 +61,7 @@ describe("join", () => {
       inner,
       outerElement => outerElement,
       innerElement => innerElement.length,
-      (outerElement, innerElement) => outerElement + ':' + innerElement
+      (outerElement, innerElement) => outerElement + ":" + innerElement
       );
 
     expect(query.toArray()).toEqual(["5:tiger", "3:bee", "3:cat", "3:dog", "7:giraffe"]);

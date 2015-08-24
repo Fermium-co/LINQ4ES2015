@@ -2,3 +2,7 @@ jspm_packages
 node_modules
 libs
 .idea
+samples/jspm_packages
+samples/node_modules
+samples/libs
+samples/.idea

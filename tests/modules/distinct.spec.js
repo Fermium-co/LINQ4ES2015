@@ -22,20 +22,20 @@ describe("distinct", () => {
 
   it("should return the distinct elements of an enumerable based on a comparer", () => {
     expect([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ].asEnumerable()
       .distinct((a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
 
     expect(distinct([
-      { id: 1, name: 'saleh' },
-      { id: 2, name: 'yasser' },
-      { id: 1, name: 'sali' }
+      { id: 1, name: "saleh" },
+      { id: 2, name: "yasser" },
+      { id: 1, name: "sali" }
     ], (a, b) => a.id === b.id)
       .toArray())
-      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
+      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
   });
 });

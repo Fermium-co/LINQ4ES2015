@@ -69,7 +69,7 @@ describe("where", () => {
 
   it("should call predicate 2 times when result is get enumerated", () => {
     let fakeObject = { fakePredicate: num => num % 2 == 0 };
-    spyOn(fakeObject, 'fakePredicate').and.callThrough();
+    spyOn(fakeObject, "fakePredicate").and.callThrough();
     let firstTwoEvenNumbers = arr.asEnumerable().where(fakeObject.fakePredicate).take(2).toArray();
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2, 1);

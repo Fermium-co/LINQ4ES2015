@@ -25,7 +25,7 @@ describe("contains", () => {
 
   it("should call predicate 6 times when result is get enumerated because of contains method", () => {
     let fakeObject = { fakePredicate: num => num % 3 == 0 };
-    spyOn(fakeObject, 'fakePredicate').and.callThrough();
+    spyOn(fakeObject, "fakePredicate").and.callThrough();
     let result = [1, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable().where(fakeObject.fakePredicate).contains(6);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
     expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2, 1);
