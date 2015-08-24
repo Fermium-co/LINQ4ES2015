@@ -35,7 +35,6 @@ All code contributed to this project should adhere to a consistent style, so ple
 
 * Space indentation, size of 2
 * Semicolons are nice. Use them.
-* Single quotes
 * No trailing whitespace
 * Be JSHint Valid
  
