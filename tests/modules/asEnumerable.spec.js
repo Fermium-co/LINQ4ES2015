@@ -38,4 +38,8 @@ describe("asEnumerable", () => {
     expect(toArray(asEnumerable({ a: 1, b: 2, c: 3 }))).toEqual([1, 2, 3]);
   });
 
+  it("should enumerate an enumerable correctly", () => {
+    expect("Test".asEnumerable().toArray()).toEqual(["T", "e", "s", "t"]);
+    expect([1, 2, 3].asEnumerable().toArray()).toEqual([1, 2, 3]);
+  });
 });

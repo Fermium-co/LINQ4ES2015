@@ -41,10 +41,10 @@ describe("toLookup", () => {
       { first: 'saloo', last: 'yusefnejad' },
     ]).toLookup(p => p.last, p => p.first, (a, b) => a.toLowerCase() == b.toLowerCase()))
       .toEqual([
-        { key: 'yusefnejad', elements: ['saleh', 'sali', 'saloo'] },
-        { key: 'moradi', elements: ['yasser', 'yass'] },
-        { key: 'abdolzadeh', elements: ['farshad'] },
-        { key: 'sheikhi', elements: ['amin', 'am'] }
+        { key: "yusefnejad", elements: ["saleh", "sali", "saloo"] },
+        { key: "moradi", elements: ["yasser", "yass"] },
+        { key: "abdolzadeh", elements: ["farshad"] },
+        { key: "sheikhi", elements: ["amin", "am"] }
       ]);
   });
 });

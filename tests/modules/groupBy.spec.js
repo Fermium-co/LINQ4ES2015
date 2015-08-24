@@ -34,7 +34,7 @@ describe("groupBy", () => {
   it("should throw when the keySelector is not Function", () => {
     expect(() => toArray(groupBy([], {}, fn))).toThrowError("keySelector must be a Function");
   });
-  
+
   it("should throw when the elementSelector is not Function", () => {
     expect(() => toArray(groupBy([], fn, {}))).toThrowError("elementSelector must be a Function");
   });

@@ -9,14 +9,14 @@ import toArray from "../../src/modules/toArray";
 
 describe("selectMany", () => {
   testUtils.setPrototype('selectMany', selectMany);
-  
+
   let items = [{ name: 'A', orders: [{ name: 'orderA1', price: 1000 }, { name: 'orderA2', price: 2000 }] }, { name: 'B', orders: [{ name: 'orderB1', price: 3000 }, { name: 'orderB2', price: 4000 }] }];
 
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(selectMany(null, item => item))).toThrowError("source is null or undefined");
     expect(() => toArray(selectMany(undefined, item => item))).toThrowError("source is null or undefined");
   });
-  
+
   it("should throw an exception when the collectionSelector is null or undefined", () => {
     expect(() => toArray(selectMany([], null))).toThrowError("collectionSelector is null or undefined");
     expect(() => toArray(selectMany([], undefined))).toThrowError("collectionSelector is null or undefined");

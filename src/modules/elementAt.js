@@ -34,6 +34,9 @@ export default function (source, index) {
   }
 
   let next = source.next();
+  if (next.done) {
+    throw new Error("sequence contains no elements");
+  }
   let currentIndex = 0;
   while (!next.done) {
     if (currentIndex == index) {
@@ -42,11 +45,5 @@ export default function (source, index) {
     next = source.next();
     currentIndex++;
   }
-
-  if (currentIndex === 0) {
-    throw new Error("sequence contains no elements");
-  }
-  else {
-    throw new Error("index is out of range");
-  }
+  throw new Error("index is out of range");
 };

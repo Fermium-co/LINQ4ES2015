@@ -1,49 +1,49 @@
-'use strict';
+"use strict";
 
-import aggregate from './modules/aggregate';
-import all from './modules/all';
-import any from './modules/any';
-import asEnumerable from './modules/asEnumerable';
-import average from './modules/average';
-import concat from './modules/concat';
-import contains from './modules/contains';
-import count from './modules/count';
-import defaultIfEmpty from './modules/defaultIfEmpty';
-import distinct from './modules/distinct';
-import elementAt from './modules/elementAt';
-import elementAtOrDefault from './modules/elementAtOrDefault';
-import empty from './modules/empty';
-import except from './modules/except';
-import first from './modules/first';
-import firstOrDefault from './modules/firstOrDefault';
-import groupBy from './modules/groupBy';
-import groupJoin from './modules/groupJoin';
-import intersect from './modules/intersect';
-import join from './modules/join';
-import last from './modules/last';
-import lastOrDefault from './modules/lastOrDefault';
-import max from './modules/max';
-import min from './modules/min';
-import orderBy from './modules/orderBy';
-import orderByDescending from './modules/orderByDescending';
-import range from './modules/range';
-import repeat from './modules/repeat';
+import aggregate from "./modules/aggregate";
+import all from "./modules/all";
+import any from "./modules/any";
+import asEnumerable from "./modules/asEnumerable";
+import average from "./modules/average";
+import concat from "./modules/concat";
+import contains from "./modules/contains";
+import count from "./modules/count";
+import defaultIfEmpty from "./modules/defaultIfEmpty";
+import distinct from "./modules/distinct";
+import elementAt from "./modules/elementAt";
+import elementAtOrDefault from "./modules/elementAtOrDefault";
+import empty from "./modules/empty";
+import except from "./modules/except";
+import first from "./modules/first";
+import firstOrDefault from "./modules/firstOrDefault";
+import groupBy from "./modules/groupBy";
+import groupJoin from "./modules/groupJoin";
+import intersect from "./modules/intersect";
+import join from "./modules/join";
+import last from "./modules/last";
+import lastOrDefault from "./modules/lastOrDefault";
+import max from "./modules/max";
+import min from "./modules/min";
+import orderBy from "./modules/orderBy";
+import orderByDescending from "./modules/orderByDescending";
+import range from "./modules/range";
+import repeat from "./modules/repeat";
 import reverse from "./modules/reverse";
-import select from './modules/select';
-import selectMany from './modules/selectMany';
-import sequenceEqual from './modules/sequenceEqual';
-import single from './modules/single';
-import singleOrDefault from './modules/singleOrDefault';
-import skip from './modules/skip';
-import skipWhile from './modules/skipWhile';
-import sum from './modules/sum';
-import take from './modules/take';
-import takeWhile from './modules/takeWhile'
-import toArray from './modules/toArray';
-import toLookup from './modules/toLookup';
-import union from './modules/union';
-import where from './modules/where';
-import utils from './modules/utils';
+import select from "./modules/select";
+import selectMany from "./modules/selectMany";
+import sequenceEqual from "./modules/sequenceEqual";
+import single from "./modules/single";
+import singleOrDefault from "./modules/singleOrDefault";
+import skip from "./modules/skip";
+import skipWhile from "./modules/skipWhile";
+import sum from "./modules/sum";
+import take from "./modules/take";
+import takeWhile from "./modules/takeWhile"
+import toArray from "./modules/toArray";
+import toLookup from "./modules/toLookup";
+import union from "./modules/union";
+import where from "./modules/where";
+import utils from "./modules/utils";
 import zip from "./modules/zip";
 
 function setPrototype(prototype) {
@@ -94,6 +94,7 @@ export default class Linq {
     setPrototype(utils.GeneratorFunctionProto);
     setPrototype(utils.GeneratorFunctionPrototype);
     Array.prototype.asEnumerable = asEnumerable;
+    String.prototype.asEnumerable = asEnumerable;
   }
   static repeat() {
     return repeat.apply(this, arguments);
@@ -101,11 +102,11 @@ export default class Linq {
   static range() {
     return range.apply(this, arguments);
   }
-  
+
   static asEnumerable() {
     return asEnumerable.apply(this, arguments);
   }
-  
+
   static aggregate() {
     return aggregate.apply(this, arguments);
   }

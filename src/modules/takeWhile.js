@@ -8,13 +8,14 @@ export default function* (source, predicate) {
     predicate = source;
     source = this;
   }
+  
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
   if (predicate == null || predicate == undefined) {
     throw new Error("predicate is null or undefined");
   }
-
+  
   if (!util.isGenerator(source)) {
     source = asEnumerable(source);
   }

@@ -9,20 +9,20 @@ import toArray from "../../src/modules/toArray";
 
 describe("orderByDescending", () => {
   testUtils.setPrototype('orderByDescending', orderByDescending);
-  
+
   let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
+  let complexArr = [{ firstName: "C" }, { firstName: "A" }, { firstName: "B" }];
 
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(orderByDescending(null, item => item))).toThrowError("source is null or undefined");
     expect(() => toArray(orderByDescending(undefined, item => item))).toThrowError("source is null or undefined");
   });
-  
+
   it("should throw an exception when the keySelector is null or undefined", () => {
     expect(() => toArray(orderByDescending([], null))).toThrowError("keySelector is null or undefined");
     expect(() => toArray(orderByDescending([], undefined))).toThrowError("keySelector is null or undefined");
   });
-  
+
   it("should throw an exception when the keySelector is not a function", () => {
     expect(() => toArray(orderByDescending([], {}))).toThrowError("keySelector must be a function");
   });
@@ -40,8 +40,8 @@ describe("orderByDescending", () => {
   it("should retrn ordered set of complex items", () => {
     let orderedItems = toArray(asEnumerable(complexArr).orderByDescending(item => item.firstName));
     expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].firstName).toBe('C');
-    expect(orderedItems[1].firstName).toBe('B');
-    expect(orderedItems[2].firstName).toBe('A');
+    expect(orderedItems[0].firstName).toBe("C");
+    expect(orderedItems[1].firstName).toBe("B");
+    expect(orderedItems[2].firstName).toBe("A");
   });
 });

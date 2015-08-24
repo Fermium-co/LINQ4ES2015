@@ -8,7 +8,7 @@ export default function (source, index) {
     index = source;
     source = this;
   }
-  
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }

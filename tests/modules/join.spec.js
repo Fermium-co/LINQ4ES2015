@@ -66,7 +66,7 @@ describe("join", () => {
       inner,
       outerElement => outerElement,
       innerElement => innerElement.length,
-      (outerElement, innerElement) => outerElement + ':' + innerElement
+      (outerElement, innerElement) => outerElement + ":" + innerElement
       );
 
     expect(toArray(query)).toEqual(["5:tiger", "3:bee", "3:cat", "3:dog", "7:giraffe"]);

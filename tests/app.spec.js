@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import './modules/utils.spec';
 import './linq.spec';

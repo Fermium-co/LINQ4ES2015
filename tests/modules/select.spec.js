@@ -27,9 +27,9 @@ describe("select", () => {
   it("should retrn items with provided selector function", () => {
     let evenNumbers = toArray(asEnumerable([1, 2, 3, 4]).select(num => '[' + num + ']'));
     expect(evenNumbers.length).toBe(4);
-    expect(evenNumbers[0]).toBe('[1]');
-    expect(evenNumbers[1]).toBe('[2]');
-    expect(evenNumbers[2]).toBe('[3]');
-    expect(evenNumbers[3]).toBe('[4]');
+    expect(evenNumbers[0]).toBe("[1]");
+    expect(evenNumbers[1]).toBe("[2]");
+    expect(evenNumbers[2]).toBe("[3]");
+    expect(evenNumbers[3]).toBe("[4]");
   });
 });

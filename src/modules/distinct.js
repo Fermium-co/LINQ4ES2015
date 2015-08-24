@@ -10,6 +10,7 @@ export default function* (source, comparer) {
       source = this;
     }
   }
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }

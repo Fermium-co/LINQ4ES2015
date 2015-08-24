@@ -1,7 +1,7 @@
 "use strict";
 
 import utils from "./utils";
-import asEnumerable from './asEnumerable';
+import asEnumerable from "./asEnumerable";
 
 export default function (source, keySelector, elementSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length === 3) {
@@ -10,14 +10,14 @@ export default function (source, keySelector, elementSelector, comparer) {
     keySelector = source;
     source = this;
   }
-  
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
   if (keySelector == null || keySelector == undefined) {
     throw new Error("keySelector is null or undefined");
   }
-  
+
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
@@ -32,7 +32,6 @@ export default function (source, keySelector, elementSelector, comparer) {
   }
 
   let lookup = new Lookup(comparer);
-
   let next = source.next();
   while (!next.done) {
     let key = keySelector(next.value);
@@ -40,7 +39,6 @@ export default function (source, keySelector, elementSelector, comparer) {
     lookup.add(key, element);
     next = source.next();
   }
-
   return lookup.getArray();
 };
 
