@@ -2,7 +2,6 @@
   "jspm": {
     "directories": {},
     "dependencies": {
-      "Fermium-co/LINQ4ES2015": "github:Fermium-co/LINQ4ES2015@0.0.1",
       "linq4es2015": "github:Fermium-co/LINQ4ES2015@^0.0.1"
     },
     "devDependencies": {

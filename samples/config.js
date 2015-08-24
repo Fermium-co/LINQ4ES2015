@@ -13,7 +13,6 @@ System.config({
   },
 
   map: {
-    "Fermium-co/LINQ4ES2015": "github:Fermium-co/LINQ4ES2015@0.0.1",
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.1",
