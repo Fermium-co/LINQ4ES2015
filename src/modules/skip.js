@@ -3,28 +3,30 @@
 import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
-export default function* (source, skipCount) {
+export default function* (source, count) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    skipCount = source;
+    count = source;
     source = this;
   }
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
-  if (Array.isArray(source)) {
+  if (count == null || count == undefined) {
+    throw new Error("count is null or undefined");
+  }
+
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
-  }
-  if (isNaN(skipCount) || skipCount == null) {
-    throw new Error("skip number must be a number");
+  if (typeof count !== 'number') {
+    throw new Error("count must be a number");
   }
 
   let next = source.next();
-  let count = 0;
+  let cnt = 0;
   while (!next.done) {
-    if (++count > skipCount) {
+    if (++cnt > count) {
       yield next.value;
     }
     next = source.next();

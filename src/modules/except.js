@@ -2,6 +2,7 @@
 
 import utils from "./utils";
 import asEnumerable from './asEnumerable';
+import toArray from './toArray';
 
 export default function* (first, second, comparer) {
   if (this !== undefined && this !== null && arguments.length < 3) {
@@ -22,12 +23,12 @@ export default function* (first, second, comparer) {
   if (!utils.isGenerator(second)) {
     second = asEnumerable(second);
   }
-
+  
   if (!(comparer instanceof Function)) {
     comparer = (a, b) => a == b;
   }
 
-  let result = second.toArray();
+  let result = toArray(second);
   let next = first.next();
   while (!next.done) {
     if (utils.safePush(result, next.value, comparer)) {

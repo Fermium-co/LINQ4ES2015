@@ -5,20 +5,23 @@ import asEnumerable from "./asEnumerable";
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
-    source = this;
+    if (!source || source instanceof Function) {
+      predicate = source;
+      source = this;
+    }
   }
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
+  
   if (Array.isArray(source)) {
     if (!predicate && source.length > 0) {
       return true;
     }
-    source = asEnumerable(source);
   }
+  
   if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    source = asEnumerable(source);
   }
 
   if (!(predicate instanceof Function)) {

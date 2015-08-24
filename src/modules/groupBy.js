@@ -40,7 +40,7 @@ export default function* (source, keySelector, elementSelector, resultSelector, 
     resultSelector = undefined;
   }
 
-  let lookup = source.toLookup(keySelector, elementSelector, comparer);
+  let lookup = toLookup(source, keySelector, elementSelector, comparer);
   for (let i = 0; i < lookup.length; i++) {
     let item = lookup[i];
     yield resultSelector ? resultSelector(item.key, item.elements) : item;

@@ -2,56 +2,34 @@
 
 "use strict";
 
-import linq from "../../src/linq";
-import toArray from "../../src/modules/toArray";
 import select from "../../src/modules/select";
+import testUtils from '../testUtils';
+import asEnumerable from "../../src/modules/asEnumerable";
+import toArray from "../../src/modules/toArray";
 
 describe("select", () => {
-  let arr = [1, 2, 3, 4];
-
+  testUtils.setPrototype('select', select);
+  
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => toArray(select(null, num => num))).toThrowError("source is null or undefined");
     expect(() => toArray(select(undefined, num => num))).toThrowError("source is null or undefined");
   });
 
+  it("should throw an exception when the selector is not a function", () => {
+    expect(() => toArray(select([], {}))).toThrowError("selector must be a function");
+  });
+
   it("should throw an exception when the source is not an enumerable", () => {
-    expect(() => toArray(select({}, num => num))).toThrowError("source must be an enumerable");
+    expect(() => toArray(select(123, num => num))).toThrowError("source can not be enumerated");
+    expect(() => toArray(select(false, num => num))).toThrowError("source can not be enumerated");
   });
 
-  it("should throw an exception when the projection format is not a function", () => {
-    expect(() => toArray(select([], {}))).toThrowError("projection format must be a function");
-  });
-
-  it("should retrn items with provided projection format", () => {
-    let evenNumbers = arr.asEnumerable().select(num => '[' + num + ']').toArray();
+  it("should retrn items with provided selector function", () => {
+    let evenNumbers = toArray(asEnumerable([1, 2, 3, 4]).select(num => '[' + num + ']'));
     expect(evenNumbers.length).toBe(4);
     expect(evenNumbers[0]).toBe('[1]');
     expect(evenNumbers[1]).toBe('[2]');
     expect(evenNumbers[2]).toBe('[3]');
     expect(evenNumbers[3]).toBe('[4]');
-  });
-
-  it("should call projection 2 times because of where method", () => {
-    let fakeObject = { fakeProjection: num => '[' + num + ']' };
-    spyOn(fakeObject, 'fakeProjection').and.callThrough();
-    let result = arr.asEnumerable().where(num => num % 2 == 0).select(fakeObject.fakeProjection).toArray();
-    expect(fakeObject.fakeProjection).toHaveBeenCalledWith(2, 0);
-    expect(fakeObject.fakeProjection).toHaveBeenCalledWith(4, 1);
-    expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(1, 2);
-    expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3, 3);
-    expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result).toEqual(['[2]', '[4]']);
-  });
-
-  it("should call projection 2 times because of take method", () => {
-    let fakeObject = { fakeProjection: num => '[' + num + ']' };
-    spyOn(fakeObject, 'fakeProjection').and.callThrough();
-    let result = arr.asEnumerable().take(2).select(fakeObject.fakeProjection).toArray();
-    expect(fakeObject.fakeProjection).toHaveBeenCalledWith(1, 0);
-    expect(fakeObject.fakeProjection).toHaveBeenCalledWith(2, 1);
-    expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(3, 2);
-    expect(fakeObject.fakeProjection).not.toHaveBeenCalledWith(4, 3);
-    expect(fakeObject.fakeProjection.calls.count()).toBe(2);
-    expect(result).toEqual(['[1]', '[2]']);
   });
 });

@@ -2,7 +2,6 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import utils from "../../src/modules/utils";
 
 describe("utils", () => {
@@ -18,4 +17,6 @@ describe("utils", () => {
     expect(utils.isGenerator(1)).toBe(false);
     expect(utils.isGenerator("")).toBe(false);
   });
+  
+  //TODO: add safePush function specs...
 });

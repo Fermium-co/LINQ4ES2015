@@ -14,24 +14,25 @@ export default function* (source, predicate) {
   if (predicate == null || predicate == undefined) {
     throw new Error("predicate is null or undefined");
   }
-  if (typeof predicate != 'function') {
-    throw new Error('predicate must be a function');
-  }
-  if (Array.isArray(source)) {
+
+  if (!util.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  if (!util.isGenerator(source))
-    throw new Error("source must be an enumerable");
+  if (!(predicate instanceof Function)) {
+    throw new Error('predicate must be a function');
+  }
 
+  let index = 0;
   let next = source.next();
-  let startYielding = false;
   while (!next.done) {
-    if (!predicate(next.value)) {
-      startYielding = true;
+    if (!predicate(next.value, index)) {
+      break;
     }
-    if (startYielding) {
-      yield next.value;
-    }
+    index++;
+    next = source.next();
+  }
+  while (!next.done) {
+    yield next.value;
     next = source.next();
   }
 }

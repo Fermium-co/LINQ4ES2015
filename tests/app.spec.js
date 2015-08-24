@@ -1,5 +1,6 @@
 'use strict';
 
+import './modules/utils.spec';
 import './linq.spec';
 
 import './modules/aggregate.spec';
@@ -30,6 +31,7 @@ import './modules/orderBy.spec';
 import './modules/orderByDescending.spec';
 import './modules/range.spec';
 import './modules/repeat.spec';
+import './modules/reverse.spec'
 import './modules/select.spec';
 import './modules/selectMany.spec';
 import './modules/sequenceEqual.spec';
@@ -44,6 +46,4 @@ import './modules/toArray.spec';
 import './modules/toLookup.spec';
 import './modules/union.spec';
 import './modules/where.spec';
-import './modules/reverse.spec'
-import './modules/utils.spec';
 import './modules/zip.spec';

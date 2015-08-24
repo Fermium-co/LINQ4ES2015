@@ -21,15 +21,12 @@ export default function (source, keySelector, elementSelector, comparer) {
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-
   if (!(keySelector instanceof Function)) {
-    throw new Error('keySelector must be a Function');
+    throw new Error('keySelector must be a function');
   }
-
   if (!(elementSelector instanceof Function)) {
     comparer = a => a;
   }
-
   if (!(comparer instanceof Function)) {
     comparer = (a, b) => a == b;
   }

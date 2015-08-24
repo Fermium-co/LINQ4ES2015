@@ -2,28 +2,31 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import defaultIfEmpty from "../../src/modules/defaultIfEmpty";
+import testUtils from '../testUtils';
+import asEnumerable from '../../src/modules/asEnumerable';
+import toArray from '../../src/modules/toArray';
 
 describe("defaultIfEmpty", () => {
+  testUtils.setPrototype('defaultIfEmpty', defaultIfEmpty);
+  
   it("should throw exception when source is null or empty", () => {
-    expect(() => defaultIfEmpty(null).toArray()).toThrowError("source is null or undefined");
-    expect(() => defaultIfEmpty(undefined).toArray()).toThrowError("source is null or undefined");
+    expect(() => toArray(defaultIfEmpty(null))).toThrowError("source is null or undefined");
+    expect(() => toArray(defaultIfEmpty(undefined))).toThrowError("source is null or undefined");
   });
   
   it("should throw an exception when the source is not and enumerable", () => {
-    expect(() => defaultIfEmpty({}).toArray()).toThrowError("source must be an enumerable");
+    expect(() => toArray(defaultIfEmpty(123))).toThrowError("source can not be enumerated");
+    expect(() => toArray(defaultIfEmpty(false))).toThrowError("source can not be enumerated");
   });
 
-  it("should return default value when source is empty and defaultValue of parameter is null", () => {
-    expect([].asEnumerable().defaultIfEmpty().toArray()).toEqual([undefined]);
+  it("should return default value when source is empty", () => {
+    expect(toArray(asEnumerable([]).defaultIfEmpty('default123'))).toEqual(['default123']);
+    expect(toArray(defaultIfEmpty([], 'default321'))).toEqual(['default321']);
   });
 
-  it("should return parameter defaultValue when array is empty", () => {
-    expect([].asEnumerable().defaultIfEmpty("test").toArray()).toEqual(["test"]);
-  });
-
-  it("should return same array when array is not empty", () => {
-    expect([1, 2, 3].asEnumerable().defaultIfEmpty(3).toArray()).toEqual([1, 2, 3]);
+  it("should return the enumerable when it is not empty", () => {
+    expect(toArray(asEnumerable([1, 2, 3]).defaultIfEmpty(456))).toEqual([1, 2, 3]);
+    expect(toArray(defaultIfEmpty([1, 2, 3], 456))).toEqual([1, 2, 3]);
   });
 });

@@ -9,6 +9,7 @@ export default function* (first, second, comparer) {
     second = first;
     first = this;
   }
+  
   if (first == null || first == undefined) {
     throw new Error("first is null or undefined");
   }
