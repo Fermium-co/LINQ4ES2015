@@ -12,13 +12,13 @@ If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http
 
 Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
-    jspm install github:Fermium-co/LINQ4ES2015
+    jspm install linq4es2015
 
 ## Usage
 
 After installing LINQ4ES2015 you can use the following JavaScript code to import it:
 ```javascript
-	import Linq from "Fermium-co/LINQ4ES2015/linq";
+	import Linq from "linq4es2015/linq";
 ```
 a simple usage is shown in the following code (Prototype based approach):
 ```javascript
