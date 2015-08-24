@@ -75,7 +75,7 @@ then run the following command in the sample's directory:
     [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
-    all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
+    all, any, contains, concat, defaultIfEmpty, [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
 * **Ordering methods**:
 
     orderBy, orderByDescending, reverse
