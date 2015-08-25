@@ -12,37 +12,35 @@ If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http
 
 Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
-    jspm install github:Fermium-co/LINQ4ES2015@0.0.1
-
-You can use any version instead of 0.0.1 (see [releases](https://github.com/Fermium-co/LINQ4ES2015/releases)).
+    jspm install linq4es2015
 
 ## Usage
 
 After installing LINQ4ES2015 you can use the following JavaScript code to import it:
 ```javascript
-	import Linq from "Fermium-co/LINQ4ES2015/linq";
+import Linq from "linq4es2015/linq";
 ```
 a simple usage is shown in the following code (Prototype based approach):
 ```javascript
-    Linq.setExtensions(); // You've to run this, if you're interested in prototype based approach.
-    let count = 0;
-    let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
-      .where(num => { count++; return num % 2 == 0; })
-      .take(3)
-      .orderByDescending(num => num)
-      .select(num => '[' + num + ']')
-      .distinct()
-      .toArray();
-    
-    let sum = 'a2r3'.asEnumerable().where(chr => !isNaN(chr)).select(num => Number(num)).sum();
-    // sum will be 5  
+Linq.setExtensions(); // You've to run this, if you're interested in prototype based approach.
+let count = 0;
+let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
+  .where(num => { count++; return num % 2 == 0; })
+  .take(3)
+  .orderByDescending(num => num)
+  .select(num => '[' + num + ']')
+  .distinct()
+  .toArray();
+
+let sum = 'a2r3'.asEnumerable().where(chr => !isNaN(chr)).select(num => Number(num)).sum();
+  // sum will be 5  
 ```
 
 or wihtout extentions (No prototype modification is required):
 ```javascript
-    let enumerable = Linq.asEnumerable([0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
-    let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.take(Linq.where(enumerable, n => n % 2 == 0), 3), n => n), n => '[' + n ']')));
-    // You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
+let enumerable = Linq.asEnumerable([0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
+let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.take(Linq.where(enumerable, n => n % 2 == 0), 3), n => n), n => '[' + n ']')));
+// You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.
 ```
 
 result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.
@@ -77,7 +75,7 @@ then run the following command in the sample's directory:
     [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
-    all, any, contains, concat, defaultIfEmpty, distinct, except, intersect, union
+    all, any, contains, concat, defaultIfEmpty, [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
 * **Ordering methods**:
 
     orderBy, orderByDescending, reverse

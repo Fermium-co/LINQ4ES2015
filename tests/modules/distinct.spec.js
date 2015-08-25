@@ -2,40 +2,43 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import distinct from "../../src/modules/distinct";
+import testUtils from '../testUtils';
+import asEnumerable from '../../src/modules/asEnumerable';
+import toArray from '../../src/modules/toArray';
 
 describe("distinct", () => {
+  testUtils.setPrototype('distinct', distinct);
+
   it("should throw an exception when the source is null or undefined", () => {
-    expect(() => distinct(null).toArray()).toThrowError("source is null or undefined");
-    expect(() => distinct(undefined).toArray()).toThrowError("source is null or undefined");
+    expect(() => toArray(distinct(null))).toThrowError("source is null or undefined");
+    expect(() => toArray(distinct(undefined))).toThrowError("source is null or undefined");
   });
 
   it("should throw an exception when the source is not an enumerable", () => {
-    expect(() => distinct({}).toArray()).toThrowError("source must be an enumerable");
+    expect(() => toArray(distinct(123))).toThrowError("source can not be enumerated");
+    expect(() => toArray(distinct(false))).toThrowError("source can not be enumerated");
   });
 
   it("should return distinct elements of an enumerable", () => {
-    expect([1, 2, 2, 3, 3, 3].asEnumerable().distinct().toArray()).toEqual([1, 2, 3]);
-    expect(distinct([1, 2, 2, 3, 3, 3]).toArray()).toEqual([1, 2, 3]);
+    expect(toArray(asEnumerable([1, 2, 2, 3, 3, 3]).distinct())).toEqual([1, 2, 3]);
+    expect(toArray(distinct([1, 2, 2, 3, 3, 3]))).toEqual([1, 2, 3]);
   });
 
-  it("should return the distinct elements of an enumerable based on a comparer", () => {
-    expect([
-      { id: 1, name: "saleh" },
-      { id: 2, name: "yasser" },
-      { id: 1, name: "sali" }
-    ].asEnumerable()
-      .distinct((a, b) => a.id === b.id)
-      .toArray())
-      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
+  it("should return distinct elements of an enumerable based on a comparer", () => {
+    expect(toArray(asEnumerable([
+      { id: 1, name: 'saleh' },
+      { id: 2, name: 'yasser' },
+      { id: 1, name: 'sali' }
+    ])
+      .distinct((a, b) => a.id === b.id)))
+      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
 
-    expect(distinct([
-      { id: 1, name: "saleh" },
-      { id: 2, name: "yasser" },
-      { id: 1, name: "sali" }
-    ], (a, b) => a.id === b.id)
-      .toArray())
-      .toEqual([{ id: 1, name: "saleh" }, { id: 2, name: "yasser" }]);
+    expect(toArray(distinct([
+      { id: 1, name: 'saleh' },
+      { id: 2, name: 'yasser' },
+      { id: 1, name: 'sali' }
+    ], (a, b) => a.id === b.id)))
+      .toEqual([{ id: 1, name: 'saleh' }, { id: 2, name: 'yasser' }]);
   });
 });

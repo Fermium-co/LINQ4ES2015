@@ -13,18 +13,13 @@ export default function (source, predicate) {
   }
   if (Array.isArray(source)) {
     if (!predicate) {
-      if (source.length === 0) {
-        return null;
-      }
-      if (source.length !== 1) {
-        throw new Error("Sequence contains more than one element");
-      }
+      if (source.length === 0) return null;
+      if (source.length !== 1) throw new Error("Sequence contains more than one element");
       return source[0];
     }
-    source = asEnumerable(source);
   }
   if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    source = asEnumerable(source);
   }
 
   if (!(predicate instanceof Function)) {

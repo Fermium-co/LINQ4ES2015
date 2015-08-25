@@ -8,15 +8,19 @@ export default function (source, predicate) {
     predicate = source;
     source = this;
   }
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
+  
   if (Array.isArray(source)) {
-    //if (!predicate) return source[0];
-    source = asEnumerable(source);
+    if (!predicate) {
+      return source.length === 0 ? null : source[0];
+    }
   }
+  
   if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    source = asEnumerable(source);
   }
 
   if (!(predicate instanceof Function)) {

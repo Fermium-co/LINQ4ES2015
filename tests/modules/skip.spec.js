@@ -2,11 +2,14 @@
 
 "use strict";
 
-import linq from "../../src/linq";
-import toArray from "../../src/modules/toArray";
 import skip from "../../src/modules/skip";
+import testUtils from '../testUtils';
+import asEnumerable from "../../src/modules/asEnumerable";
+import toArray from '../../src/modules/toArray';
 
 describe("skip", () => {
+  testUtils.setPrototype('skip', skip);
+
   let arr = [1, 2, 3, 4, 5, 6];
 
   it("should throw an exception when the source is null or undefined", () => {
@@ -14,34 +17,29 @@ describe("skip", () => {
     expect(() => toArray(skip(undefined, 1))).toThrowError("source is null or undefined");
   });
 
+  it("should throw an exception when the skip number is not a number", () => {
+    expect(() => toArray(skip([], null))).toThrowError("count is null or undefined");
+  });
+
   it("should throw an exception when the source is not an enumerable", () => {
-    expect(() => toArray(skip({}, 1))).toThrowError("source must be an enumerable");
+    expect(() => toArray(skip(123, 1))).toThrowError("source can not be enumerated");
   });
 
-  it("should throw an exception when the skip number is not a number", () => {
-    expect(() => toArray(skip([], {}))).toThrowError("skip number must be a number");
+  it("should throw an exception when the count is not a number", () => {
+    expect(() => toArray(skip([], {}))).toThrowError("count must be a number");
   });
 
-  it("should throw an exception when the skip number is not a number", () => {
-    expect(() => toArray(skip([], null))).toThrowError("skip number must be a number");
-  });
-
-  it("should retrn first two items", () => {
-    let evenNumbers = arr.asEnumerable().skip(2).toArray();
+  it("should return an skipped enumerable with specified count", () => {
+    let evenNumbers = toArray(asEnumerable(arr).skip(2));
     expect(evenNumbers).toEqual([3, 4, 5, 6]);
   });
 
-  it("should retrn first two even items", () => {
-    let evenNumbers = arr.asEnumerable().where(num => num % 2 == 0).skip(2).toArray();
-    expect(evenNumbers).toEqual([6]);
+  it("should return all elements when count is zero", () => {
+    expect(toArray(asEnumerable(arr).skip(0))).toEqual(arr);
   });
 
-  it("should return all elements when skipCount is zero", () => {
-    expect(arr.asEnumerable().skip(0).toArray()).toEqual(arr);
+  it("should return empty array when count is equal to or greater than array's length", () => {
+    expect(toArray(asEnumerable(arr).skip(arr.length))).toEqual([]);
+    expect(toArray(asEnumerable(arr).skip(arr.length + 1))).toEqual([]);
   });
-
-  it("should return empty array when skipCount is equal to array length or larger than" , ()=>{
-    expect(arr.asEnumerable().skip(arr.length).toArray()).toEqual([]);
-    expect(arr.asEnumerable().skip(arr.length + 1).toArray()).toEqual([]);
-  })
 });

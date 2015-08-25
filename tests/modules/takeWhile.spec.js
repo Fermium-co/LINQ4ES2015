@@ -2,38 +2,36 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import takeWhile from "../../src/modules/takeWhile";
+import testUtils from '../testUtils';
+import asEnumerable from "../../src/modules/asEnumerable";
+import toArray from '../../src/modules/toArray';
 
 describe("takeWhile", () => {
+  testUtils.setPrototype('takeWhile', takeWhile);
+  
+  let fn = () => { };
+  
   it("should throw exception when source is null or undefined", () => {
-    expect(() => takeWhile(null, n => n > 0).toArray()).toThrowError("source is null or undefined");
-    expect(() => takeWhile(undefined, n=> n > 0).toArray()).toThrowError("source is null or undefined");
+    expect(() => toArray(takeWhile(null, fn))).toThrowError("source is null or undefined");
+    expect(() => toArray(takeWhile(undefined, fn))).toThrowError("source is null or undefined");
   });
 
   it("should throw exception when predicate is null or undefined", () => {
-    expect(() => takeWhile([1, 2], null).toArray()).toThrowError("predicate is null or undefined");
-    expect(() => takeWhile([1, 2], undefined).toArray()).toThrowError("predicate is null or undefined");
+    expect(() => toArray(takeWhile([1, 2], null))).toThrowError("predicate is null or undefined");
+    expect(() => toArray(takeWhile([1, 2], undefined))).toThrowError("predicate is null or undefined");
+  });
+
+  it('should throw an exception when source can not be enumerated', () => {
+    expect(() => toArray(takeWhile(123, fn))).toThrowError('source can not be enumerated');
+    expect(() => toArray(takeWhile(false, fn))).toThrowError('source can not be enumerated');
   });
 
   it("should throw exception when predicate is not a function", () => {
-    expect(() => takeWhile([1, 2], {}).toArray()).toThrowError("predicate must be a function");
+    expect(() => toArray(takeWhile([1, 2], {}))).toThrowError("predicate must be a function");
   });
 
-  it("should return 3 first items which is match", () => {
-    expect([2, 4, 6, 7, 8, 9, 3].asEnumerable().takeWhile(n => n % 2 == 0).toArray()).toEqual([2, 4, 6])
+  it("should take elements till elements are matched the specified predicate", () => {
+    expect(toArray(asEnumerable([2, 4, 6, 7, 8, 9, 3]).takeWhile(n => n % 2 == 0))).toEqual([2, 4, 6])
   });
-
-  it("should return only first element of array ", () => {
-    expect([2, 5, 6, 7, 1, 3].asEnumerable().takeWhile(n => n < 5).toArray()).toEqual([2]);
-  });
-
-  it("should return empty array ", () => {
-    expect([1, 2, 3, 4, 5, 6].asEnumerable().takeWhile(n => n % 2 == 0).toArray()).toEqual([]);
-  });
-
-  it("should return all of elements when all elements matches ", () => {
-    expect([1, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable().takeWhile(n => n < 10).toArray()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  });
-
 });

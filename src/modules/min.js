@@ -1,24 +1,37 @@
 "use strict";
 
 import utils from "./utils";
-import aggregate from "./aggregate";
 import asEnumerable from "./asEnumerable";
-import where from "./where";
 
-export default function (source, predicate) {
+export default function (source, selector) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
+    selector = source;
     source = this;
   }
+
+  if (source == null || source == undefined) {
+    throw new Error("source is null or undefined");
+  }
+
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  let min = 0;
-  if (typeof predicate == "function") {
-    min = aggregate(where(source, predicate), undefined, (result, current) => result <= current ? result : current);
+
+  if (!(selector instanceof Function)) {
+    selector = a => a;
   }
-  else {
-    min = aggregate(source, undefined, (result, current) => result <= current ? result : current);
+
+  let next = source.next();
+  if (next.done) {
+    throw new Error('sequence is empty');
+  }
+  let min = next.value;
+  while (!next.done) {
+    let item = selector(next.value);
+    if (item < selector(min)) {
+      min = item;
+    }
+    next = source.next();
   }
   return min;
 };

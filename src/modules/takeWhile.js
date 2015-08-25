@@ -8,27 +8,28 @@ export default function* (source, predicate) {
     predicate = source;
     source = this;
   }
+  
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
   if (predicate == null || predicate == undefined) {
     throw new Error("predicate is null or undefined");
   }
-  if (typeof predicate != "function") {
-    throw new Error("predicate must be a function");
-  }
-  if (Array.isArray(source)) {
+  
+  if (!util.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  if (!util.isGenerator(source))
-    throw new Error("source must be an enumerable");
+  if (!(predicate instanceof Function)) {
+    throw new Error('predicate must be a function');
+  }
 
+  let index = 0;
   let next = source.next();
-
   while (!next.done) {
-    if (!predicate(next.value)) {
+    if (!predicate(next.value, index)) {
       break;
     }
+    index++;
     yield next.value;
     next = source.next();
   }

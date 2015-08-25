@@ -2,36 +2,40 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import lastOrDefault from "../../src/modules/lastOrDefault";
+import testUtils from '../testUtils';
+import asEnumerable from '../../src/modules/asEnumerable';
 
 describe("lastOrDefault", () => {
+  testUtils.setPrototype('lastOrDefault', lastOrDefault);
+  
   it("should throw an exception when the source is null or undefined", () => {
     expect(() => lastOrDefault(null)).toThrowError("source is null or undefined");
     expect(() => lastOrDefault(undefined)).toThrowError("source is null or undefined");
   });
 
   it("should throw an exception when the source is not an enumerable", () => {
-    expect(() => lastOrDefault({})).toThrowError("source must be an enumerable");
+    expect(() => lastOrDefault(123)).toThrowError("source can not be enumerated");
+    expect(() => lastOrDefault(false)).toThrowError("source can not be enumerated");
   });
 
   it("should return null if there is no element", () => {
-    expect([].asEnumerable().lastOrDefault()).toEqual(null);
+    expect(asEnumerable([]).lastOrDefault()).toEqual(null);
     expect(lastOrDefault([])).toEqual(null);
   });
 
   it("should return null if there is no element passing the predicate", () => {
-    expect([1, 3, 5].asEnumerable().lastOrDefault(n => n % 2 === 0)).toEqual(null);
+    expect(asEnumerable([1, 3, 5]).lastOrDefault(n => n % 2 === 0)).toEqual(null);
     expect(lastOrDefault([1, 3, 5], n => n % 2 === 0)).toEqual(null);
   });
 
   it("should return the last element of an enumerable", () => {
-    expect([1, 2, 3].asEnumerable().lastOrDefault()).toEqual(3);
+    expect(asEnumerable([1, 2, 3]).lastOrDefault()).toEqual(3);
     expect(lastOrDefault([1, 2, 3])).toEqual(3);
   });
 
   it("should return the last element of an enumerable passing a predicate", () => {
-    expect([1, 2, 3, 4, 5].asEnumerable().lastOrDefault(n => n % 2 === 0)).toEqual(4);
+    expect(asEnumerable([1, 2, 3, 4, 5]).lastOrDefault(n => n % 2 === 0)).toEqual(4);
     expect(lastOrDefault([1, 2, 3, 4, 5], n => n % 2 === 0)).toEqual(4);
   });
 });

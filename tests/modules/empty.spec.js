@@ -2,12 +2,11 @@
 
 "use strict";
 
-import linq from "../../src/linq";
 import empty from "../../src/modules/empty";
+import toArray from '../../src/modules/toArray';
 
 describe("empty", () => {
 	it("should return an empty array", () => {
-		expect(empty().toArray()).toEqual([]);
+		expect(toArray(empty())).toEqual([]);
 	});
-
 });

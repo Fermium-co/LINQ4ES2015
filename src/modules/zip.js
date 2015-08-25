@@ -3,44 +3,38 @@
 import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
-export default function* (firstSource, secondSource, selector) {
+export default function* (first, second, resultSelector) {
   if (this !== undefined && this !== null && arguments.length < 3) {
-    selector = secondSource;
-    secondSource = firstSource;
-    firstSource = this;
+    resultSelector = second;
+    second = first;
+    first = this;
   }
-  if (firstSource == null || firstSource == undefined) {
+
+  if (first == null || first == undefined) {
     throw new Error("first source is null or undefined");
   }
-  if (secondSource == null || secondSource == undefined) {
+  if (second == null || second == undefined) {
     throw new Error("second source is null or undefined");
   }
-  if (!utils.isGenerator(firstSource) && !Array.isArray(firstSource)) {
-    throw new Error("first source must be either an enumerable or an array");
-  }
-  if (!utils.isGenerator(secondSource) && !Array.isArray(secondSource)) {
-    throw new Error("second source must be either an enumerable or an array");
-  }
-  if (Array.isArray(firstSource) && Array.isArray(secondSource)) {
-    if (firstSource.length != secondSource.length)
-      return false;
-  }
-  if (!utils.isGenerator(firstSource)) {
-    firstSource = asEnumerable(firstSource);
-  }
-  if (!utils.isGenerator(secondSource)) {
-    secondSource = asEnumerable(secondSource);
-  }
-  if (typeof (selector) != "function") {
-    throw new Error("selector must be a function");
+  if (resultSelector == null || resultSelector == undefined) {
+    throw new Error("resultSelector is null or undefined");
   }
 
-  let next = firstSource.next();
-  let next2 = secondSource.next();
+  if (!utils.isGenerator(first)) {
+    first = asEnumerable(first);
+  }
+  if (!utils.isGenerator(second)) {
+    second = asEnumerable(second);
+  }
+  if (!(resultSelector instanceof Function)) {
+    throw new Error('resultSelector must be a function');
+  }
 
-  while (!next.done && !next2.done) {
-    yield selector(next.value, next2.value);
-    next = firstSource.next();
-    next2 = secondSource.next();
+  let next1 = first.next();
+  let next2 = second.next();
+  while (!next1.done && !next2.done) {
+    yield resultSelector(next1.value, next2.value);
+    next1 = first.next();
+    next2 = second.next();
   }
 };

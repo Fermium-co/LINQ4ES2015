@@ -11,11 +11,9 @@ export default function* (source, defaultValue) {
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
-  if (Array.isArray(source)) {
-    source = asEnumerable(source);
-  }
+  
   if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    source = asEnumerable(source);
   }
 
   let next = source.next();

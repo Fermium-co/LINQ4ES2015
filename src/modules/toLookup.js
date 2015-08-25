@@ -10,32 +10,28 @@ export default function (source, keySelector, elementSelector, comparer) {
     keySelector = source;
     source = this;
   }
-  
+
   if (source == null || source == undefined) {
     throw new Error("source is null or undefined");
   }
   if (keySelector == null || keySelector == undefined) {
     throw new Error("keySelector is null or undefined");
   }
-  
+
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-
   if (!(keySelector instanceof Function)) {
-    throw new Error("keySelector must be a Function");
+    throw new Error('keySelector must be a function');
   }
-
   if (!(elementSelector instanceof Function)) {
     comparer = a => a;
   }
-
   if (!(comparer instanceof Function)) {
     comparer = (a, b) => a == b;
   }
 
   let lookup = new Lookup(comparer);
-
   let next = source.next();
   while (!next.done) {
     let key = keySelector(next.value);
@@ -43,7 +39,6 @@ export default function (source, keySelector, elementSelector, comparer) {
     lookup.add(key, element);
     next = source.next();
   }
-
   return lookup.getArray();
 };
 

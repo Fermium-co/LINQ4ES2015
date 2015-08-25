@@ -4,9 +4,7 @@
 import Linq from "../src/linq";
 
 describe("linq", () => {
-  it("should have a function named initLinqExtensions", () => {
+  it("should have a function named setExtensions", () => {
     expect((typeof Linq.setExtensions)).toBe("function");
   });
 });
-
-Linq.setExtensions();

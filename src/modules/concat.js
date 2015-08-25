@@ -14,13 +14,7 @@ export default function* (firstSource, secondSource) {
   if (secondSource == null || secondSource == undefined) {
     throw new Error("second source is null or undefined");
   }
-  if (!utils.isGenerator(firstSource) && !Array.isArray(firstSource)) {
-    throw new Error("first source must be either an enumerable or an array");
-  }
-  if (!utils.isGenerator(secondSource) && !Array.isArray(secondSource)) {
-    throw new Error("second source must be either an enumerable or an array");
-  }
-
+  
   if (!utils.isGenerator(firstSource)) {
     firstSource = asEnumerable(firstSource);
   }
