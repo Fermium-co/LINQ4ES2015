@@ -339,5 +339,81 @@ let exceptWithComparer = set1.asEnumerable().except(set2, (a, b) => a.toLowerCas
 console.log('Except method with comparer ...')
 
 console.log('Result is empty');
+
+/*AsEnumerable
+  This method convert an array to generator for to execute  deferred query
+   */
+let enumerable = [1, 2, 3, 4, 5, 6, 7, 8].asEnumerable();
+/*ToArray
+This method extracts all of items from source (enumerable) and returns an array.
+Query of this method will be excuted immediately and result copied into the new array.
+ */
+
+let array = enumerable.toArray();
+
+console.log('*** array after executing toArray method ...');
+
+for (var index = 0; index < array.length; index++)
+  console.log(array[index]);
+  
+ 
+/*First
+This method returns the first item from sequence. We can use this method without argument.
+
+ */
+
+let items = ['One', 'Two', 'Three', 'Four', 'Five'];
+
+
+let first = items.asEnumerable().first();
+
+console.log('*** return first element of the array');
+
+console.log(first);
+
+/*
+if there are no items in the in the sequence the method throws an exception.
+ */
+
+let empty = [];
+try {
+  first = empty.asEnumerable().first();
+}
+catch (err) {
+  console.error(err.message);
+}
+
+ 
+/*
+You can use argument as a predicate. The returned value is the first item of the 
+list that the condition returns true. 
+*/
+
+first = items.asEnumerable().first(item => item.length == 5);
+
+console.log('first item is equals 5 length => ' + first);
+
+/*FirstOrDefault
+This method is similar to first method , However if no item exists , it does not throw an exception.
+It returns null.
+ */
+
+first = items.asEnumerable().firstOrDefault();
+
+console.log(first);
+ 
+first = empty.asEnumerable().firstOrDefault();
+console.log(first);
+
+
+
+
+ 
+ 
+    
+  
+     
+     
+    
     
     
