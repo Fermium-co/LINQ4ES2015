@@ -532,8 +532,41 @@ console.log(defaultIfEmpty);
 
 defaultIfEmpty = empty.asEnumerable().defaultIfEmpty().toArray();
 console.log(defaultIfEmpty);
+
+/* Range
+This method creates a set of squential integers. This method receives 2 arguments , 
+the first value will be first item of sequence and the second determines the number of integers. 
+ */
+
+let range = Linq.range(12, 20).toArray();
+for (var index = 0; index < range.length; index++)
+  console.log(range[index]);
      
+/* Return is enumerable and you can execute another query on it. 
+ */
+console.log("*** number bigger than 15 and * 1000 ...");
+range = Linq.range(12, 20)
+  .where(n => n > 15)
+  .select(n => n * 1000)
+  .toArray();
+for (var index = 0; index < range.length; index++)
+  console.log(range[index]);
      
     
+/*Repeat
+This method receives 2 arguments the first is value which should be repeated and the second is number of repeat.
+The result is enumerable and you can execute another query on it.
+ */
     
-    
+let repeated = Linq.repeat('Hello', 5).toArray();
+
+for (var index = 0; index < repeated.length; index++)
+  console.log(repeated[index]);
+  
+  /*Empty
+  This method returns an empty or zero length sequence.
+   */
+  
+ // let emptyList = [1,2,3,4,5].asEnumerable().empty().toArray();
+ // console.log('Is seauence is empty => ' + (emptyList.lenght == 0).toString());
+   
