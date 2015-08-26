@@ -6,7 +6,7 @@ Language Integrated Query (LINQ) for JavaScript based on ECMA Script 2015
 
 ## Installing
 
-To install LINQ4ES2015, [Node JS](https://nodejs.org) is required.
+In order to install & use LINQ4ES2015, [Node JS](https://nodejs.org) is required to be installed on Development machine.
 
 If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http://fermium.co/post/1c6546ba-891d-479d-8731-896fbbae61fa/JSPM)
 
@@ -26,7 +26,7 @@ import Linq from "linq4es2015/linq";
 ```
 a simple usage is shown in the following code (Prototype based approach):
 ```javascript
-Linq.setExtensions(); // You've to run this, if you're interested in prototype based approach.
+Linq.setExtensions(); // You've to run this, only once, if you're interested in prototype based approach.
 let count = 0;
 let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
   .where(num => { count++; return num % 2 == 0; })
@@ -51,11 +51,13 @@ result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 time
 
 ## Samples
 
-Note: Each method has its own Wiki page, contains description and samples about that method.
+Note: Each method has its own Wiki page, including description and samples about that method.
 
-Download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples) folder and run the following command in the sample's directory:
+Download the [samples](https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples) folder and run the following commands in the sample's root directory:
 
-    jspm insatll
+    npm install
+    
+    jspm insatll    
 
 We need a webserver to run the sample. [http-server](https://github.com/indexzero/http-server) is a simple one. install it by runnting this command:
 
@@ -64,6 +66,8 @@ We need a webserver to run the sample. [http-server](https://github.com/indexzer
 then run the following command in the sample's directory:
 
     http-server
+    
+Note that you can use any web server you prefer.
 
 ## Roadmap
 

@@ -4,7 +4,7 @@ You will need to complete a Contributor License Agreement (CLA). Briefly, this a
 
 ## Reporting Bugs
 
-* Always update to the most recent master release; the bug may already be resolved.
+* Always update to the most recent release; the bug may already be resolved.
 * Search for similar issues in the issues list for this repo; it may already be an identified problem.
 
 ## Fork and branch
