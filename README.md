@@ -77,7 +77,7 @@ Note that you can use any web server you prefer.
 
 * **Projection and restriction methods**:
 
-    [select](https://github.com/Fermium-co/LINQ4ES2015/wiki/Select), [selectMany](https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany), [where](https://github.com/Fermium-co/LINQ4ES2015/wiki/Where)
+    [select](https://github.com/Fermium-co/LINQ4ES2015/wiki/Select), [selectMany](https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany), [where](https://github.com/Fermium-co/LINQ4ES2015/wiki/Where), [How can I write Left Join query?](https://github.com/Fermium-co/LINQ4ES2015/wiki/LeftJoin)
 * **Join methods**:
 
     [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
