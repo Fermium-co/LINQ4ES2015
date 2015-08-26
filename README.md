@@ -79,7 +79,7 @@ then run the following command in the sample's directory:
     [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
-    all, any, contains, concat, defaultIfEmpty, [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
+    all, any, contains, [concat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Concat), defaultIfEmpty, [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
 * **Ordering methods**:
 
     orderBy, orderByDescending, reverse
@@ -96,10 +96,10 @@ then run the following command in the sample's directory:
     [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), [skipWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile), [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), [takeWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile) 
 * **Enumerable methods**:
 
-    asEnumerable, empty, range, repeat
+    [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/AsEnumerable), empty, range, repeat
 * **Other methods**:
 
-    zip, toLooup, toArray, sequenceEqual
+    zip, toLooup, [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), sequenceEqual
 
 ***In Progress Methods***:
 
