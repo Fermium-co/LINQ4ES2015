@@ -520,20 +520,44 @@ This method return takes default value as an argument and checks if collection i
 otherwise returns new instance of souce list.
  */
 
-let defaultIfEmpty = items.asEnumerable().defaultIfEmpty().toArray();
-console.log(defaultIfEmpty);
+let defaultIfEmptyResult = items.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
    
 /*
 If source colllection is empty , a new collection will be generated and new item will be added to it.
 if default value argument is not null new item is default value otherwise new item is undefined.
  */
-defaultIfEmpty = empty.asEnumerable().defaultIfEmpty('default value').toArray();
-console.log(defaultIfEmpty);
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty('default value').toArray();
+console.log(defaultIfEmptyResult);
 
-defaultIfEmpty = empty.asEnumerable().defaultIfEmpty().toArray();
-console.log(defaultIfEmpty);
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
      
      
-    
-    
-    
+/*
+Left Join
+*/
+
+let authorsData = [
+  { authorId: 1, name: "John Smith" },
+  { authorId: 2, name: "Harry Gold" },
+  { authorId: 3, name: "Ronald Schwimmer" },
+  { authorId: 4, name: "Jerry Mawler" }
+];
+
+let booksData =
+  [
+    { authorId: 1, title: "Little Blue Riding Hood" },
+    { authorId: 3, title: "The Three Little Piggy Banks" },
+    { authorId: 1, title: "Snow Black" },
+    { authorId: 2, title: "My Rubber Duckie" },
+    { authorId: 2, title: "He Who Doesn't Know His Name" },
+    { authorId: 3, title: "Hanzel and Brittle" }
+  ];
+
+let leftJoinResults = authorsData.asEnumerable().groupJoin(booksData, author => author.authorId, book => book.authorId,
+  (author, booksByAuthor) => ({ authorName: author.name, books: booksByAuthor }))
+  .selectMany(authorBooks => authorBooks.books.defaultIfEmpty(authorBooks.books, { title: 'None' }), (book, author) => ({ authorName: author.authorName, title: book.title }))
+  .toArray();
+
+console.warn(leftJoinResults);
