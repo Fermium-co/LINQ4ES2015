@@ -27,9 +27,9 @@ import Linq from "linq4es2015/linq";
 a simple usage is shown in the following code (Prototype based approach):
 ```javascript
 Linq.setExtensions(); // You've to run this, only once, if you're interested in prototype based approach.
-let count = 0;
+
 let result = [0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9].asEnumerable()
-  .where(num => { count++; return num % 2 == 0; })
+  .where(num => num % 2 == 0)
   .take(3)
   .orderByDescending(num => num)
   .select(num => '[' + num + ']')
@@ -73,7 +73,7 @@ Note that you can use any web server you prefer.
 
 ***Supported methods***:
 
-**Click on each method hyperlink to see description and samples.**
+**Click on each method hyperlink to see description and samples. Read [Home Wiki](https://github.com/Fermium-co/LINQ4ES2015/wiki/Home) first**
 
 * **Projection and restriction methods**:
 
