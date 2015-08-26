@@ -557,7 +557,7 @@ let booksData =
 
 let leftJoinResults = authorsData.asEnumerable().groupJoin(booksData, author => author.authorId, book => book.authorId,
   (author, booksByAuthor) => ({ authorName: author.name, books: booksByAuthor }))
-  .selectMany(authorBooks => authorBooks.books.defaultIfEmpty(authorBooks.books, { title: 'None' }), (book, author) => ({ authorName: author.authorName, title: book.title }))
+  .selectMany(authorBooks => authorBooks.books.asEnumerable().defaultIfEmpty(authorBooks.books, { title: 'None' }), (book, author) => ({ authorName: author.authorName, title: book.title }))
   .toArray();
 
 console.warn(leftJoinResults);

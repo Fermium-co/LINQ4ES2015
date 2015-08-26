@@ -13,7 +13,7 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     inner = outer;
     outer = this;
   }
-  
+
   if (outer == null || outer == undefined) {
     throw new Error('outer is null or undefined');
   }
@@ -58,6 +58,9 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     let outerElement = outerEnumerator.value;
     let key = outerKeySelector(outerElement);
     let innerElements = findByKey(lookupArray, key, comparer);
+    if (innerElements == null || innerElements == undefined) {
+      innerElements = [];
+    }
     yield resultSelector(outerElement, innerElements);
     outerEnumerator = outer.next();
   }
@@ -66,7 +69,7 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
 function findByKey(array, key, comparer) {
   for (let i = 0; i < array.length; i++) {
     let item = array[i];
-    if (comparer(item.key, key)){
+    if (comparer(item.key, key)) {
       return item.elements;
     }
   }

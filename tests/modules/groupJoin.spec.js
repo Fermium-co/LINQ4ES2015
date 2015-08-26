@@ -70,4 +70,25 @@ describe('groupJoin', () => {
 
     expect(toArray(query)).toEqual(['5:tiger', '3:bee;cat;dog', '7:giraffe']);
   });
+
+  it("should return a joined group of an enumerables, which one side is an empty enumerable, when it has no other side data to be joined", () => {
+
+    let authorsData = [
+      { authorId: 1, name: "John Smith" },
+      { authorId: 2, name: "Harry Gold" },
+      { authorId: 3, name: "Ronald Schwimmer" }
+    ];
+
+    let booksData =
+      [
+        { authorId: 1, title: "Little Blue Riding Hood" },
+        { authorId: 3, title: "The Three Little Piggy Banks" }
+      ];
+
+    let groupJoinResult = toArray(asEnumerable(authorsData).groupJoin(booksData, author => author.authorId, book => book.authorId,
+      (author, booksByAuthor) => ({ authorName: author.name, books: booksByAuthor })));
+
+    expect(groupJoinResult[1].books).toEqual([]);
+
+  });
 });
