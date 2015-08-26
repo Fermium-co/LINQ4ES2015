@@ -1,23 +1,27 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import aggregate from "./aggregate";
-import asEnumerable from "./asEnumerable";
-import where from "./where";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
-export default function (source, predicate) {
+export default function (source, selector) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
+    selector = source;
     source = this;
   }
-  if (!utils.isGenerator(source))
+
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
-  let sum = 0;
-  if (typeof predicate == "function") {
-    sum = aggregate(where(source, predicate), 0, (result, current) => result += current);
   }
-  else {
-    sum = aggregate(source, 0, (result, current) => result += current);
+
+  if (!(selector instanceof Function)) {
+    selector = a => a;
+  }
+
+  let sum = 0;
+  let next = source.next();
+  while (!next.done) {
+    sum += selector(next.value);
+    next = source.next();
   }
   return sum;
 };

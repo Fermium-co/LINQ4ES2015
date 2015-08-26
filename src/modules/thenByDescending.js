@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import toArray from "./toArray";
+import utils from './utils';
+import toArray from './toArray';
 
 export default function* (source, thenByFunction) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -9,13 +9,13 @@ export default function* (source, thenByFunction) {
     source = this;
   }
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (!(thenByFunction instanceof Function)) {
-    throw new Error("order by descending column must be a function");
+    throw new Error('order by descending column must be a function');
   }
   if (!Array.isArray(source) && !utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    throw new Error('source must be an enumerable');
   }
 
   let next = source.next();

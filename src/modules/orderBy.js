@@ -1,26 +1,40 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import toArray from "./toArray";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
+import toArray from './toArray';
 
-export default function* (source, orderByFunction) {
-  if (this !== undefined && this !== null && arguments.length < 2) {
-    orderByFunction = source;
+export default function* (source, keySelector, comparer) {
+  if (this !== undefined && this !== null && arguments.length < 3) {
+    comparer = keySelector;
+    keySelector = source;
     source = this;
   }
+
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
-  if (!(orderByFunction instanceof Function)) {
-    throw new Error("order by column must be a function");
-  }
-  if (!Array.isArray(source) && !utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+  if (keySelector == null || keySelector == undefined) {
+    throw new Error('keySelector is null or undefined');
   }
 
-  let sortedResults = null;
+  if (!(keySelector instanceof Function)) {
+    throw new Error('keySelector must be a function');
+  }
 
-  sortedResults = toArray(source).sort((a, b) => orderByFunction(a) > orderByFunction(b));
+  if (!utils.isGenerator(source)) {
+    source = asEnumerable(source);
+  }
+
+  if (!(comparer instanceof Function)) {
+    comparer = (a, b) => {
+      if (a > b) return 1;
+      if (a == b) return 0;
+      return -1;
+    };
+  }
+
+  let sortedResults = toArray(source).sort((a, b) => comparer(keySelector(a), keySelector(b)));
 
   for (let index = 0; index < sortedResults.length; index++) {
     let element = sortedResults[index];

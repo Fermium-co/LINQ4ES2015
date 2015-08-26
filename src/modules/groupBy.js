@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
-import toLookup from "./toLookup";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
+import toLookup from './toLookup';
 
 export default function* (source, keySelector, elementSelector, resultSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length < 5) {
@@ -13,13 +13,13 @@ export default function* (source, keySelector, elementSelector, resultSelector, 
     source = this;
   }
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (keySelector == null || keySelector == undefined) {
-    throw new Error("keySelector is null or undefined");
+    throw new Error('keySelector is null or undefined');
   }
   if (elementSelector == null || elementSelector == undefined) {
-    throw new Error("elementSelector is null or undefined");
+    throw new Error('elementSelector is null or undefined');
   }
 
   if (!utils.isGenerator(source)) {
@@ -27,10 +27,10 @@ export default function* (source, keySelector, elementSelector, resultSelector, 
   }
 
   if (!(keySelector instanceof Function)) {
-    throw new Error("keySelector must be a Function");
+    throw new Error('keySelector must be a Function');
   }
   if (!(elementSelector instanceof Function)) {
-    throw new Error("elementSelector must be a Function");
+    throw new Error('elementSelector must be a Function');
   }
 
   if (!(comparer instanceof Function)) {
@@ -40,7 +40,7 @@ export default function* (source, keySelector, elementSelector, resultSelector, 
     resultSelector = undefined;
   }
 
-  let lookup = source.toLookup(keySelector, elementSelector, comparer);
+  let lookup = toLookup(source, keySelector, elementSelector, comparer);
   for (let i = 0; i < lookup.length; i++) {
     let item = lookup[i];
     yield resultSelector ? resultSelector(item.key, item.elements) : item;

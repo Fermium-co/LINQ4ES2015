@@ -1,22 +1,26 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
     predicate = source;
     source = this;
   }
+  
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
+  
   if (Array.isArray(source)) {
-    //if (!predicate) return source[0];
-    source = asEnumerable(source);
+    if (source.length !== 0 && !predicate) {
+      return source[0];
+    }
   }
+  
   if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+    source = asEnumerable(source);
   }
 
   if (!(predicate instanceof Function)) {
@@ -26,7 +30,7 @@ export default function (source, predicate) {
   let next = source.next();
   if (!predicate) {
     if (next.done) {
-      throw new Error("Sequence is empty");
+      throw new Error('Sequence is empty');
     }
     return next.value;
   }
@@ -37,5 +41,5 @@ export default function (source, predicate) {
     }
     next = source.next();
   }
-  throw new Error("Sequence contains no matching element");
+  throw new Error('Sequence contains no matching element');
 };

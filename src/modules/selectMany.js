@@ -1,39 +1,41 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable"
+import utils from './utils';
+import asEnumerable from './asEnumerable'
 
-export default function* (source, projection) {
-  if (this !== undefined && this !== null && arguments.length < 2) {
-    projection = source;
+export default function* (source, collectionSelector, resultSelector) {
+  if (this !== undefined && this !== null && arguments.length < 3) {
+    resultSelector = collectionSelector;
+    collectionSelector = source;
     source = this;
   }
+
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
-  if (!(projection instanceof Function)) {
-    throw new Error("projection format must be a function");
+  if (collectionSelector == null || collectionSelector == undefined) {
+    throw new Error('collectionSelector is null or undefined');
   }
-  if (Array.isArray(source)) {
+
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  if (!utils.isGenerator(source)) {
-    throw new Error("source must be an enumerable");
+  if (!(collectionSelector instanceof Function)) {
+    throw new Error('collectionSelector must be a function');
   }
 
   let next = source.next();
   let index = 0;
   while (!next.done) {
-    let innerEnumerable = projection(next.value, index);
+    let innerEnumerable = collectionSelector(next.value, index++);
     if (!utils.isGenerator(innerEnumerable)) {
       innerEnumerable = asEnumerable(innerEnumerable);
     }
     let innerNext = innerEnumerable.next();
     while (!innerNext.done) {
-      yield innerNext.value;
+      yield resultSelector ? resultSelector(innerNext.value, next.value) : innerNext.value;
       innerNext = innerEnumerable.next();
     }
     next = source.next();
-    index++;
   }
 };

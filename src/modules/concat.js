@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function* (firstSource, secondSource) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -9,18 +9,12 @@ export default function* (firstSource, secondSource) {
     firstSource = this;
   }
   if (firstSource == null || firstSource == undefined) {
-    throw new Error("first source is null or undefined");
+    throw new Error('first source is null or undefined');
   }
   if (secondSource == null || secondSource == undefined) {
-    throw new Error("second source is null or undefined");
+    throw new Error('second source is null or undefined');
   }
-  if (!utils.isGenerator(firstSource) && !Array.isArray(firstSource)) {
-    throw new Error("first source must be either an enumerable or an array");
-  }
-  if (!utils.isGenerator(secondSource) && !Array.isArray(secondSource)) {
-    throw new Error("second source must be either an enumerable or an array");
-  }
-
+  
   if (!utils.isGenerator(firstSource)) {
     firstSource = asEnumerable(firstSource);
   }

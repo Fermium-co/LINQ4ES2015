@@ -1,24 +1,36 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import aggregate from "./aggregate";
-import asEnumerable from "./asEnumerable";
-import where from "./where";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
-export default function (source, predicate) {
+export default function (source, selector) {
   if (this !== undefined && this !== null && arguments.length < 2) {
-    predicate = source;
+    selector = source;
     source = this;
   }
-  if (!utils.isGenerator(source))
+
+  if (source == null || source == undefined) {
+    throw new Error('source is null or undefined');
+  }
+
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
-  let sum = 0;
+  }
+
+  if (!(selector instanceof Function)) {
+    selector = undefined;
+  }
+
+  let total = 0;
   let count = 0;
-  if (typeof predicate == "function") {
-    sum = aggregate(where(source, predicate), 0, (result, current) => { count++; return result += current; });
+  let next = source.next();
+  if (next.done) {
+    throw new Error('sequence is empty');
   }
-  else {
-    sum = aggregate(source, 0, (result, current) => { count++; return result += current; });
+  while (!next.done) {
+    count++;
+    total += selector ? selector(next.value) : next.value;
+    next = source.next();
   }
-  return sum / count;
+  return total / count;
 };

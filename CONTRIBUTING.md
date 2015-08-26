@@ -4,7 +4,7 @@ You will need to complete a Contributor License Agreement (CLA). Briefly, this a
 
 ## Reporting Bugs
 
-* Always update to the most recent master release; the bug may already be resolved.
+* Always update to the most recent release; the bug may already be resolved.
 * Search for similar issues in the issues list for this repo; it may already be an identified problem.
 
 ## Fork and branch
@@ -33,8 +33,9 @@ The work you are doing for your pull request should not be done in the master br
 
 All code contributed to this project should adhere to a consistent style, so please keep these in mind before you submit your Pull Requests:
 
-* Space indentation, size of 2
+* Space indentation, size of 2.
 * Semicolons are nice. Use them.
-* No trailing whitespace
-* Be JSHint Valid
+* Single quotes.
+* No trailing whitespace.
+* Be JSHint Valid.
  

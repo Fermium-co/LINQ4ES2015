@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
-import toLookup from "./toLookup";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
+import toLookup from './toLookup';
 
 export default function* (outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer) {
   if (this !== undefined && this !== null && arguments.length < 6) {
@@ -13,20 +13,21 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     inner = outer;
     outer = this;
   }
+
   if (outer == null || outer == undefined) {
-    throw new Error("outer is null or undefined");
+    throw new Error('outer is null or undefined');
   }
   if (inner == null || inner == undefined) {
-    throw new Error("inner is null or undefined");
+    throw new Error('inner is null or undefined');
   }
   if (outerKeySelector == null || outerKeySelector == undefined) {
-    throw new Error("outerKeySelector is null or undefined");
+    throw new Error('outerKeySelector is null or undefined');
   }
   if (innerKeySelector == null || innerKeySelector == undefined) {
-    throw new Error("innerKeySelector is null or undefined");
+    throw new Error('innerKeySelector is null or undefined');
   }
   if (resultSelector == null || resultSelector == undefined) {
-    throw new Error("resultSelector is null or undefined");
+    throw new Error('resultSelector is null or undefined');
   }
 
   if (!utils.isGenerator(outer)) {
@@ -37,26 +38,29 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
   }
 
   if (!(outerKeySelector instanceof Function)) {
-    throw new Error("outerKeySelector must be a Function");
+    throw new Error('outerKeySelector must be a Function');
   }
   if (!(innerKeySelector instanceof Function)) {
-    throw new Error("innerKeySelector must be a Function");
+    throw new Error('innerKeySelector must be a Function');
   }
 
   if (!(resultSelector instanceof Function)) {
-    throw new Error("resultSelector must be a Function");
+    throw new Error('resultSelector must be a Function');
   }
 
   if (!(comparer instanceof Function)) {
     comparer = (a, b) => a == b;
   }
 
-  let lookupArray = inner.toLookup(innerKeySelector, a => a, comparer);
+  let lookupArray = toLookup(inner, innerKeySelector, a => a, comparer);
   let outerEnumerator = outer.next();
   while (!outerEnumerator.done) {
     let outerElement = outerEnumerator.value;
     let key = outerKeySelector(outerElement);
     let innerElements = findByKey(lookupArray, key, comparer);
+    if (innerElements == null || innerElements == undefined) {
+      innerElements = [];
+    }
     yield resultSelector(outerElement, innerElements);
     outerEnumerator = outer.next();
   }
@@ -65,7 +69,7 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
 function findByKey(array, key, comparer) {
   for (let i = 0; i < array.length; i++) {
     let item = array[i];
-    if (comparer(item.key, key)){
+    if (comparer(item.key, key)) {
       return item.elements;
     }
   }

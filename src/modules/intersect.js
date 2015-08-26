@@ -1,7 +1,8 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
+import toArray from './toArray';
 
 export default function* (first, second, comparer) {
   if (this !== undefined && this !== null && arguments.length < 3) {
@@ -10,10 +11,10 @@ export default function* (first, second, comparer) {
     first = this;
   }
   if (first == null || first == undefined) {
-    throw new Error("first is null or undefined");
+    throw new Error('first is null or undefined');
   }
   if (second == null || second == undefined) {
-    throw new Error("second is null or undefined");
+    throw new Error('second is null or undefined');
   }
 
   if (!utils.isGenerator(first)) {
@@ -27,7 +28,7 @@ export default function* (first, second, comparer) {
     comparer = (a, b) => a == b;
   }
 
-  let result = second.toArray();
+  let result = toArray(second);
   let next = first.next();
   while (!next.done) {
     if (popDistinct(result, next.value, comparer)) {

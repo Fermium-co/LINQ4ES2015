@@ -1,4 +1,4 @@
-import Linq from 'Fermium-co/LINQ4ES2015/linq';
+import Linq from 'linq4es2015/linq';
 Linq.setExtensions();
 
 let count = 0;
@@ -86,7 +86,7 @@ let skills = employeesIncudeSkills.asEnumerable()
   .selectMany(emp => emp.skills)
   .toArray();
 
-console.log("*** using selectMany method to combine skills ...");
+console.log('*** using selectMany method to combine skills ...');
 for (let index = 0; index < skills.length; index++)
   console.log(skills[index]);
   
@@ -119,10 +119,10 @@ let groups = stock.asEnumerable()
   .groupBy(
     s => s.category, //key selector
     s => s.name, //element selector
-    (key, elements) => key + " : " + "[" + elements.join(",") + "]")//result selector
+    (key, elements) => key + ' : ' + '[' + elements.join(',') + ']')//result selector
   .toArray();
 
-console.log("*** using groupBy method to group category property ...");
+console.log('*** using groupBy method to group category property ...');
 for (let index = 0; index < groups.length; index++)
   console.log(groups[index]);
   
@@ -144,15 +144,15 @@ let joints = stock.asEnumerable()
     stockItem => stockItem.category,
     cat => cat.name,
     (stockItem, cat) =>
-      "[" +
-      "Name = " + stockItem.name + "," +
-      "Price = " + stockItem.price + "," +
-      "Category = " + cat.name + "," +
-      "MajorCategory = " + cat.majorCategory +
-      "]"
+      '[' +
+      'Name = ' + stockItem.name + ',' +
+      'Price = ' + stockItem.price + ',' +
+      'Category = ' + cat.name + ',' +
+      'MajorCategory = ' + cat.majorCategory +
+      ']'
     ).toArray();
 
-console.log("*** using join method for joining stockItems and categories");
+console.log('*** using join method for joining stockItems and categories');
 
 for (let index = 0; index < joints.length; index++)
   console.log(joints[index]);
@@ -185,10 +185,10 @@ for (let index = 0; index < groupJoins.length; index++) {
   for (let stockIndex = 0; stockIndex < cat.stocks.length; stockIndex++) {
     let stock = cat.stocks[stockIndex];
 
-    console.log("[" +
-      "Name = " + stock.name + "," +
-      "Price = " + stock.price +
-      "]")
+    console.log('[' +
+      'Name = ' + stock.name + ',' +
+      'Price = ' + stock.price +
+      ']')
   }
 }
 
@@ -339,5 +339,225 @@ let exceptWithComparer = set1.asEnumerable().except(set2, (a, b) => a.toLowerCas
 console.log('Except method with comparer ...')
 
 console.log('Result is empty');
-    
-    
+
+/*AsEnumerable
+  This method convert an array to generator for to execute  deferred query
+   */
+let enumerable = [1, 2, 3, 4, 5, 6, 7, 8].asEnumerable();
+/*ToArray
+This method extracts all of items from source (enumerable) and returns an array.
+Query of this method will be excuted immediately and result copied into the new array.
+ */
+
+let array = enumerable.toArray();
+
+console.log('*** array after executing toArray method ...');
+
+for (var index = 0; index < array.length; index++)
+  console.log(array[index]);
+  
+ 
+/*First
+This method returns the first item from sequence. We can use this method without argument.
+
+ */
+
+let items = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
+
+let first = items.asEnumerable().first();
+
+console.log('*** return first element of the array');
+
+console.log(first);
+
+/*
+if there are no items in the in the sequence the method throws an exception.
+ */
+
+let empty = [];
+try {
+  first = empty.asEnumerable().first();
+}
+catch (err) {
+  console.error(err.message);
+}
+
+ 
+/*
+You can use argument as a predicate. The returned value is the first item of the 
+list that the condition returns true. 
+*/
+
+first = items.asEnumerable().first(item => item.length == 5);
+
+console.log('first item is equals 5 length => ' + first);
+
+/*FirstOrDefault
+This method is similar to first method , However if no item exists , it does not throw an exception.
+It returns null.
+ */
+
+first = items.asEnumerable().firstOrDefault();
+
+console.log(first);
+
+first = empty.asEnumerable().firstOrDefault();
+console.log(first);
+
+/*Last
+This method is similar to first. However instead of returning the first item in a sequence it return last item.
+ */
+
+let last = items.asEnumerable().last();
+
+console.log(last);
+
+last = items.asEnumerable().last(item => item.length == 5);
+
+console.log(last);
+ 
+ 
+/*LastOrDefault
+this method is similar to FirstOrDefault . if last item of sequence or last items which predicate condition is true 
+be empty, it returns null.
+ */
+
+console.log(items.asEnumerable().lastOrDefault());
+console.log(empty.asEnumerable().lastOrDefault());
+console.log(items.asEnumerable().lastOrDefault(item => item.lenght == 5));
+console.log(items.asEnumerable().lastOrDefault(item => item.lenght == 2));
+
+
+/*Single
+This method retuen single result. When you expect sequence contains one item . 
+If sequence has more than one element or is empty the method throws an exception.
+*/
+
+let singleList = ['one'];
+
+let single = singleList.asEnumerable().single();
+
+console.log(single);
+
+try {
+  single = empty.asEnumerable().single();
+}
+catch (err) {
+  console.error(err.message);
+}
+
+single = items.asEnumerable().single(item => item.indexOf('O') === 0);
+
+try {
+  single = items.asEnumerable().single(item => item.indexOf('F') === 0);
+}
+catch (err) {
+  console.error(err.message);
+}
+
+
+/*SingleOrDefault
+This method similar to single method . However if the sequence or result 
+predicate fucntion is empty returns null instead of throwing exception
+ */
+
+let singleOrDefault = singleList.asEnumerable().singleOrDefault();
+console.log(singleOrDefault);
+
+try {
+  singleOrDefault = items.asEnumerable().singleOrDefault();
+}
+catch (err) {
+  console.error(err.message);
+}
+
+singleOrDefault = items.asEnumerable().singleOrDefault(item => item.indexOf('E') === 0);
+console.log(singleOrDefault);
+
+singleOrDefault = items.asEnumerable().singleOrDefault(item => item.indexOf('X') === 0);
+console.log(singleOrDefault);
+
+try {
+  singleOrDefault = items.asEnumerable().singleOrDefault(item => item.indexOf('F') === 0);
+}
+catch (err) {
+  console.error(err.message);
+}
+
+
+/*ElementAt
+This method takes an index as an argument then return an item related to its index.
+ */
+
+let elementAt = items.asEnumerable().elementAt(5);
+console.log(elementAt);
+  
+/*
+If collection is empty or index is out of range an exception will be thrown.
+ */
+
+try {
+  elementAt = empty.asEnumerable().elementAt(5);
+}
+catch (err) {
+  console.error(err.message);
+}
+ 
+/*ElementAtOrDefault
+This method is similar to elementAt . However if an collection is empty or index is invalid instead of 
+throwing an exception return value will be null. 
+ */
+
+let elementAtOrDefault = items.asEnumerable().elementAtOrDefault(5);
+console.log(elementAtOrDefault);
+
+elementAtOrDefault = empty.asEnumerable().elementAtOrDefault(5);
+console.log(elementAtOrDefault);
+  
+/*DefaultIfEmpty
+This method return takes default value as an argument and checks if collection is empty returns defaul value 
+otherwise returns new instance of souce list.
+ */
+
+let defaultIfEmptyResult = items.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
+   
+/*
+If source colllection is empty , a new collection will be generated and new item will be added to it.
+if default value argument is not null new item is default value otherwise new item is undefined.
+ */
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty('default value').toArray();
+console.log(defaultIfEmptyResult);
+
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
+     
+     
+/*
+Left Join
+*/
+
+let authorsData = [
+  { authorId: 1, name: "John Smith" },
+  { authorId: 2, name: "Harry Gold" },
+  { authorId: 3, name: "Ronald Schwimmer" },
+  { authorId: 4, name: "Jerry Mawler" }
+];
+
+let booksData =
+  [
+    { authorId: 1, title: "Little Blue Riding Hood" },
+    { authorId: 3, title: "The Three Little Piggy Banks" },
+    { authorId: 1, title: "Snow Black" },
+    { authorId: 2, title: "My Rubber Duckie" },
+    { authorId: 2, title: "He Who Doesn't Know His Name" },
+    { authorId: 3, title: "Hanzel and Brittle" }
+  ];
+
+let leftJoinResults = authorsData.asEnumerable().groupJoin(booksData, author => author.authorId, book => book.authorId,
+  (author, booksByAuthor) => ({ authorName: author.name, books: booksByAuthor }))
+  .selectMany(authorBooks => authorBooks.books.asEnumerable().defaultIfEmpty(authorBooks.books, { title: 'None' }), (book, author) => ({ authorName: author.authorName, title: book.title }))
+  .toArray();
+
+console.warn(leftJoinResults);

@@ -1,28 +1,28 @@
 /* global describe, it, expect, spyOn, jasmine, toThrowError */
 
-"use strict";
+'use strict';
 
-import linq from "../../src/linq";
-import range from "../../src/modules/range";
+import range from '../../src/modules/range';
+import toArray from '../../src/modules/toArray';
 
-describe("range", () => {
-  it("should throw an exception when count is negative", () => {
-    expect(() => range(1, -5).toArray()).toThrowError("count may not be negative");
-    expect(() => range(-1, -5).toArray()).toThrowError("count may not be negative");
-    expect(range(-1, 3).toArray()).toEqual([-1, 0, 1]);
-  });
-
-  it("should throw an exception when count or start value are not number", () => {
-    expect(() => range(5, {}).toArray()).toThrowError("count must be a number type");
-    expect(() => range({}, 5).toArray()).toThrowError("start must be a number type");
+describe('range', () => {  
+  it('should throw an exception when start is not a number', () => {
+    expect(() => toArray(range({}, 5))).toThrowError('start must be a number');
   });
   
-  it("should return simple valid iteration of numbers", () => {
-    expect(range(1, 5).toArray()).toEqual([1, 2, 3, 4, 5]);
+  it('should throw an exception when count is not a number', () => {
+    expect(() => toArray(range(5, {}))).toThrowError('count must be a number');
+  });
+  
+  it('should throw an exception when count is negative', () => {
+    expect(() => toArray(range(1, -1))).toThrowError('count may not be negative');
+  });
+  
+  it('should return simple valid iteration of numbers', () => {
+    expect(toArray(range(1, 5))).toEqual([1, 2, 3, 4, 5]);
   });
 
-  it("should return an empty array with zero items", () => {
-    expect(range(1, 0).toArray()).toEqual([]);
+  it('should return an empty array with zero items', () => {
+    expect(toArray(range(1, 0))).toEqual([]);
   });
-
 });

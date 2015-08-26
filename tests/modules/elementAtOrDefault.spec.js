@@ -1,43 +1,44 @@
 /* global describe, it, expect, spyOn, jasmine, toThrowError */
 
-"use strict";
+'use strict';
 
-import linq from "../../src/linq";
-import elementAtOrDefault from "../../src/modules/elementAtOrDefault";
+import elementAtOrDefault from '../../src/modules/elementAtOrDefault';
+import testUtils from '../testUtils';
+import asEnumerable from '../../src/modules/asEnumerable';
 
-describe("elementAtOrDefault", () => {
-  it("should throw an exception when the source is null or undefined", () => {
-    expect(() => elementAtOrDefault(null)).toThrowError("source is null or undefined");
-    expect(() => elementAtOrDefault(undefined)).toThrowError("source is null or undefined");
+describe('elementAtOrDefault', () => {
+  testUtils.setPrototype('elementAtOrDefault', elementAtOrDefault);
+  
+  it('should throw an exception when the source is null or undefined', () => {
+    expect(() => elementAtOrDefault(null)).toThrowError('source is null or undefined');
+    expect(() => elementAtOrDefault(undefined)).toThrowError('source is null or undefined');
   });
 
-  it("should throw an exception when the source is not an enumerable", () => {
-    expect(() => elementAtOrDefault({})).toThrowError("source must be an enumerable");
+  it('should return null when the index is not a number', () => {
+    expect(elementAtOrDefault([], null)).toEqual(null);
+    expect(elementAtOrDefault([], undefined)).toEqual(null);
+    expect(elementAtOrDefault([], false)).toEqual(null);
+    expect(elementAtOrDefault([], '1')).toEqual(null);
+    expect(elementAtOrDefault([], {})).toEqual(null);
   });
 
-  it("should throw an exception when the index is not a number", () => {
-    expect(() => elementAtOrDefault([1], {})).toThrowError("index must be a number");
+  it('should return null when the index is negetive', () => {
+    expect(elementAtOrDefault([], -1)).toEqual(null);
   });
 
-  it("should return valid item", () => {
-    expect([1, 3, 5].asEnumerable().elementAtOrDefault(2)).toEqual(5);
-    expect([1, 2, 3, 4, 5, 6].asEnumerable().where(num => num % 2 == 0).elementAtOrDefault(2)).toEqual(6);
+  it('should return null when the enumerable has no elements', () => {
+    expect(elementAtOrDefault([], 0)).toEqual(null);
+  });
+  
+  it('should throw an exception when the source can not be enumerated', () => {
+    expect(() => elementAtOrDefault(123, 0)).toThrowError('source can not be enumerated');
+    expect(() => elementAtOrDefault(false, 0)).toThrowError('source can not be enumerated');
+  });
+
+  it('should return the element at specified index', () => {
+    expect(asEnumerable([1, 3, 5]).elementAtOrDefault(2)).toEqual(5);
     expect(elementAtOrDefault([1, 3, 5], 0)).toEqual(1);
-    expect([1, 3, 5].asEnumerable().elementAtOrDefault(6)).toEqual(null);
-    expect([1, 2, 3, 4, 5, 6].asEnumerable().where(num => num % 2 == 0).elementAtOrDefault(6)).toEqual(null);
+    expect(asEnumerable([1, 3, 5]).elementAtOrDefault(6)).toEqual(null);
     expect(elementAtOrDefault([1, 3, 5], 6)).toEqual(null);
   });
-
-  it("should execute where predicate as much as needed to return valid item", () => {
-    let fakeObject = { fakePredicate: num => num % 2 == 0 };
-    spyOn(fakeObject, "fakePredicate").and.callThrough();
-    expect([1, 2, 3, 4, 5, 6].asEnumerable().where(fakeObject.fakePredicate).elementAtOrDefault(1)).toEqual(4);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(1, 0);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(2, 1);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(3, 2);
-    expect(fakeObject.fakePredicate).toHaveBeenCalledWith(4, 3);
-    expect(fakeObject.fakePredicate).not.toHaveBeenCalledWith(5, 4);
-    expect(fakeObject.fakePredicate.calls.count()).toBe(4);
-  });
-
 });

@@ -1,20 +1,19 @@
-"use strict";
+'use strict';
 
-export default {
+let utils = {
 	/*https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction
 	Note that GeneratorFunction is not a global object. It could be obtained by evaluating the following code:*/
   GeneratorFunctionPrototype: (function* () { }).constructor.prototype,
   GeneratorFunctionProto: (function* () { }).prototype.__proto__,
 
-  isGenerator: function (source) {
+  isGenerator: (source) => {
     if (source == null || source == undefined) {
       return false;
     }
-
-    return source instanceof this.GeneratorFunctionPrototype;
+    return source instanceof utils.GeneratorFunctionPrototype;
   },
 
-  safePush: function (array, item, comparer) {
+  safePush: (array, item, comparer) => {
     for (let i = 0; i < array.length; i++) {
       let element = array[i];
       if (comparer(element, item)) {
@@ -25,3 +24,5 @@ export default {
     return true;
   }
 };
+
+export default utils;

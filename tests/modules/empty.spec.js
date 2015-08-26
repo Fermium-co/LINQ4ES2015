@@ -1,13 +1,12 @@
 /* global describe, it, expect, spyOn, jasmine, toThrowError */
 
-"use strict";
+'use strict';
 
-import linq from "../../src/linq";
-import empty from "../../src/modules/empty";
+import empty from '../../src/modules/empty';
+import toArray from '../../src/modules/toArray';
 
-describe("empty", () => {
-	it("should return an empty array", () => {
-		expect(empty().toArray()).toEqual([]);
+describe('empty', () => {
+	it('should return an empty array', () => {
+		expect(toArray(empty())).toEqual([]);
 	});
-
 });
