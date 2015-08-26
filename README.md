@@ -10,6 +10,8 @@ To install LINQ4ES2015, [Node JS](https://nodejs.org) is required.
 
 If you've not configured [jspm](http://jspm.io) yet, follow [our blog post](http://fermium.co/post/1c6546ba-891d-479d-8731-896fbbae61fa/JSPM)
 
+Note: Latest version of jspm must be installed on your machine, try running *npm update jspm -g*
+
 Go to the root directory of the project and run the following command to install LINQ4ES2015:
 
     jspm install linq4es2015
