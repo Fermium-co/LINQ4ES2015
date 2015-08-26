@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
+import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function* (source, comparer) {
@@ -12,7 +12,7 @@ export default function* (source, comparer) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);

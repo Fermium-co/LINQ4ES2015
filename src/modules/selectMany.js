@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable"
+import utils from './utils';
+import asEnumerable from './asEnumerable'
 
 export default function* (source, collectionSelector, resultSelector) {
   if (this !== undefined && this !== null && arguments.length < 3) {
@@ -11,17 +11,17 @@ export default function* (source, collectionSelector, resultSelector) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (collectionSelector == null || collectionSelector == undefined) {
-    throw new Error("collectionSelector is null or undefined");
+    throw new Error('collectionSelector is null or undefined');
   }
 
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
   if (!(collectionSelector instanceof Function)) {
-    throw new Error("collectionSelector must be a function");
+    throw new Error('collectionSelector must be a function');
   }
 
   let next = source.next();

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function (source, index) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -10,7 +10,7 @@ export default function (source, index) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (typeof index !== 'number') {
     throw new Error('index must be a number');
@@ -21,7 +21,7 @@ export default function (source, index) {
 
   if (Array.isArray(source)) {
     if (source.length === 0) {
-      throw new Error("sequence contains no elements");
+      throw new Error('sequence contains no elements');
     } else if (source.length <= index) {
       throw new Error('index is out of range');
     } else if (source.length > index) {
@@ -35,7 +35,7 @@ export default function (source, index) {
 
   let next = source.next();
   if (next.done) {
-    throw new Error("sequence contains no elements");
+    throw new Error('sequence contains no elements');
   }
   let currentIndex = 0;
   while (!next.done) {
@@ -45,5 +45,5 @@ export default function (source, index) {
     next = source.next();
     currentIndex++;
   }
-  throw new Error("index is out of range");
+  throw new Error('index is out of range');
 };

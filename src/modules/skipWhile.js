@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import util from "./utils";
-import asEnumerable from "./asEnumerable";
+import util from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function* (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -9,10 +9,10 @@ export default function* (source, predicate) {
     source = this;
   }
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (predicate == null || predicate == undefined) {
-    throw new Error("predicate is null or undefined");
+    throw new Error('predicate is null or undefined');
   }
 
   if (!util.isGenerator(source)) {

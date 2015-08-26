@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
+import utils from './utils';
 
 export default function* (source) {
   if (this !== null && this !== undefined && arguments.length < 1) {
@@ -8,10 +8,10 @@ export default function* (source) {
   }
   
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (utils.isGenerator(source)) {
-    throw new Error("enumerable may not be enumerated twice");
+    throw new Error('enumerable may not be enumerated twice');
   }
 
   if (Array.isArray(source) || typeof source === 'string' || source instanceof String) {
@@ -26,6 +26,6 @@ export default function* (source) {
     }
   }
   else {
-    throw new Error("source can not be enumerated");
+    throw new Error('source can not be enumerated');
   }
 };

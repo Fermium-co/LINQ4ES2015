@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function* (first, second, resultSelector) {
   if (this !== undefined && this !== null && arguments.length < 3) {
@@ -11,13 +11,13 @@ export default function* (first, second, resultSelector) {
   }
 
   if (first == null || first == undefined) {
-    throw new Error("first source is null or undefined");
+    throw new Error('first source is null or undefined');
   }
   if (second == null || second == undefined) {
-    throw new Error("second source is null or undefined");
+    throw new Error('second source is null or undefined');
   }
   if (resultSelector == null || resultSelector == undefined) {
-    throw new Error("resultSelector is null or undefined");
+    throw new Error('resultSelector is null or undefined');
   }
 
   if (!utils.isGenerator(first)) {

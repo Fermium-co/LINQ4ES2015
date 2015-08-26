@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -9,12 +9,12 @@ export default function (source, predicate) {
     source = this;
   }
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (Array.isArray(source)) {
     if (!predicate) {
       if (source.length === 0) return null;
-      if (source.length !== 1) throw new Error("Sequence contains more than one element");
+      if (source.length !== 1) throw new Error('Sequence contains more than one element');
       return source[0];
     }
   }
@@ -34,7 +34,7 @@ export default function (source, predicate) {
     }
     next = source.next();
     if (!next.done) {
-      throw new Error("Sequence contains more than one element");
+      throw new Error('Sequence contains more than one element');
     }
     return result;
   }
@@ -43,7 +43,7 @@ export default function (source, predicate) {
   while (!next.done) {
     if (predicate(next.value)) {
       if (found) {
-        throw new Error("Sequence contains more than one matching element");
+        throw new Error('Sequence contains more than one matching element');
       }
       found = true;
       result = next.value;

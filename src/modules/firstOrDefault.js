@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function (source, predicate) {
   if (this !== undefined && this !== null && arguments.length < 2) {
@@ -10,7 +10,7 @@ export default function (source, predicate) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   
   if (Array.isArray(source)) {

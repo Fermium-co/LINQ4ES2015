@@ -86,7 +86,7 @@ let skills = employeesIncudeSkills.asEnumerable()
   .selectMany(emp => emp.skills)
   .toArray();
 
-console.log("*** using selectMany method to combine skills ...");
+console.log('*** using selectMany method to combine skills ...');
 for (let index = 0; index < skills.length; index++)
   console.log(skills[index]);
   
@@ -119,10 +119,10 @@ let groups = stock.asEnumerable()
   .groupBy(
     s => s.category, //key selector
     s => s.name, //element selector
-    (key, elements) => key + " : " + "[" + elements.join(",") + "]")//result selector
+    (key, elements) => key + ' : ' + '[' + elements.join(',') + ']')//result selector
   .toArray();
 
-console.log("*** using groupBy method to group category property ...");
+console.log('*** using groupBy method to group category property ...');
 for (let index = 0; index < groups.length; index++)
   console.log(groups[index]);
   
@@ -144,15 +144,15 @@ let joints = stock.asEnumerable()
     stockItem => stockItem.category,
     cat => cat.name,
     (stockItem, cat) =>
-      "[" +
-      "Name = " + stockItem.name + "," +
-      "Price = " + stockItem.price + "," +
-      "Category = " + cat.name + "," +
-      "MajorCategory = " + cat.majorCategory +
-      "]"
+      '[' +
+      'Name = ' + stockItem.name + ',' +
+      'Price = ' + stockItem.price + ',' +
+      'Category = ' + cat.name + ',' +
+      'MajorCategory = ' + cat.majorCategory +
+      ']'
     ).toArray();
 
-console.log("*** using join method for joining stockItems and categories");
+console.log('*** using join method for joining stockItems and categories');
 
 for (let index = 0; index < joints.length; index++)
   console.log(joints[index]);
@@ -185,10 +185,10 @@ for (let index = 0; index < groupJoins.length; index++) {
   for (let stockIndex = 0; stockIndex < cat.stocks.length; stockIndex++) {
     let stock = cat.stocks[stockIndex];
 
-    console.log("[" +
-      "Name = " + stock.name + "," +
-      "Price = " + stock.price +
-      "]")
+    console.log('[' +
+      'Name = ' + stock.name + ',' +
+      'Price = ' + stock.price +
+      ']')
   }
 }
 

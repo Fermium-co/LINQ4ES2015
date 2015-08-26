@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
-import toArray from "./toArray";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
+import toArray from './toArray';
 
 export default function* (source, keySelector, comparer) {
   if (this !== undefined && this !== null && arguments.length < 3) {
@@ -12,14 +12,14 @@ export default function* (source, keySelector, comparer) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (keySelector == null || keySelector == undefined) {
-    throw new Error("keySelector is null or undefined");
+    throw new Error('keySelector is null or undefined');
   }
 
   if (!(keySelector instanceof Function)) {
-    throw new Error("keySelector must be a function");
+    throw new Error('keySelector must be a function');
   }
 
   if (!utils.isGenerator(source)) {

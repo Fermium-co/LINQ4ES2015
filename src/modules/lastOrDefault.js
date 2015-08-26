@@ -10,7 +10,7 @@ export default function (source, predicate) {
   }
   
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   
   if (Array.isArray(source)) {
