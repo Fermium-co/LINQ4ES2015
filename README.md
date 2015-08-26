@@ -73,7 +73,7 @@ Note that you can use any web server you prefer.
 
 ***Supported methods***:
 
-**Click on each method hyperlink to see description and samples.**
+**Click on each method hyperlink to see description and samples. Read [Home Wiki](https://github.com/Fermium-co/LINQ4ES2015/wiki/Home) first**
 
 * **Projection and restriction methods**:
 
