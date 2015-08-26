@@ -33,8 +33,9 @@ The work you are doing for your pull request should not be done in the master br
 
 All code contributed to this project should adhere to a consistent style, so please keep these in mind before you submit your Pull Requests:
 
-* Space indentation, size of 2
+* Space indentation, size of 2.
 * Semicolons are nice. Use them.
-* No trailing whitespace
-* Be JSHint Valid
+* Single quotes.
+* No trailing whitespace.
+* Be JSHint Valid.
  
