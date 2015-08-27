@@ -100,7 +100,7 @@ Note that you can use any web server you prefer.
     [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), [skipWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile), [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), [takeWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile) 
 * **Enumerable methods**:
 
-    [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/), empty, range, repeat
+    [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/), [empty](https://github.com/Fermium-co/LINQ4ES2015/wiki/Empty), [range](https://github.com/Fermium-co/LINQ4ES2015/wiki/Range), [repeat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Repeat)
 * **Other methods**:
 
     zip, toLooup, [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), sequenceEqual
