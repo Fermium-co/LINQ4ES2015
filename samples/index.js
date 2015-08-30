@@ -188,7 +188,7 @@ for (let index = 0; index < groupJoins.length; index++) {
     console.log('[' +
       'Name = ' + stock.name + ',' +
       'Price = ' + stock.price +
-      ']')
+      ']');
   }
 }
 
@@ -271,7 +271,7 @@ let distinct1 = set1.asEnumerable().distinct().toArray();
 
 console.log('Distinct method remove duplicated items ...');
 
-for (var index = 0; index < distinct1.length; index++)
+for (let index = 0; index < distinct1.length; index++)
   console.log(distinct1[index]);
     
 /*The above sample uses the default comparer for the data type being processed. You can use an alternative 
@@ -283,7 +283,7 @@ let distinct2 = set1.asEnumerable().distinct((a, b) => a.toLowerCase() === b.toL
   .toArray();
 
 console.log('Distinct method remove duplicated items using comparer ...');
-for (var index = 0; index < distinct2.length; index++)
+for (let index = 0; index < distinct2.length; index++)
   console.log(distinct2[index]);
   
 /*Union
@@ -296,7 +296,7 @@ let set2 = ['a', 'B', 'C', 'D', 'E', 'e', 'F'];
 let union = set1.asEnumerable().union(set2, (a, b) => a.toLowerCase() === b.toLowerCase()).toArray();
 
 console.log('Union method combines two list set1 and set2 as a unique list using comparer ...');
-for (var index = 0; index < union.length; index++)
+for (let index = 0; index < union.length; index++)
   console.log(union[index]);
    
    
@@ -309,7 +309,7 @@ let intersectionWithoutComparer = set1.asEnumerable().intersect(set2).toArray();
 
 console.log('Intersect method without comparer');
 
-for (var index = 0; index < intersectionWithoutComparer.length; index++)
+for (let index = 0; index < intersectionWithoutComparer.length; index++)
   console.log(intersectionWithoutComparer[index]);
 
 console.log('Intersect method with comparer');
@@ -317,7 +317,7 @@ console.log('Intersect method with comparer');
 let intersectWithComparer = set1.asEnumerable().intersect(set2, (a, b) => a.toLowerCase() === b.toLowerCase())
   .toArray();
 
-for (var index = 0; index < intersectWithComparer.length; index++)
+for (let index = 0; index < intersectWithComparer.length; index++)
   console.log(intersectWithComparer[index]);
   
 /*Except
@@ -331,12 +331,12 @@ let exceptWithoutComparer = set1.asEnumerable().except(set2).toArray();
 
 console.log('Except method without comparer ...');
 
-for (var index = 0; index < exceptWithoutComparer.length; index++)
+for (let index = 0; index < exceptWithoutComparer.length; index++)
   console.log(exceptWithoutComparer[index]);
 
 let exceptWithComparer = set1.asEnumerable().except(set2, (a, b) => a.toLowerCase() === b.toLowerCase()).toArray();
 
-console.log('Except method with comparer ...')
+console.log('Except method with comparer ...');
 
 console.log('Result is empty');
 
@@ -353,7 +353,7 @@ let array = enumerable.toArray();
 
 console.log('*** array after executing toArray method ...');
 
-for (var index = 0; index < array.length; index++)
+for (let index = 0; index < array.length; index++)
   console.log(array[index]);
   
  
@@ -539,7 +539,7 @@ the first value will be first item of sequence and the second determines the num
  */
 
 let range = Linq.range(12, 20).toArray();
-for (var index = 0; index < range.length; index++)
+for (let index = 0; index < range.length; index++)
   console.log(range[index]);
      
 /* Return is enumerable and you can execute another query on it. 
@@ -549,7 +549,7 @@ range = Linq.range(12, 20)
   .where(n => n > 15)
   .select(n => n * 1000)
   .toArray();
-for (var index = 0; index < range.length; index++)
+for (let index = 0; index < range.length; index++)
   console.log(range[index]);
      
     
@@ -560,7 +560,7 @@ The result is enumerable and you can execute another query on it.
 
 let repeated = Linq.repeat('Hello', 5).toArray();
 
-for (var index = 0; index < repeated.length; index++)
+for (let index = 0; index < repeated.length; index++)
   console.log(repeated[index]);
   
 /*Empty
@@ -720,7 +720,7 @@ The second overload accepts an argument as selector that the selected property s
  */
 
 average = stock.asEnumerable().average(item => item.price);
-console.log('Avarge price in stockitems => ' + average);
+console.log('Aletge price in stockitems => ' + average);
 
 
 /*Aggregate
@@ -754,8 +754,63 @@ aggregate = value.asEnumerable().aggregate('Z', (acc, next) => acc + ',' + next,
 
 console.log(aggregate);
 
+/*SequenceEqual
+This method accepts 2 collecion as arguments and detemine whether are exact duplicates,
+The basic overload use default comparer
+ */
 
+let value1 = ['A', 'B', 'C', 'D'];
+let value2 = ['A', 'B', 'C', 'D'];
 
+console.log('Is value1 and value2 Equal => ' + value1.asEnumerable().sequenceEqual(value2));
 
+/*
+You can add comprere as an argument.
+ */
+
+value1 = ['A', 'B', 'C', 'D'];
+value2 = ['a', 'b', 'c', 'd'];
+
+console.log('Is value1 and value2 array Equal => ' + value1.asEnumerable()
+  .sequenceEqual(value2, (val1, val2) => val1.toLowerCase() == val2.toLowerCase()));
   
   
+/*ToLookup
+ This method is similar to group by. When executed it extracts a set of key / value pairs from the source sequence.
+  Each element in the resultant collection is a generic Lookup object, which holds the key and 
+  a subsequence containing all of the items that matched the key. Unlike GroupBy, ToLookup 
+  does not use deferred execution.
+ */
+
+let emplist = [
+  { name: 'Bob', department: 'IT', salary: 30000 },
+  { name: 'Dan', department: 'Finance', salary: 22000 },
+  { name: 'Jim', department: 'IT', salary: 32000 },
+  { name: 'Jon', department: 'Finance', salary: 24000 },
+  { name: 'Ken', department: 'Sales', salary: 37000 },
+  { name: 'Liz', department: 'Finance', salary: 24000 },
+  { name: 'Mel', department: 'IT', salary: 40000 },
+  { name: 'Sam', department: 'Sales', salary: 34000 },
+  { name: 'Tim', department: 'Finance', salary: 45000 }
+];
+
+
+
+let lookup = emplist.asEnumerable().toLookup(e => e.department, e => e);
+// debugger;
+
+/*Zip
+Zip cycles through two sequences using deferred execution.
+The items at the same index are paired and each pair is transformed by resulSelector.
+This continues until all of the items in either sequence have been processed.
+If one sequence has more elements than the other, the extra elements are not projected into the new sequence. 
+ */
+
+let integers1 = [1, 2, 3, 4, 5];
+let integers2 = [10, 20, 30, 40, 50, 60];
+
+let zip = integers1.asEnumerable().zip(integers2, (item1, item2) => item1 + item2).toArray();
+
+console.log('zip ....');
+for (let index = 0; index < zip.length; index++)
+  console.log(zip[index]);
