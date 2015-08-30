@@ -104,6 +104,9 @@ export default class Linq {
     return range.apply(this, arguments);
   }
 
+  static empty() {
+    return empty.apply(this, arguments);
+  }
   static asEnumerable() {
     return asEnumerable.apply(this, arguments);
   }

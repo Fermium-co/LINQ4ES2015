@@ -533,7 +533,43 @@ console.log(defaultIfEmptyResult);
 defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty().toArray();
 console.log(defaultIfEmptyResult);
      
+/* Range
+This method creates a set of squential integers. This method receives 2 arguments , 
+the first value will be first item of sequence and the second determines the number of integers. 
+ */
+
+let range = Linq.range(12, 20).toArray();
+for (var index = 0; index < range.length; index++)
+  console.log(range[index]);
      
+/* Return is enumerable and you can execute another query on it. 
+ */
+console.log("*** number bigger than 15 and * 1000 ...");
+range = Linq.range(12, 20)
+  .where(n => n > 15)
+  .select(n => n * 1000)
+  .toArray();
+for (var index = 0; index < range.length; index++)
+  console.log(range[index]);
+     
+    
+/*Repeat
+This method receives 2 arguments the first is value which should be repeated and the second is number of repeat.
+The result is enumerable and you can execute another query on it.
+ */
+
+let repeated = Linq.repeat('Hello', 5).toArray();
+
+for (var index = 0; index < repeated.length; index++)
+  console.log(repeated[index]);
+  
+/*Empty
+This method returns an empty or zero length sequence.
+ */
+
+//let emptyList = Linq.empty().toArray();
+//console.log('Is seauence is empty => ' + (emptyList.lenght == 0).toString());
+      
 /*
 Left Join
 */
@@ -561,3 +597,52 @@ let leftJoinResults = authorsData.asEnumerable().groupJoin(booksData, author => 
   .toArray();
 
 console.warn(leftJoinResults);
+
+/*
+Contains
+This mehtod returns true if a collection contains specific value 
+ */
+
+names = ['Art', 'Bob', 'Cath', 'Dan', 'Ian'];
+console.log('has Cath => ' + names.asEnumerable().contains('Cath'));
+console.log('has Jim => ' + names.asEnumerable().contains('Jim'));
+
+/*
+With comaparer 
+*/
+
+console.log('has Cath => ' + names.asEnumerable().contains('cath'));
+console.log('has cath => ' + names.asEnumerable().contains('cath', (a, b) => a.toLowerCase() == b.toLowerCase()));
+
+/*
+Any
+This method returns true if collection has one or more items, The first overload has no arguments
+ */
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 19];
+
+console.log(numbers.asEnumerable().any());
+console.log(empty.asEnumerable().any());
+
+/*
+The second overload takes an arguments as an predicate. 
+This starts to evaluate for each items. The  first item that the predicate 
+returns true then evaluating will be stoped and returns true.
+*/
+
+let over10 = numbers.asEnumerable().any(n=> n > 10);
+let over20 = numbers.asEnumerable().any(n=> n > 20);
+
+console.log('over 10 => ' + over10);
+console.log('over 20 => ' + over20);
+
+/*
+All
+This method returns true if all elements in a sequence pass the predicate.
+*/
+
+let under20 = numbers.asEnumerable().all(n => n < 20);
+let under10 = numbers.asEnumerable().all(n=> n < 10);
+
+console.log('under 20 => ' + under20);
+console.log('under 10 => ' + under10);
