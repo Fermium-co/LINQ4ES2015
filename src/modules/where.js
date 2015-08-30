@@ -9,16 +9,13 @@ export default function* (source, predicate) {
     source = this;
   }
   
-  if (source == null || source == undefined) {
-    throw new Error('source is null or undefined');
-  }
-  if (predicate == null || predicate == undefined) {
-    throw new Error('predicate is null or undefined');
-  }
-  
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
+  
+  if (predicate == null || predicate == undefined) {
+    throw new Error('predicate is null or undefined');
+  }  
   if (!(predicate instanceof Function)) {
     throw new Error('predicate must be a function');
   }

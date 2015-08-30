@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toLookup from './toLookup';
 
 export default function* (outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 6) {
+  if (this !== undefined && this !== null && arguments.length < 6 && inner instanceof Function) {
     comparer = resultSelector;
     resultSelector = innerKeySelector;
     innerKeySelector = outerKeySelector;

@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 
 export default function* (first, second, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 3) {
+  if (this !== undefined && this !== null && arguments.length < 3 && (!second || second instanceof Function)) {
     comparer = second;
     second = first;
     first = this;

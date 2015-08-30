@@ -9,17 +9,14 @@ export default function* (source, count) {
     source = this;
   }
 
-  if (source == null || source == undefined) {
-    throw new Error('source is null or undefined');
-  }
-  if (count == null || count == undefined) {
-    throw new Error('count is null or undefined');
-  }
-  
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
-  if(typeof count !== 'number'){
+
+  if (count == null || count == undefined) {
+    throw new Error('count is null or undefined');
+  }
+  if (typeof count !== 'number') {
     throw new Error('count must be a number');
   }
 

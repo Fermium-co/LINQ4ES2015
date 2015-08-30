@@ -7,10 +7,6 @@ export default function* (source) {
   if (this !== undefined && this !== null && arguments.length < 1) {
     source = this;
   }
-
-  if (source == null || source == undefined) {
-    throw new Error('source is null or undefined');
-  }
   
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
