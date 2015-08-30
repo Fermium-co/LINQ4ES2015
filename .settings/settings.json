@@ -1,12 +1,25 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-	// Controls the rendering size of tabs in characters. 
-	// Accepted values: "auto", 2, 4, 6, etc.
+  // Configure glob patterns for excluding files and folders.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/jspm_packages": true,
+    "**/node_modules": true
+  },
+  // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/jspm_packages": true
+  },
+  "javascript.validate.lint.missingSemicolon": "error",
+  // Controls the rendering size of tabs in characters. 
+  // Accepted values: "auto", 2, 4, 6, etc.
   // If set to "auto", the value will be guessed when a file is opened.
-	"editor.tabSize": 2,
-
-	// Controls if the editor will insert spaces for tabs.
-	// Accepted values:  "auto", true, false.
+  "editor.tabSize": 2,
+  // Controls if the editor will insert spaces for tabs.
+  // Accepted values:  "auto", true, false.
   // If set to "auto", the value will be guessed when a file is opened.
-	"editor.insertSpaces": true
+  "editor.insertSpaces": true
 }
