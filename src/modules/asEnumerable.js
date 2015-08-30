@@ -6,7 +6,7 @@ export default function* (source) {
   if (this !== null && this !== undefined && arguments.length < 1) {
     source = this;
   }
-  
+
   if (source == null || source == undefined) {
     throw new Error('source is null or undefined');
   }
@@ -21,7 +21,7 @@ export default function* (source) {
   } else if (source !== null && typeof source === 'object') {
     for (let key in source) {
       if (source.hasOwnProperty(key)) {
-        yield source[key];
+        yield { key: key, value: source[key] };
       }
     }
   }
