@@ -86,7 +86,7 @@ let skills = employeesIncudeSkills.asEnumerable()
   .selectMany(emp => emp.skills)
   .toArray();
 
-console.log("*** using selectMany method to combine skills ...");
+console.log('*** using selectMany method to combine skills ...');
 for (let index = 0; index < skills.length; index++)
   console.log(skills[index]);
   
@@ -119,10 +119,10 @@ let groups = stock.asEnumerable()
   .groupBy(
     s => s.category, //key selector
     s => s.name, //element selector
-    (key, elements) => key + " : " + "[" + elements.join(",") + "]")//result selector
+    (key, elements) => key + ' : ' + '[' + elements.join(',') + ']')//result selector
   .toArray();
 
-console.log("*** using groupBy method to group category property ...");
+console.log('*** using groupBy method to group category property ...');
 for (let index = 0; index < groups.length; index++)
   console.log(groups[index]);
   
@@ -144,15 +144,15 @@ let joints = stock.asEnumerable()
     stockItem => stockItem.category,
     cat => cat.name,
     (stockItem, cat) =>
-      "[" +
-      "Name = " + stockItem.name + "," +
-      "Price = " + stockItem.price + "," +
-      "Category = " + cat.name + "," +
-      "MajorCategory = " + cat.majorCategory +
-      "]"
+      '[' +
+      'Name = ' + stockItem.name + ',' +
+      'Price = ' + stockItem.price + ',' +
+      'Category = ' + cat.name + ',' +
+      'MajorCategory = ' + cat.majorCategory +
+      ']'
     ).toArray();
 
-console.log("*** using join method for joining stockItems and categories");
+console.log('*** using join method for joining stockItems and categories');
 
 for (let index = 0; index < joints.length; index++)
   console.log(joints[index]);
@@ -185,10 +185,10 @@ for (let index = 0; index < groupJoins.length; index++) {
   for (let stockIndex = 0; stockIndex < cat.stocks.length; stockIndex++) {
     let stock = cat.stocks[stockIndex];
 
-    console.log("[" +
-      "Name = " + stock.name + "," +
-      "Price = " + stock.price +
-      "]")
+    console.log('[' +
+      'Name = ' + stock.name + ',' +
+      'Price = ' + stock.price +
+      ']')
   }
 }
 
@@ -520,53 +520,44 @@ This method return takes default value as an argument and checks if collection i
 otherwise returns new instance of souce list.
  */
 
-let defaultIfEmpty = items.asEnumerable().defaultIfEmpty().toArray();
-console.log(defaultIfEmpty);
+let defaultIfEmptyResult = items.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
    
 /*
 If source colllection is empty , a new collection will be generated and new item will be added to it.
 if default value argument is not null new item is default value otherwise new item is undefined.
  */
-defaultIfEmpty = empty.asEnumerable().defaultIfEmpty('default value').toArray();
-console.log(defaultIfEmpty);
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty('default value').toArray();
+console.log(defaultIfEmptyResult);
 
-defaultIfEmpty = empty.asEnumerable().defaultIfEmpty().toArray();
-console.log(defaultIfEmpty);
-
-/* Range
-This method creates a set of squential integers. This method receives 2 arguments , 
-the first value will be first item of sequence and the second determines the number of integers. 
- */
-
-let range = Linq.range(12, 20).toArray();
-for (var index = 0; index < range.length; index++)
-  console.log(range[index]);
+defaultIfEmptyResult = empty.asEnumerable().defaultIfEmpty().toArray();
+console.log(defaultIfEmptyResult);
      
-/* Return is enumerable and you can execute another query on it. 
- */
-console.log("*** number bigger than 15 and * 1000 ...");
-range = Linq.range(12, 20)
-  .where(n => n > 15)
-  .select(n => n * 1000)
+     
+/*
+Left Join
+*/
+
+let authorsData = [
+  { authorId: 1, name: "John Smith" },
+  { authorId: 2, name: "Harry Gold" },
+  { authorId: 3, name: "Ronald Schwimmer" },
+  { authorId: 4, name: "Jerry Mawler" }
+];
+
+let booksData =
+  [
+    { authorId: 1, title: "Little Blue Riding Hood" },
+    { authorId: 3, title: "The Three Little Piggy Banks" },
+    { authorId: 1, title: "Snow Black" },
+    { authorId: 2, title: "My Rubber Duckie" },
+    { authorId: 2, title: "He Who Doesn't Know His Name" },
+    { authorId: 3, title: "Hanzel and Brittle" }
+  ];
+
+let leftJoinResults = authorsData.asEnumerable().groupJoin(booksData, author => author.authorId, book => book.authorId,
+  (author, booksByAuthor) => ({ authorName: author.name, books: booksByAuthor }))
+  .selectMany(authorBooks => authorBooks.books.asEnumerable().defaultIfEmpty(authorBooks.books, { title: 'None' }), (book, author) => ({ authorName: author.authorName, title: book.title }))
   .toArray();
-for (var index = 0; index < range.length; index++)
-  console.log(range[index]);
-     
-    
-/*Repeat
-This method receives 2 arguments the first is value which should be repeated and the second is number of repeat.
-The result is enumerable and you can execute another query on it.
- */
-    
-let repeated = Linq.repeat('Hello', 5).toArray();
 
-for (var index = 0; index < repeated.length; index++)
-  console.log(repeated[index]);
-  
-  /*Empty
-  This method returns an empty or zero length sequence.
-   */
-  
- // let emptyList = [1,2,3,4,5].asEnumerable().empty().toArray();
- // console.log('Is seauence is empty => ' + (emptyList.lenght == 0).toString());
-   
+console.warn(leftJoinResults);

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import utils from "./utils";
-import asEnumerable from "./asEnumerable";
+import utils from './utils';
+import asEnumerable from './asEnumerable';
 
 export default function (source, seed, func, resultSelector) {
   if (this !== undefined && this !== null && arguments.length < 4) {
@@ -12,17 +12,17 @@ export default function (source, seed, func, resultSelector) {
   }
 
   if (source == null || source == undefined) {
-    throw new Error("source is null or undefined");
+    throw new Error('source is null or undefined');
   }
   if (func == null || func == undefined) {
-    throw new Error("func is null or undefined");
+    throw new Error('func is null or undefined');
   }
 
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
   if (!(func instanceof Function)) {
-    throw new Error("func must be a Function");
+    throw new Error('func must be a Function');
   }
   if (!(resultSelector instanceof Function)) {
     resultSelector = undefined;

@@ -1,27 +1,27 @@
 /* global describe, it, expect, spyOn, jasmine, toThrowError */
 
-"use strict";
+'use strict';
 
-import asEnumerable from "../../src/modules/asEnumerable";
+import asEnumerable from '../../src/modules/asEnumerable';
 import testUtils from '../testUtils';
-import utils from "../../src/modules/utils"
-import toArray from "../../src/modules/toArray"
+import utils from '../../src/modules/utils'
+import toArray from '../../src/modules/toArray'
 
-describe("asEnumerable", () => {
+describe('asEnumerable', () => {
   testUtils.setPrototype('asEnumerable', asEnumerable);
 
-  it("should throw an exception when the source is null or undefined", () => {
-    expect(() => toArray(asEnumerable(null))).toThrowError("source is null or undefined");
-    expect(() => toArray(asEnumerable(undefined))).toThrowError("source is null or undefined");
+  it('should throw an exception when the source is null or undefined', () => {
+    expect(() => toArray(asEnumerable(null))).toThrowError('source is null or undefined');
+    expect(() => toArray(asEnumerable(undefined))).toThrowError('source is null or undefined');
   });
 
-  it("should throw an exception when the source can not be enumerated", () => {
-    expect(() => toArray(asEnumerable(12))).toThrowError("source can not be enumerated");
-    expect(() => toArray(asEnumerable(false))).toThrowError("source can not be enumerated");
+  it('should throw an exception when the source can not be enumerated', () => {
+    expect(() => toArray(asEnumerable(12))).toThrowError('source can not be enumerated');
+    expect(() => toArray(asEnumerable(false))).toThrowError('source can not be enumerated');
   });
 
-  it("should throw an exception when the source is enumerable", () => {
-    expect(() => toArray(asEnumerable((function* () { })()))).toThrowError("enumerable may not be enumerated twice");
+  it('should throw an exception when the source is enumerable', () => {
+    expect(() => toArray(asEnumerable((function* () { })()))).toThrowError('enumerable may not be enumerated twice');
   });
 
   it('should return an enumerable object of an array', () => {
