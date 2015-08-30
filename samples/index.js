@@ -567,8 +567,8 @@ for (var index = 0; index < repeated.length; index++)
 This method returns an empty or zero length sequence.
  */
 
-//let emptyList = Linq.empty().toArray();
-//console.log('Is seauence is empty => ' + (emptyList.lenght == 0).toString());
+let emptyList = Linq.empty().toArray();
+console.log('Is seauence is empty => ' + (emptyList.lenght == 0).toString());
       
 /*
 Left Join
@@ -646,3 +646,116 @@ let under10 = numbers.asEnumerable().all(n=> n < 10);
 
 console.log('under 20 => ' + under20);
 console.log('under 10 => ' + under10);
+
+/*Count
+This method returns the numbers of item in the collection in the first overload.
+ */
+
+console.log('stock item count => ' + stock.asEnumerable().count());
+ 
+/*
+The second overload has a predicate argument and returns number of items in the 
+collection which pass the predicate.
+ */
+
+console.log('Number of stockItems which are Fruit => ' +
+  stock.asEnumerable().count(item => item.category == 'Fruit'));
+  
+  
+/*Sum
+This method returns total of the value in a sequence, The first overload (no arguments) is used for a colletion that contains 
+only numeric valus.
+ */
+
+let sum = numbers.asEnumerable().sum();
+console.log('sum => ' + sum);
+   
+/*
+The second overload accepts an argument as selector that the selected property should be numeric
+ */
+
+sum = stock.asEnumerable().sum(item => item.price);
+console.log('total of stock items price => ' + sum);
+   
+   
+/*Min
+This method returns the smallest values in a sequence.
+The default overload which has no arguments can be used for numeric sequence
+ */
+
+let min = numbers.asEnumerable().min();
+console.log('Smallest value in numbers collection => ' + min);
+    
+/*
+The second overload accepts an argument as selector that the selected property should be numeric
+ */
+
+min = stock.asEnumerable().min(item => item.price);
+console.log('Smellest price in stockitems => ' + min);
+     
+/*Max
+This method returns the Largest values in a sequence.
+The default overload which has no arguments can be used for numeric sequence
+ */
+
+let max = numbers.asEnumerable().max();
+console.log('Smallest value in numbers collection => ' + max); 
+
+/*
+The second overload accepts an argument as selector that the selected property should be numeric
+ */
+
+max = stock.asEnumerable().max(item => item.price);
+console.log('Largest price in stockitems => ' + max);
+
+/*Average
+This method finds the mean of the values in a squence.
+ */
+
+let average = numbers.asEnumerable().average();
+console.log('Avrage value in numbers collection => ' + average); 
+
+/*
+The second overload accepts an argument as selector that the selected property should be numeric
+ */
+
+average = stock.asEnumerable().average(item => item.price);
+console.log('Avarge price in stockitems => ' + average);
+
+
+/*Aggregate
+ You can create your own calculations using the Aggrigate method.
+ This method is similar to the other aggrigate methods like 
+ Avrage , Count and ... . However it allows you specify a custom function.
+ The basic overload accepts a function that has 2 paramters and return a value
+*/
+
+numbers = [1, 2, 3, 4, 5];
+let aggregate = numbers.asEnumerable().aggregate(0, (acc, next) => acc * 10 + next);
+
+console.log('The basic aggrerage => ' + aggregate);
+
+/*
+Sometimes it is necessary to execute the function for every item in a collection, 
+rather than skipping the first value. In such cases you can provide a seed value for the accumulator 
+as the first argument of the Aggregate method
+ */
+
+let value = ['A', 'B', 'C', 'D'];
+aggregate = value.asEnumerable().aggregate('Z', (acc, next) => acc + ',' + next);
+
+console.log(aggregate);
+
+/*
+You can add a result selector. The result selector is executed after the entire process is completed.
+ */
+
+aggregate = value.asEnumerable().aggregate('Z', (acc, next) => acc + ',' + next, s => s.toLowerCase());
+
+console.log(aggregate);
+
+
+
+
+  
+  
