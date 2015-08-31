@@ -14,7 +14,7 @@ export default class OrderedEnumerable {
     if (isDes) {
       secondaryComparer = new ReverseComparer(secondaryComparer);
     }
-    return new CompoundComarer(this.currentComparer, secondaryComparer);
+    return new OrderedEnumerable(this.source, new CompoundComarer(this.currentComparer, secondaryComparer));
   }
 
   *getEnumerator() {
