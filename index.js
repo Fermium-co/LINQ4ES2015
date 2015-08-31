@@ -42,8 +42,10 @@ let en = [
 ];
 
 console.log(en.asEnumerable()
-  .orderBy(e => e.name)
-  .thenBy(e => e.family)
+  //.orderBy([e => e.name, e => e.family])
+  //.orderBy(e => e.name)
+  .orderByDescending([e => e.name, e => e.family])
+  //.orderByDescending(e => e.name)
   .select(e => e.name + ' ' + e.family)
   .toArray());
 

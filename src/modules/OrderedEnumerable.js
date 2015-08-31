@@ -44,12 +44,12 @@ export class ProjectionComparer {
   }
 }
 
-class ReverseComparer {
+export class ReverseComparer {
   constructor(forwardComparer) {
     this.forwardComparer = forwardComparer;
   }
   compare(x, y) {
-    return this.forwardComparer(y, x);
+    return this.forwardComparer.compare(y, x);
   }
 }
 
@@ -59,7 +59,7 @@ class CompoundComarer {
     this.secondary = secondary;
   }
   compare(x, y) {
-    let primaryResult = this.primary(x, y);
+    let primaryResult = this.primary.compare(x, y);
     if (primaryResult !== 0) {
       return primaryResult;
     }
