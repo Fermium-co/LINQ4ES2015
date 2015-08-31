@@ -35,15 +35,15 @@ let en = [
   { name: 'saleh5', family: 'yusefnejad' },
   { name: 'saleh3', family: 'yusefnejad' },
 
-  { name: 'yasser', family: 'moradi' },
-  { name: 'yasser3', family: 'moradi' },
-  { name: 'yasser1', family: 'moradi' },
-  { name: 'yasser2', family: 'moradi' }
+  { name: 'yasser2', family: 'moradi' },
+  { name: 'yasser2', family: 'moradi' },
+  { name: 'yasser2', family: 'moradi4' },
+  { name: 'yasser2', family: 'moradi3' }
 ];
 
 console.log(en.asEnumerable()
-  .thenBy(e => e.name)
-  .orderBy(e => e.family)
+  .orderBy(e => e.name)
+  .thenBy(e => e.family)
   .select(e => e.name + ' ' + e.family)
   .toArray());
 
