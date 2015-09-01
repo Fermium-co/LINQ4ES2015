@@ -35,6 +35,6 @@ describe('asEnumerable', () => {
 
   it('should return an enumerable object of an object', () => {
     expect(utils.isGenerator(asEnumerable({ a: 1, b: 2, c: 3 }))).toEqual(true);
-    expect(toArray(asEnumerable({ a: 1, b: 2, c: 3 }))).toEqual([1, 2, 3]);
+    expect(toArray(asEnumerable({ a: 1, b: 2, c: 3 }))).toEqual([{ key: 'a', value: 1 }, { key: 'b', value: 2 }, { key: 'c', value: 3 }]);
   });
 });

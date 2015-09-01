@@ -39,6 +39,8 @@ import skipWhile from './modules/skipWhile';
 import sum from './modules/sum';
 import take from './modules/take';
 import takeWhile from './modules/takeWhile'
+import thenBy from './modules/thenBy';
+import thenByDescending from './modules/thenByDescending';
 import toArray from './modules/toArray';
 import toLookup from './modules/toLookup';
 import union from './modules/union';
@@ -82,6 +84,8 @@ function setPrototype(prototype) {
   prototype.sum = sum;
   prototype.take = take;
   prototype.takeWhile = takeWhile;
+  prototype.thenBy = thenBy;
+  prototype.thenByDescending = thenByDescending;
   prototype.toArray = toArray;
   prototype.toLookup = toLookup;
   prototype.union = union;
@@ -104,6 +108,9 @@ export default class Linq {
     return range.apply(this, arguments);
   }
 
+  static empty() {
+    return empty.apply(this, arguments);
+  }
   static asEnumerable() {
     return asEnumerable.apply(this, arguments);
   }
@@ -212,6 +219,12 @@ export default class Linq {
   }
   static takeWhile() {
     return takeWhile.apply(this, arguments);
+  }
+  static thenBy() {
+    return thenBy.apply(this, arguments);
+  }
+  static thenByDescending() {
+    return thenByDescending.apply(this, arguments);
   }
   static toArray() {
     return toArray.apply(this, arguments);

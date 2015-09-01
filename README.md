@@ -83,16 +83,16 @@ Note that you can use any web server you prefer.
     [groupJoin](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupJoin), [join](https://github.com/Fermium-co/LINQ4ES2015/wiki/Join)
 * **Set methods**:
 
-    all, any, contains, [concat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Concat), [defaultIfEmpty](https://github.com/Fermium-co/LINQ4ES2015/wiki/), [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
+    [all](https://github.com/Fermium-co/LINQ4ES2015/wiki/All), [any](https://github.com/Fermium-co/LINQ4ES2015/wiki/Any), [contains](https://github.com/Fermium-co/LINQ4ES2015/wiki/Contains), [concat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Concat), [defaultIfEmpty](https://github.com/Fermium-co/LINQ4ES2015/wiki/), [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
 * **Ordering methods**:
 
-    orderBy, orderByDescending, reverse
+    orderBy, orderByDescending, [reverse](https://github.com/Fermium-co/LINQ4ES2015/wiki/Reverse)
 * **Grouping methods**:
 
     [groupBy](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupBy)
 * **Aggregate Methods**:
 
-    aggregate, average, count, max, min, sum, 
+    [aggregate](https://github.com/Fermium-co/LINQ4ES2015/wiki/Aggregate), [average](https://github.com/Fermium-co/LINQ4ES2015/wiki/Average), [count](https://github.com/Fermium-co/LINQ4ES2015/wiki/Count), [max](https://github.com/Fermium-co/LINQ4ES2015/wiki/Max), [min](https://github.com/Fermium-co/LINQ4ES2015/wiki/Min), [sum](https://github.com/Fermium-co/LINQ4ES2015/wiki/Sum)
 * **Paging methods**:
 
     [elementAt](https://github.com/Fermium-co/LINQ4ES2015/wiki/ElementAt), [elementAtOrDefault](https://github.com/Fermium-co/LINQ4ES2015/wiki/ElementAtOrDefault), [first](https://github.com/Fermium-co/LINQ4ES2015/wiki/First), [firstOrDefault](https://github.com/Fermium-co/LINQ4ES2015/wiki/FirstOrDefault), [last](https://github.com/Fermium-co/LINQ4ES2015/wiki/Last), [lastOrDefault](https://github.com/Fermium-co/LINQ4ES2015/wiki/LastOrDefault), [single](https://github.com/Fermium-co/LINQ4ES2015/wiki/Single), [singleOrDefault](https://github.com/Fermium-co/LINQ4ES2015/wiki/SingleOrDefault),
@@ -100,10 +100,10 @@ Note that you can use any web server you prefer.
     [skip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip), [skipWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile), [take](https://github.com/Fermium-co/LINQ4ES2015/wiki/Take), [takeWhile](https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile) 
 * **Enumerable methods**:
 
-    [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/), empty, range, repeat
+    [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/AsEnumerable), [empty](https://github.com/Fermium-co/LINQ4ES2015/wiki/Empty), [range](https://github.com/Fermium-co/LINQ4ES2015/wiki/Range), [repeat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Repeat)
 * **Other methods**:
 
-    zip, toLooup, [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), sequenceEqual
+    [zip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Zip), [toLookup](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToLookup), [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), [sequenceEqual](https://github.com/Fermium-co/LINQ4ES2015/wiki/SequenceEqual)
 
 ***In Progress Methods***:
 

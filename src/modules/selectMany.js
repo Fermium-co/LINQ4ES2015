@@ -4,24 +4,25 @@ import utils from './utils';
 import asEnumerable from './asEnumerable'
 
 export default function* (source, collectionSelector, resultSelector) {
-  if (this !== undefined && this !== null && arguments.length < 3) {
+  if (this !== undefined && this !== null && arguments.length < 3 && source instanceof Function) {
     resultSelector = collectionSelector;
     collectionSelector = source;
     source = this;
   }
-
-  if (source == null || source == undefined) {
-    throw new Error('source is null or undefined');
-  }
-  if (collectionSelector == null || collectionSelector == undefined) {
-    throw new Error('collectionSelector is null or undefined');
-  }
-
+  
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
+  
+  if (collectionSelector == null || collectionSelector == undefined) {
+    throw new Error('collectionSelector is null or undefined');
+  }
   if (!(collectionSelector instanceof Function)) {
     throw new Error('collectionSelector must be a function');
+  }
+
+  if (!(resultSelector instanceof Function)) {
+    resultSelector = undefined;
   }
 
   let next = source.next();

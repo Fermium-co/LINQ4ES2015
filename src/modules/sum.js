@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function (source, selector) {
-  if (this !== undefined && this !== null && arguments.length < 2) {
+  if (this !== undefined && this !== null && arguments.length < 2 && (!source || source instanceof Function)) {
     selector = source;
     source = this;
   }

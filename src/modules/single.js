@@ -4,13 +4,11 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function (source, predicate) {
-  if (this !== undefined && this !== null && arguments.length < 2) {
+  if (this !== undefined && this !== null && arguments.length < 2 && (!source || source instanceof Function)) {
     predicate = source;
     source = this;
   }
-  if (source == null || source == undefined) {
-    throw new Error('source is null or undefined');
-  }
+  
   if (Array.isArray(source)) {
     if (!predicate) {
       if (source.length === 0) throw new Error('Sequence contains no elements');
@@ -18,6 +16,7 @@ export default function (source, predicate) {
       return source[0];
     }
   }
+  
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
