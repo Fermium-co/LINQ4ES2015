@@ -90,7 +90,7 @@ Note that you can use any web server you prefer.
     [all](https://github.com/Fermium-co/LINQ4ES2015/wiki/All), [any](https://github.com/Fermium-co/LINQ4ES2015/wiki/Any), [contains](https://github.com/Fermium-co/LINQ4ES2015/wiki/Contains), [concat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Concat), [defaultIfEmpty](https://github.com/Fermium-co/LINQ4ES2015/wiki/), [distinct](https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct), [except](https://github.com/Fermium-co/LINQ4ES2015/wiki/Except), [intersect](https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect), [union](https://github.com/Fermium-co/LINQ4ES2015/wiki/Union)
 * **Ordering methods**:
 
-    orderBy, orderByDescending, [reverse](https://github.com/Fermium-co/LINQ4ES2015/wiki/Reverse)
+    [orderBy](https://github.com/Fermium-co/LINQ4ES2015/wiki/OrderBy), [orderByDescending](https://github.com/Fermium-co/LINQ4ES2015/wiki/OrderByDescending), [reverse](https://github.com/Fermium-co/LINQ4ES2015/wiki/Reverse)
 * **Grouping methods**:
 
     [groupBy](https://github.com/Fermium-co/LINQ4ES2015/wiki/GroupBy)
