@@ -796,8 +796,14 @@ let emplist = [
 
 
 
-let lookup = emplist.asEnumerable().toLookup(e => e.department, e => e);
-// debugger;
+let byDept = emplist.asEnumerable().toLookup(e => e.department, e => e);
+
+for (let i = 0; i < byDept.length; i++) {
+  console.log(byDept[i].key);
+
+  for (let j = 0; j < byDept[i].elements.length; j++)
+    console.log('     ' + byDept[i].elements[j].name + ' - ' + byDept[i].elements[j].salary);
+}
 
 /*Zip
 Zip cycles through two sequences using deferred execution.
@@ -814,3 +820,13 @@ let zip = integers1.asEnumerable().zip(integers2, (item1, item2) => item1 + item
 console.log('zip ....');
 for (let index = 0; index < zip.length; index++)
   console.log(zip[index]);
+  
+/*Reverse
+This method reverses the items in a collection.
+ */
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let reverse = numbers.asEnumerable().reverse().toArray();
+debugger;
+for (let index = 0; index < reverse.length; index++)
+  console.log(reverse[index]);
