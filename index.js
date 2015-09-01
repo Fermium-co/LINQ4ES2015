@@ -32,7 +32,7 @@ let en = [
   { name: 'saleh6', family: 'yusefnejad' },
   { name: 'saleh2', family: 'yusefnejad' },
   { name: 'saleh4', family: 'yusefnejad' },
-  { name: 'saleh5', family: 'yusefnejad' },
+  { name: 'saleh2', family: 'yusefnejad' },
   { name: 'saleh3', family: 'yusefnejad' },
 
   { name: 'yasser2', family: 'moradi' },
@@ -42,12 +42,12 @@ let en = [
 ];
 
 console.log(en.asEnumerable()
-  //.orderBy([e => e.name, e => e.family])
   //.orderBy(e => e.name)
-  .orderByDescending([e => e.name, e => e.family])
-  //.orderByDescending(e => e.name)
+  //.orderBy([e => e.name, e => e.family])
+  .orderByDescending(e => e.name)
+  //.orderByDescending([e => e.name, e => e.family])
   .select(e => e.name + ' ' + e.family)
-  .toArray());
+  .toArray().join('\n'));
 
 // console.log(
 //   Linq.toArray(
