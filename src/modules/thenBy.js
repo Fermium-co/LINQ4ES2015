@@ -5,14 +5,12 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 
 export default function* (source, keySelector, comparer) {
-  //console.log('thenBy');
   if (this !== undefined && this !== null && arguments.length < 3 && source instanceof Function) {
     comparer = keySelector;
     keySelector = source;
     source = this;
   }
   
-  //console.log(source);
   if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
