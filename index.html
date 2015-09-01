@@ -73,6 +73,10 @@
 
 <p>result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.</p>
 
+<p><strong>Important performance tip:</strong> This project uses babel at <strong>runtime</strong> to transpile ECMA 2015 codes to ECMA 5 codes, to make running app on all browsers possible. But for production, you'll need to move transpile time from runtime to <strong>build time</strong>.
+This will improve your app performance a lot.
+We'll add more information about this later, but you can find some good docs about this on jspm &amp; babel docs.</p>
+
 <h2>
 <a id="samples" class="anchor" href="#samples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Samples</h2>
 
