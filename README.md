@@ -49,6 +49,10 @@ let result = Linq.toArray(Linq.distinct(Linq.select(Linq.orderByDescending(Linq.
 
 result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.
 
+**Important performance tip:** This project uses babel at **runtime** to transpile ECMA 2015 codes to ECMA 5 codes, to make running app on all browsers possible. But for production, you'll need to move transpile time from runtime to **build time**.
+This will improve your app performance a lot.
+We'll add more information about this later, but you can find some good docs about this on jspm & babel docs.
+
 ## Samples
 
 Note: Each method has its own Wiki page, including description and samples about that method.
