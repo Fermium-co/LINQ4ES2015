@@ -36,16 +36,14 @@ let en = [
   { name: 'saleh3', family: 'yusefnejad' },
 
   { name: 'yasser2', family: 'moradi' },
-  { name: 'yasser2', family: 'moradi' },
-  { name: 'yasser2', family: 'moradi4' },
-  { name: 'yasser2', family: 'moradi3' }
+  { name: 'yasser1', family: 'moradi3' },
+  { name: 'yasser1', family: 'moradi2' },
+  { name: 'yasser3', family: 'moradi3' }
 ];
 
 console.log(en.asEnumerable()
-  //.orderBy(e => e.name)
-  //.orderBy([e => e.name, e => e.family])
-  .orderByDescending(e => e.name)
-  //.orderByDescending([e => e.name, e => e.family])
+  .orderBy(e => e.name)
+  //.thenBy(e => e.family)
   .select(e => e.name + ' ' + e.family)
   .toArray().join('\n'));
 
