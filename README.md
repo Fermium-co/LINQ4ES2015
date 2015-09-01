@@ -103,7 +103,7 @@ Note that you can use any web server you prefer.
     [asEnumerable](https://github.com/Fermium-co/LINQ4ES2015/wiki/AsEnumerable), [empty](https://github.com/Fermium-co/LINQ4ES2015/wiki/Empty), [range](https://github.com/Fermium-co/LINQ4ES2015/wiki/Range), [repeat](https://github.com/Fermium-co/LINQ4ES2015/wiki/Repeat)
 * **Other methods**:
 
-    [zip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Zip), [toLookup]((https://github.com/Fermium-co/LINQ4ES2015/wiki/ToLookup), [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), [sequenceEqual](https://github.com/Fermium-co/LINQ4ES2015/wiki/SequenceEqual)
+    [zip](https://github.com/Fermium-co/LINQ4ES2015/wiki/Zip), [toLookup](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToLookup), [toArray](https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray), [sequenceEqual](https://github.com/Fermium-co/LINQ4ES2015/wiki/SequenceEqual)
 
 ***In Progress Methods***:
 
