@@ -26,12 +26,12 @@ export default class OrderedEnumerable {
     let count = data.length;
 
     let indexes = [];
-    for (var i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       indexes.push(i);
     }
 
     let keys = [];
-    for (var i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       keys.push(this.compositeSelector(data[i]));
     }
 
@@ -63,7 +63,7 @@ export default class OrderedEnumerable {
     indexes[pivot] = indexes[right];
     indexes[right] = pivotIndex;
     let storeIndex = left;
-    for (var i = left; i < right; i++) {
+    for (let i = left; i < right; i++) {
       let candidateIndex = indexes[i];
       let candidateKey = keys[candidateIndex];
       let comparison = this.compositeComparer.compare(candidateKey, pivotKey);

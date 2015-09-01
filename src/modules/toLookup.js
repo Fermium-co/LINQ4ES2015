@@ -97,7 +97,7 @@ class Lookup {
 
   getArray() {
     let result = [];
-    for (var index = 0; index < this.keys.length; index++) {
+    for (let index = 0; index < this.keys.length; index++) {
       let key = this.keys[index];
       result.push({ key: key, elements: this.map[index] });
     }
