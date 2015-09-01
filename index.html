@@ -29,9 +29,14 @@
 <h2>
 <a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h2>
 
-<p>To install LINQ4ES2015, <a href="https://nodejs.org">Node JS</a> is required.</p>
+<p>In order to install &amp; use LINQ4ES2015, <a href="https://nodejs.org">Node JS</a> is required to be installed on Development machine.</p>
 
 <p>If you've not configured <a href="http://jspm.io">jspm</a> yet, follow <a href="http://fermium.co/post/1c6546ba-891d-479d-8731-896fbbae61fa/JSPM">our blog post</a></p>
+
+<p>Note: Latest version of jspm must be installed on your machine, try running:</p>
+
+<pre><code>npm update jspm -g
+</code></pre>
 
 <p>Go to the root directory of the project and run the following command to install LINQ4ES2015:</p>
 
@@ -43,39 +48,41 @@
 
 <p>After installing LINQ4ES2015 you can use the following JavaScript code to import it:</p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="pl-k">import</span> Linq <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">"</span>linq4es2015/linq<span class="pl-pds">"</span></span>;</pre></div>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">import</span> Linq <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">"</span>linq4es2015/linq<span class="pl-pds">"</span></span>;</pre></div>
 
 <p>a simple usage is shown in the following code (Prototype based approach):</p>
 
-<div class="highlight highlight-javascript"><pre>    Linq.<span class="pl-c1">setExtensions</span>(); <span class="pl-c">// You've to run this, if you're interested in prototype based approach.</span>
-    <span class="pl-k">let</span> count <span class="pl-k">=</span> <span class="pl-c1">0</span>;
-    <span class="pl-k">let</span> result <span class="pl-k">=</span> [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>].<span class="pl-c1">asEnumerable</span>()
-      .<span class="pl-c1">where</span>(num <span class="pl-k">=&gt;</span> { count<span class="pl-k">++</span>; <span class="pl-k">return</span> num <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>; })
-      .<span class="pl-c1">take</span>(<span class="pl-c1">3</span>)
-      .<span class="pl-c1">orderByDescending</span>(num <span class="pl-k">=&gt;</span> num)
-      .<span class="pl-c1">select</span>(num <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>[<span class="pl-pds">'</span></span> <span class="pl-k">+</span> num <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span>]<span class="pl-pds">'</span></span>)
-      .<span class="pl-c1">distinct</span>()
-      .<span class="pl-c1">toArray</span>();
+<div class="highlight highlight-javascript"><pre>Linq.<span class="pl-c1">setExtensions</span>(); <span class="pl-c">// You've to run this, only once, if you're interested in prototype based approach.</span>
 
-    <span class="pl-k">let</span> sum <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>a2r3<span class="pl-pds">'</span></span>.<span class="pl-c1">asEnumerable</span>().<span class="pl-c1">where</span>(chr <span class="pl-k">=&gt;</span> <span class="pl-k">!</span><span class="pl-c1">isNaN</span>(chr)).<span class="pl-c1">select</span>(num <span class="pl-k">=&gt;</span> <span class="pl-c1">Number</span>(num)).<span class="pl-c1">sum</span>();
-    <span class="pl-c">// sum will be 5  </span></pre></div>
+<span class="pl-k">let</span> result <span class="pl-k">=</span> [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>].<span class="pl-c1">asEnumerable</span>()
+  .<span class="pl-c1">where</span>(num <span class="pl-k">=&gt;</span> num <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>)
+  .<span class="pl-c1">take</span>(<span class="pl-c1">3</span>)
+  .<span class="pl-c1">orderByDescending</span>(num <span class="pl-k">=&gt;</span> num)
+  .<span class="pl-c1">select</span>(num <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>[<span class="pl-pds">'</span></span> <span class="pl-k">+</span> num <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span>]<span class="pl-pds">'</span></span>)
+  .<span class="pl-c1">distinct</span>()
+  .<span class="pl-c1">toArray</span>();
+
+<span class="pl-k">let</span> sum <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>a2r3<span class="pl-pds">'</span></span>.<span class="pl-c1">asEnumerable</span>().<span class="pl-c1">where</span>(chr <span class="pl-k">=&gt;</span> <span class="pl-k">!</span><span class="pl-c1">isNaN</span>(chr)).<span class="pl-c1">select</span>(num <span class="pl-k">=&gt;</span> <span class="pl-c1">Number</span>(num)).<span class="pl-c1">sum</span>();
+  <span class="pl-c">// sum will be 5  </span></pre></div>
 
 <p>or wihtout extentions (No prototype modification is required):</p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="pl-k">let</span> enumerable <span class="pl-k">=</span> Linq.<span class="pl-c1">asEnumerable</span>([<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>]);
-    <span class="pl-k">let</span> result <span class="pl-k">=</span> Linq.<span class="pl-c1">toArray</span>(Linq.<span class="pl-c1">distinct</span>(Linq.<span class="pl-c1">select</span>(Linq.<span class="pl-c1">orderByDescending</span>(Linq.<span class="pl-c1">take</span>(Linq.<span class="pl-c1">where</span>(enumerable, n <span class="pl-k">=&gt;</span> n <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>), <span class="pl-c1">3</span>), n <span class="pl-k">=&gt;</span> n), n <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>[<span class="pl-pds">'</span></span> <span class="pl-k">+</span> n <span class="pl-s"><span class="pl-pds">'</span>]<span class="pl-pds">'</span></span>)));
-    <span class="pl-c">// You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.</span></pre></div>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">let</span> enumerable <span class="pl-k">=</span> Linq.<span class="pl-c1">asEnumerable</span>([<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>]);
+<span class="pl-k">let</span> result <span class="pl-k">=</span> Linq.<span class="pl-c1">toArray</span>(Linq.<span class="pl-c1">distinct</span>(Linq.<span class="pl-c1">select</span>(Linq.<span class="pl-c1">orderByDescending</span>(Linq.<span class="pl-c1">take</span>(Linq.<span class="pl-c1">where</span>(enumerable, n <span class="pl-k">=&gt;</span> n <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>), <span class="pl-c1">3</span>), n <span class="pl-k">=&gt;</span> n), n <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>[<span class="pl-pds">'</span></span> <span class="pl-k">+</span> n <span class="pl-s"><span class="pl-pds">'</span>]<span class="pl-pds">'</span></span>)));
+<span class="pl-c">// You don't have to call Linq.setExtensions with this approach, and you can load any module you'd prefer to use, instead of loading all of them.</span></pre></div>
 
 <p>result will be [ "[2]", "[0]" ] and where predicate will be executed only 4 times.</p>
 
 <h2>
 <a id="samples" class="anchor" href="#samples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Samples</h2>
 
-<p>Note: Each method has its own Wiki page, contains description and samples about that method.</p>
+<p>Note: Each method has its own Wiki page, including description and samples about that method.</p>
 
-<p>Download the <a href="https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples">samples</a> folder and run the following command in the sample's directory:</p>
+<p>Download the <a href="https://github.com/Fermium-co/LINQ4ES2015/tree/dev/samples">samples</a> folder and run the following commands in the sample's root directory:</p>
 
-<pre><code>jspm insatll
+<pre><code>npm install
+
+jspm insatll    
 </code></pre>
 
 <p>We need a webserver to run the sample. <a href="https://github.com/indexzero/http-server">http-server</a> is a simple one. install it by runnting this command:</p>
@@ -88,18 +95,20 @@
 <pre><code>http-server
 </code></pre>
 
+<p>Note that you can use any web server you prefer.</p>
+
 <h2>
 <a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap</h2>
 
 <p><strong><em>Supported methods</em></strong>:</p>
 
-<p><strong>Click on each method hyperlink to see description and samples.</strong></p>
+<p><strong>Click on each method hyperlink to see description and samples. Read <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Home">Home Wiki</a> first</strong></p>
 
 <ul>
 <li>
 <p><strong>Projection and restriction methods</strong>:</p>
 
-<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Select">select</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany">selectMany</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Where">where</a></p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Select">select</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/SelectMany">selectMany</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Where">where</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/LeftJoin">How can I write Left Join query?</a></p>
 </li>
 <li>
 <p><strong>Join methods</strong>:</p>
@@ -109,12 +118,12 @@
 <li>
 <p><strong>Set methods</strong>:</p>
 
-<p>all, any, contains, concat, defaultIfEmpty, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct">distinct</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Except">except</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect">intersect</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Union">union</a></p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/All">all</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Any">any</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Contains">contains</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Concat">concat</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/">defaultIfEmpty</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Distinct">distinct</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Except">except</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Intersect">intersect</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Union">union</a></p>
 </li>
 <li>
 <p><strong>Ordering methods</strong>:</p>
 
-<p>orderBy, orderByDescending, reverse</p>
+<p>orderBy, orderByDescending, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Reverse">reverse</a></p>
 </li>
 <li>
 <p><strong>Grouping methods</strong>:</p>
@@ -124,24 +133,24 @@
 <li>
 <p><strong>Aggregate Methods</strong>:</p>
 
-<p>aggregate, average, count, max, min, sum, </p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Aggregate">aggregate</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Average">average</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Count">count</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Max">max</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Min">min</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Sum">sum</a></p>
 </li>
 <li>
 <p><strong>Paging methods</strong>:</p>
 
-<p>elementAt, elementAtOrDefault, first, firstOrDefault, last, lastOrDefault, single, singleOrDefault,</p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/ElementAt">elementAt</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/ElementAtOrDefault">elementAtOrDefault</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/First">first</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/FirstOrDefault">firstOrDefault</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Last">last</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/LastOrDefault">lastOrDefault</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Single">single</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/SingleOrDefault">singleOrDefault</a>,</p>
 
 <p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Skip">skip</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/SkipWhile">skipWhile</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Take">take</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/TakeWhile">takeWhile</a> </p>
 </li>
 <li>
 <p><strong>Enumerable methods</strong>:</p>
 
-<p>asEnumerable, empty, range, repeat</p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/AsEnumerable">asEnumerable</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Empty">empty</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Range">range</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Repeat">repeat</a></p>
 </li>
 <li>
 <p><strong>Other methods</strong>:</p>
 
-<p>zip, toLooup, toArray, sequenceEqual</p>
+<p><a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/Zip">zip</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/ToLookup">toLookup</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/ToArray">toArray</a>, <a href="https://github.com/Fermium-co/LINQ4ES2015/wiki/SequenceEqual">sequenceEqual</a></p>
 </li>
 </ul>
 
