@@ -36,6 +36,7 @@ import single from './modules/single';
 import singleOrDefault from './modules/singleOrDefault';
 import skip from './modules/skip';
 import skipWhile from './modules/skipWhile';
+import sortBy from './modules/sortBy';
 import sum from './modules/sum';
 import take from './modules/take';
 import takeWhile from './modules/takeWhile'
@@ -81,6 +82,7 @@ function setPrototype(prototype) {
   prototype.singleOrDefault = singleOrDefault;
   prototype.skip = skip;
   prototype.skipWhile = skipWhile;
+  prototype.sortBy = sortBy;
   prototype.sum = sum;
   prototype.take = take;
   prototype.takeWhile = takeWhile;
@@ -210,6 +212,9 @@ export default class Linq {
   }
   static skipWhile() {
     return skipWhile.apply(this, arguments);
+  }
+  static sortBy() {
+    return sortBy.apply(this, arguments);
   }
   static sum() {
     return sum.apply(this, arguments);

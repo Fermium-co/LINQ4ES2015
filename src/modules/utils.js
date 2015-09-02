@@ -22,6 +22,10 @@ let utils = {
     }
     array.push(item);
     return true;
+  },
+  
+  canBeEnumerated: (source) => {
+    return source !== null && (Array.isArray(source) || typeof source === 'string' || source instanceof String || typeof source === 'object');
   }
 };
 
