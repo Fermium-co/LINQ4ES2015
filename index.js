@@ -40,15 +40,24 @@ let en = [
   { name: 'yasser', family: 'moradi3' }
 ];
 
+let comparer = {
+  compare: (a, b) => {
+    if (a[0] > b[0]) return 1;
+    if (a[0] == b[0]) return 0;
+    return -1;
+  }
+};
+
 console.log(en.asEnumerable()
-  //.sortBy(e => e.family)
-  //.sortBy(e => e.family, e => e.name)
-  .sortBy(e => e.family, [e => e.name, true])
-  // .sortBy(e => e.family, [e => e.name, true, (a, b) => {
-  //   if (a[0] > b[0]) return 1;
-  //   if (a[0] == b[0]) return 0;
-  //   return -1;
-  // }])
+//.sortBy(e => e.family)
+//.sortBy(e => e.family, e => e.name)
+//.sortBy(e => e.family, [e => e.name, true])
+//.sortBy(e => e.family, [e => e.name, true, comparer])
+//.sortBy(e => e.family, { k: e => e.name, d: true })
+//.sortBy(e => e.family, { k: e => e.name, d: true, c: comparer })
+//.sortBy(e => e.family, { key: e => e.name, des: true, comp: comparer })
+//.sortBy(e => e.family, { keySelector: e => e.name, descending: true, comparer: comparer })
+  .sortBy({ k: e => e.family, d: false , c: comparer }, { keySelector: e => e.name, descending: true })
   .select(e => e.name + ' ' + e.family)
   .toArray().join('\n'));
 

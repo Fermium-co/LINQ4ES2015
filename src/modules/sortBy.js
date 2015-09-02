@@ -39,7 +39,7 @@ let extract = e => {
 export default function* (...args) {
   let source = args[0];
   let startIndex = 1;
-  if (!utils.canBeEnumerated(source)) {
+  if (!utils.canBeEnumerated(source) || utils.canBeEnumerated(this)) {
     source = this;
     startIndex = 0;
   }
@@ -64,8 +64,7 @@ export default function* (...args) {
       optionsCollection.push(extract(e2));
     }
   }
-  
-  
+
   let firstOptions = optionsCollection[0];
   source.orderedEnumerable = new OrderedEnumerable(source, firstOptions[0], firstOptions[1] ? new ReverseComparer(firstOptions[2]) : firstOptions[2]);
   optionsCollection.splice(0, 1);
