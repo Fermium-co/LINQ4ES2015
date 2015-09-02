@@ -16,11 +16,6 @@ export default function (source) {
     source = asEnumerable(source);
   }
 
-  let result = [];
-  let next = source.next();
-  while (!next.done) {
-    result.push(next.value);
-    next = source.next();
-  }
+  let result = Array.from(source);
   return result;
 };

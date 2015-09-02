@@ -101,7 +101,6 @@ export default class Linq {
     setPrototype(utils.GeneratorFunctionPrototype);
     Array.prototype.asEnumerable = asEnumerable;
     String.prototype.asEnumerable = asEnumerable;
-    //Object.prototype.asEnumerable = asEnumerable; // its too general
   }
   static repeat() {
     return repeat.apply(this, arguments);
