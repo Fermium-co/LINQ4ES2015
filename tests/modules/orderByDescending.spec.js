@@ -10,9 +10,6 @@ import toArray from '../../src/modules/toArray';
 describe('orderByDescending', () => {
   testUtils.setPrototype('orderByDescending', orderByDescending);
 
-  let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
-
   it('should throw an exception when the source is null or undefined', () => {
     expect(() => toArray(orderByDescending(null, item => item))).toThrowError('source is null or undefined');
     expect(() => toArray(orderByDescending(undefined, item => item))).toThrowError('source is null or undefined');
@@ -33,15 +30,20 @@ describe('orderByDescending', () => {
   });
 
   it('should retrn ordered items', () => {
-    let orderedItems = asEnumerable(simpleArr).orderByDescending(num => num);
+    let arr = [3, 2, 6, 4];
+    let orderedItems = asEnumerable(arr).orderByDescending(n => n);
     expect(toArray(orderedItems)).toEqual([6, 4, 3, 2]);
   });
 
   it('should retrn ordered set of complex items', () => {
-    let orderedItems = toArray(asEnumerable(complexArr).orderByDescending(item => item.firstName));
-    expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].firstName).toBe('C');
-    expect(orderedItems[1].firstName).toBe('B');
-    expect(orderedItems[2].firstName).toBe('A');
+    let arr = [{ name: 'C' }, { name: 'A' }, { name: 'B' }];
+    let orderedItems = toArray(asEnumerable(arr).orderByDescending(a => a.name));
+    expect(orderedItems).toEqual([{ name: 'C' }, { name: 'B' }, { name: 'A' }]);
+  });
+
+  it('should return ordered set of complex items, based on provided keySelectors respectively', () => {
+    let arr = [{ name: 'saleh2', family: 'yusefnejad' }, { name: 'saleh3', family: 'yusefnejad' }, { name: 'saleh1', family: 'yusefnejad' }];
+    let orderedItems = toArray(asEnumerable(arr).orderByDescending([a => a.family, a => a.name]));
+    expect(orderedItems).toEqual([{ name: 'saleh3', family: 'yusefnejad' }, { name: 'saleh2', family: 'yusefnejad' }, { name: 'saleh1', family: 'yusefnejad' }]);
   });
 });

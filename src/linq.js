@@ -101,6 +101,13 @@ export default class Linq {
     setPrototype(utils.GeneratorFunctionPrototype);
     Array.prototype.asEnumerable = asEnumerable;
     String.prototype.asEnumerable = asEnumerable;
+    
+    // it is too general, but if you know what you're doing you can use this:
+    //Object.prototype.asEnumerable = asEnumerable;
+    
+    // you can add linq functions to Array and/or String prototype too, but its way too general:
+    //setPrototype(Array.prototype);
+    //setPrototype(String.prototype);
   }
   static repeat() {
     return repeat.apply(this, arguments);

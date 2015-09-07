@@ -20,10 +20,6 @@ describe('asEnumerable', () => {
     expect(() => toArray(asEnumerable(false))).toThrowError('source can not be enumerated');
   });
 
-  it('should throw an exception when the source is enumerable', () => {
-    expect(() => toArray(asEnumerable((function* () { })()))).toThrowError('enumerable may not be enumerated twice');
-  });
-
   it('should return an enumerable object of an array', () => {
     expect(utils.isGenerator(asEnumerable([1, 2, 3]))).toEqual(true);
   });

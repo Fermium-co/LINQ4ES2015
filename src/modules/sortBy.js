@@ -5,13 +5,6 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 import OrderedEnumerable, {ReverseComparer} from './OrderedEnumerable';
 
-let defaultComparer = {
-  compare: (a, b) => {
-    if (a > b) return 1;
-    if (a == b) return 0;
-    return -1;
-  }
-};
 let extract = e => {
   let options = [];
   if (!(e[0] instanceof Function)) { // keySelector
@@ -30,7 +23,7 @@ let extract = e => {
   if (e[index] instanceof Function) { // comparer
     options.push(e[index]);
   } else {
-    options.push(defaultComparer);
+    options.push(utils.defaultComparer);
   }
 
   return options;
@@ -44,9 +37,16 @@ export default function* (...args) {
     startIndex = 0;
   }
 
+  // console.log('this is source: 0');
+  // console.log(source);
   if (!utils.isGenerator(source)) {
+    // console.log(source);
     source = asEnumerable(source);
+    // console.log(source);
   }
+  // console.log('this is source: 1');
+  // console.log(source);
+  
 
   let optionsCollection = [];
   for (var i = startIndex; i < args.length; i++) {
@@ -55,12 +55,12 @@ export default function* (...args) {
     if (Array.isArray(e)) {
       optionsCollection.push(extract(e));
     } else if (e instanceof Function) {
-      optionsCollection.push([e, false, defaultComparer]);
+      optionsCollection.push([e, false, utils.defaultComparer]);
     } else if (typeof e === 'object') {
       let e2 = [];
       e2.push(e.k || e.key || e.keySelector);
       e2.push(e.d || e.des || e.descending || e.isDes || e.isDescending || false);
-      e2.push(e.c || e.comp || e.comparer || defaultComparer);
+      e2.push(e.c || e.comp || e.comparer || utils.defaultComparer);
       optionsCollection.push(extract(e2));
     }
   }

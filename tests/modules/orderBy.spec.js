@@ -10,9 +10,6 @@ import toArray from '../../src/modules/toArray';
 describe('orderBy', () => {
   testUtils.setPrototype('orderBy', orderBy);
 
-  let simpleArr = [3, 2, 6, 4];
-  let complexArr = [{ firstName: 'C' }, { firstName: 'A' }, { firstName: 'B' }];
-
   it('should throw an exception when the source is null or undefined', () => {
     expect(() => toArray(orderBy(null, item => item))).toThrowError('source is null or undefined');
     expect(() => toArray(orderBy(undefined, item => item))).toThrowError('source is null or undefined');
@@ -33,15 +30,20 @@ describe('orderBy', () => {
   });
 
   it('should retrn ordered items', () => {
-    let orderedItems = asEnumerable(simpleArr).orderBy(num => num);
+    let arr = [3, 2, 6, 4];
+    let orderedItems = asEnumerable(arr).orderBy(num => num);
     expect(toArray(orderedItems)).toEqual([2, 3, 4, 6]);
   });
 
   it('should return ordered set of complex items', () => {
-    let orderedItems = toArray(asEnumerable(complexArr).orderBy(item => item.firstName));
-    expect(orderedItems.length).toBe(3);
-    expect(orderedItems[0].firstName).toBe('A');
-    expect(orderedItems[1].firstName).toBe('B');
-    expect(orderedItems[2].firstName).toBe('C');
+    let arr = [{ name: 'C' }, { name: 'A' }, { name: 'B' }];
+    let orderedItems = toArray(asEnumerable(arr).orderBy(item => item.name));
+    expect(orderedItems).toEqual([{ name: 'A' }, { name: 'B' }, { name: 'C' }]);
+  });
+
+  it('should return ordered set of complex items, based on provided keySelectors respectively', () => {
+    let arr = [{ name: 'saleh2', family: 'yusefnejad' }, { name: 'saleh3', family: 'yusefnejad' }, { name: 'saleh1', family: 'yusefnejad' }];
+    let orderedItems = toArray(asEnumerable(arr).orderBy([a => a.family, a => a.name]));
+    expect(orderedItems).toEqual([{ name: 'saleh1', family: 'yusefnejad' }, { name: 'saleh2', family: 'yusefnejad' }, { name: 'saleh3', family: 'yusefnejad' }]);
   });
 });
