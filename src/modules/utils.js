@@ -22,6 +22,20 @@ let utils = {
     }
     array.push(item);
     return true;
+  },
+
+  canBeEnumerated: (source) => {
+    return source !== null && (Array.isArray(source) || typeof source === 'string' || source instanceof String || typeof source === 'object');
+  },
+
+  isFunc: (input) => input instanceof Function,
+
+  defaultComparer: {
+    compare: (a, b) => {
+      if (a > b) return 1;
+      if (a == b) return 0;
+      return -1;
+    }
   }
 };
 

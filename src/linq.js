@@ -36,6 +36,7 @@ import single from './modules/single';
 import singleOrDefault from './modules/singleOrDefault';
 import skip from './modules/skip';
 import skipWhile from './modules/skipWhile';
+import sortBy from './modules/sortBy';
 import sum from './modules/sum';
 import take from './modules/take';
 import takeWhile from './modules/takeWhile'
@@ -81,6 +82,7 @@ function setPrototype(prototype) {
   prototype.singleOrDefault = singleOrDefault;
   prototype.skip = skip;
   prototype.skipWhile = skipWhile;
+  prototype.sortBy = sortBy;
   prototype.sum = sum;
   prototype.take = take;
   prototype.takeWhile = takeWhile;
@@ -99,6 +101,13 @@ export default class Linq {
     setPrototype(utils.GeneratorFunctionPrototype);
     Array.prototype.asEnumerable = asEnumerable;
     String.prototype.asEnumerable = asEnumerable;
+    
+    // it is too general, but if you know what you're doing you can use this:
+    //Object.prototype.asEnumerable = asEnumerable;
+    
+    // you can add linq functions to Array and/or String prototype too, but its way too general:
+    //setPrototype(Array.prototype);
+    //setPrototype(String.prototype);
   }
   static repeat() {
     return repeat.apply(this, arguments);
@@ -209,6 +218,9 @@ export default class Linq {
   }
   static skipWhile() {
     return skipWhile.apply(this, arguments);
+  }
+  static sortBy() {
+    return sortBy.apply(this, arguments);
   }
   static sum() {
     return sum.apply(this, arguments);

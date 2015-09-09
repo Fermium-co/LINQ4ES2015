@@ -5,10 +5,10 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 import OrderedEnumerable from './OrderedEnumerable';
 
-export default function* (source, keySelector, comparer) {
+export default function* (source, keySelectors, comparer) {
   if (this !== undefined && this !== null && arguments.length < 3 && (!source || Array.isArray(source) || source instanceof Function)) {
-    comparer = keySelector;
-    keySelector = source;
+    comparer = keySelectors;
+    keySelectors = source;
     source = this;
   }
 
@@ -16,29 +16,28 @@ export default function* (source, keySelector, comparer) {
     source = asEnumerable(source);
   }
 
-  if (keySelector == null || keySelector == undefined) {
+  if (keySelectors == null || keySelectors == undefined) {
     throw new Error('keySelector is null or undefined');
   }
 
-  if (!(keySelector instanceof Function)) {
-    throw new Error('keySelector must be a function');
+  if (!Array.isArray(keySelectors)) {
+    if (!(keySelectors instanceof Function)) {
+      throw new Error('keySelector must be a function');
+    }
+    keySelectors = [keySelectors];
   }
 
-  if (!(comparer instanceof Function)) {
-    comparer = (a, b) => {
-      if (a > b) return 1;
-      if (a == b) return 0;
-      return -1;
-    };
+  if (!comparer || (!utils.isFunc(comparer) && !utils.isFunc(comparer.compare))) {
+    comparer = utils.defaultComparer;
+  } else if (utils.isFunc(comparer)) {
+    comparer = { compare: comparer };
   }
 
-  comparer = { compare: comparer };
-  source.orderedEnumerable = new OrderedEnumerable(source, keySelector, comparer);
+  source.orderedEnumerable = new OrderedEnumerable(source, keySelectors[0], comparer);
+  keySelectors.splice(0, 1);
+  keySelectors.forEach((k) => {
+    source.orderedEnumerable = source.orderedEnumerable.combine(k, comparer);
+  });
 
-  let enumerable = source.orderedEnumerable.getEnumerator();
-  let next = enumerable.next();
-  while (!next.done) {
-    yield next.value;
-    next = enumerable.next();
-  }
+  yield* source.orderedEnumerable.getEnumerator();
 };

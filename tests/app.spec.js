@@ -39,6 +39,7 @@ import './modules/single.spec';
 import './modules/singleOrDefault.spec';
 import './modules/skip.spec';
 import './modules/skipWhile.spec';
+import './modules/sortBy.spec';
 import './modules/sum.spec';
 import './modules/take.spec';
 import './modules/takeWhile.spec';
