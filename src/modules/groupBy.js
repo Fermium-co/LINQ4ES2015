@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toLookup from './toLookup';
 
 export default function* (source, keySelector, elementSelector, resultSelector, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 5 && source instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 5 && utils.isFunc(source)) {
     comparer = resultSelector;
     resultSelector = elementSelector;
     elementSelector = keySelector;
@@ -24,17 +24,17 @@ export default function* (source, keySelector, elementSelector, resultSelector, 
     throw new Error('elementSelector is null or undefined');
   }
 
-  if (!(keySelector instanceof Function)) {
+  if (!utils.isFunc(keySelector)) {
     throw new Error('keySelector must be a Function');
   }
-  if (!(elementSelector instanceof Function)) {
+  if (!utils.isFunc(elementSelector)) {
     throw new Error('elementSelector must be a Function');
   }
 
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
-  if (!(resultSelector instanceof Function)) {
+  if (!utils.isFunc(resultSelector)) {
     resultSelector = undefined;
   }
 

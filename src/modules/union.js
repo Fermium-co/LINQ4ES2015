@@ -24,7 +24,7 @@ export default function* (first, second, comparer) {
     second = asEnumerable(second);
   }
 
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
 

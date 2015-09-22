@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function (source, keySelector, elementSelector, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 4 && source instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 4 && utils.isFunc(source)) {
     comparer = elementSelector;
     elementSelector = keySelector;
     keySelector = source;
@@ -18,15 +18,15 @@ export default function (source, keySelector, elementSelector, comparer) {
   if (keySelector == null || keySelector == undefined) {
     throw new Error('keySelector is null or undefined');
   }
-  if (!(keySelector instanceof Function)) {
+  if (!utils.isFunc(keySelector)) {
     throw new Error('keySelector must be a function');
   }
   
-  if (!(elementSelector instanceof Function)) {
-    comparer = a => a;
+  if (!utils.isFunc(elementSelector)) {
+    elementSelector = a => a;
   }
   
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
 

@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function (source, selector) {
-  if (this !== undefined && this !== null && arguments.length < 2 && (!source || source instanceof Function)) {
+  if (this !== undefined && this !== null && arguments.length < 2 && (!source || utils.isFunc(source))) {
     selector = source;
     source = this;
   }
@@ -13,7 +13,7 @@ export default function (source, selector) {
     source = asEnumerable(source);
   }
 
-  if (!(selector instanceof Function)) {
+  if (!utils.isFunc(selector)) {
     selector = a => a;
   }
 

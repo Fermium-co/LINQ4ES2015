@@ -26,7 +26,7 @@ export default function* (first, second, resultSelector) {
   if (!utils.isGenerator(second)) {
     second = asEnumerable(second);
   }
-  if (!(resultSelector instanceof Function)) {
+  if (!utils.isFunc(resultSelector)) {
     throw new Error('resultSelector must be a function');
   }
 

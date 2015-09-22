@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toLookup from './toLookup';
 
 export default function* (outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 6 && inner instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 6 && utils.isFunc(inner)) {
     comparer = resultSelector;
     resultSelector = innerKeySelector;
     innerKeySelector = outerKeySelector;
@@ -37,18 +37,18 @@ export default function* (outer, inner, outerKeySelector, innerKeySelector, resu
     inner = asEnumerable(inner);
   }
 
-  if (!(outerKeySelector instanceof Function)) {
+  if (!utils.isFunc(outerKeySelector)) {
     throw new Error('outerKeySelector must be a Function');
   }
-  if (!(innerKeySelector instanceof Function)) {
+  if (!utils.isFunc(innerKeySelector)) {
     throw new Error('innerKeySelector must be a Function');
   }
 
-  if (!(resultSelector instanceof Function)) {
+  if (!utils.isFunc(resultSelector)) {
     throw new Error('resultSelector must be a Function');
   }
 
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
 
