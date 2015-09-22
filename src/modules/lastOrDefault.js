@@ -4,7 +4,7 @@ import utils from "./utils";
 import asEnumerable from "./asEnumerable";
 
 export default function (source, predicate) {
-  if (this !== undefined && this !== null && arguments.length < 2 && (!source || source instanceof Function)) {
+  if (this !== undefined && this !== null && arguments.length < 2 && (!source || utils.isFunc(source))) {
     predicate = source;
     source = this;
   }
@@ -22,7 +22,7 @@ export default function (source, predicate) {
     source = asEnumerable(source);
   }
 
-  if (!(predicate instanceof Function)) {
+  if (!utils.isFunc(predicate)) {
     predicate = undefined;
   }
 

@@ -6,7 +6,7 @@ import toArray from './toArray';
 import OrderedEnumerable from './OrderedEnumerable';
 
 export default function* (source, keySelectors, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 3 && (!source || Array.isArray(source) || source instanceof Function)) {
+  if (this !== undefined && this !== null && arguments.length < 3 && (!source || Array.isArray(source) || utils.isFunc(source))) {
     comparer = keySelectors;
     keySelectors = source;
     source = this;
@@ -21,7 +21,7 @@ export default function* (source, keySelectors, comparer) {
   }
 
   if (!Array.isArray(keySelectors)) {
-    if (!(keySelectors instanceof Function)) {
+    if (!utils.isFunc(keySelectors)) {
       throw new Error('keySelector must be a function');
     }
     keySelectors = [keySelectors];

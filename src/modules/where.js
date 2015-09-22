@@ -16,7 +16,7 @@ export default function* (source, predicate) {
   if (predicate == null || predicate == undefined) {
     throw new Error('predicate is null or undefined');
   }  
-  if (!(predicate instanceof Function)) {
+  if (!utils.isFunc(predicate)) {
     throw new Error('predicate must be a function');
   }
 

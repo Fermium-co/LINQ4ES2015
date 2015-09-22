@@ -6,8 +6,8 @@ import toArray from './toArray';
 import OrderedEnumerable, {ReverseComparer} from './OrderedEnumerable';
 
 let extract = e => {
-  let options = [];
-  if (!(e[0] instanceof Function)) { // keySelector
+  let options = []; 
+  if (!utils.isFunc(e[0])) { // keySelector
     throw new Error('keySelector must be a function');
   }
   options.push(e[0]);
@@ -20,7 +20,7 @@ let extract = e => {
     options.push(false);
   }
 
-  if (e[index] instanceof Function) { // comparer
+  if (utils.isFunc(e[index])) { // comparer
     options.push(e[index]);
   } else {
     options.push(utils.defaultComparer);
@@ -54,7 +54,7 @@ export default function* (...args) {
 
     if (Array.isArray(e)) {
       optionsCollection.push(extract(e));
-    } else if (e instanceof Function) {
+    } else if (utils.isFunc(e)) {
       optionsCollection.push([e, false, utils.defaultComparer]);
     } else if (typeof e === 'object') {
       let e2 = [];

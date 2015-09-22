@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable'
 
 export default function* (source, collectionSelector, resultSelector) {
-  if (this !== undefined && this !== null && arguments.length < 3 && source instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 3 && utils.isFunc(source)) {
     resultSelector = collectionSelector;
     collectionSelector = source;
     source = this;
@@ -17,11 +17,11 @@ export default function* (source, collectionSelector, resultSelector) {
   if (collectionSelector == null || collectionSelector == undefined) {
     throw new Error('collectionSelector is null or undefined');
   }
-  if (!(collectionSelector instanceof Function)) {
+  if (!utils.isFunc(collectionSelector)) {
     throw new Error('collectionSelector must be a function');
   }
 
-  if (!(resultSelector instanceof Function)) {
+  if (!utils.isFunc(resultSelector)) {
     resultSelector = undefined;
   }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import util from './utils';
+import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function* (source, predicate) {
@@ -9,14 +9,14 @@ export default function* (source, predicate) {
     source = this;
   }
   
-  if (!util.isGenerator(source)) {
+  if (!utils.isGenerator(source)) {
     source = asEnumerable(source);
   }
   
   if (predicate == null || predicate == undefined) {
     throw new Error('predicate is null or undefined');
   }
-  if (!(predicate instanceof Function)) {
+  if (!utils.isFunc(predicate)) {
     throw new Error('predicate must be a function');
   }
 

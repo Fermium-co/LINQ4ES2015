@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 
 export default function* (first, second, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 3 && (!second || second instanceof Function)) {
+  if (this !== undefined && this !== null && arguments.length < 3 && (!second ||  utils.isFunc(second))) {
     comparer = second;
     second = first;
     first = this;
@@ -24,7 +24,7 @@ export default function* (first, second, comparer) {
     second = asEnumerable(second);
   }
   
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
 

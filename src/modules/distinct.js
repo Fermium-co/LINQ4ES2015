@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function* (source, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 2 && (!source || source instanceof Function)) {
+  if (this !== undefined && this !== null && arguments.length < 2 && (!source || utils.isFunc(source))) {
       comparer = source;
       source = this;
   }
@@ -13,7 +13,7 @@ export default function* (source, comparer) {
     source = asEnumerable(source);
   }
 
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => a == b;
   }
 

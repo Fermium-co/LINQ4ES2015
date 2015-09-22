@@ -5,7 +5,7 @@ import asEnumerable from './asEnumerable';
 import toArray from './toArray';
 
 export default function* (source, keySelector, comparer) {
-  if (this !== undefined && this !== null && arguments.length < 3 && source instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 3 && utils.isFunc(source)) {
     comparer = keySelector;
     keySelector = source;
     source = this;
@@ -21,11 +21,11 @@ export default function* (source, keySelector, comparer) {
   if (keySelector == null || keySelector == undefined) {
     throw new Error('keySelector is null or undefined');
   }
-  if (!(keySelector instanceof Function)) {
+  if (!utils.isFunc(keySelector)) {
     throw new Error('keySelector must be a function');
   }
 
-  if (!(comparer instanceof Function)) {
+  if (!utils.isFunc(comparer)) {
     comparer = (a, b) => {
       if (a > b) return 1;
       if (a == b) return 0;

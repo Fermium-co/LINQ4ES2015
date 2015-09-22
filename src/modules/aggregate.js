@@ -4,7 +4,7 @@ import utils from './utils';
 import asEnumerable from './asEnumerable';
 
 export default function (source, seed, func, resultSelector) {
-  if (this !== undefined && this !== null && arguments.length < 4 && seed instanceof Function) {
+  if (this !== undefined && this !== null && arguments.length < 4 && utils.isFunc(seed)) {
     resultSelector = func;
     func = seed;
     seed = source;
@@ -19,10 +19,10 @@ export default function (source, seed, func, resultSelector) {
     throw new Error('func is null or undefined');
   }
 
-  if (!(func instanceof Function)) {
+  if (!utils.isFunc(func)) {
     throw new Error('func must be a Function');
   }
-  if (!(resultSelector instanceof Function)) {
+  if (!utils.isFunc(resultSelector)) {
     resultSelector = undefined;
   }
   if (!resultSelector) {

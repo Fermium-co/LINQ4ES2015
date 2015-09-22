@@ -21,7 +21,7 @@ export default function* (source) {
   if (utils.isGenerator(source)) {
     yield* source;
   } else {
-    if (Array.isArray(source) || typeof source === 'string' || source instanceof String) {
+    if (Array.isArray(source) || typeof source === 'string' || utils.isFunc(source)) {
       for (let index = 0; index < source.length; index++) {
         yield source[index];
       }

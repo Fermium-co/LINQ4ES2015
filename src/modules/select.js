@@ -16,7 +16,7 @@ export default function* (source, selector) {
   if (selector == null || selector == undefined) {
     throw new Error('selector is null or undefined');
   }
-  if (!(selector instanceof Function)) {
+  if (!utils.isFunc(selector)) {
     throw new Error('selector must be a function');
   }
 
