@@ -37,16 +37,9 @@ export default function* (...args) {
     startIndex = 0;
   }
 
-  // console.log('this is source: 0');
-  // console.log(source);
   if (!utils.isGenerator(source)) {
-    // console.log(source);
     source = asEnumerable(source);
-    // console.log(source);
-  }
-  // console.log('this is source: 1');
-  // console.log(source);
-  
+  }  
 
   let optionsCollection = [];
   for (var i = startIndex; i < args.length; i++) {
