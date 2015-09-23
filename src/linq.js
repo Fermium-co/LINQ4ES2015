@@ -99,12 +99,13 @@ export default class Linq {
   static setExtensions() {
     setPrototype(utils.GeneratorFunctionProto);
     setPrototype(utils.GeneratorFunctionPrototype);
-    Array.prototype.asEnumerable = asEnumerable;
-    String.prototype.asEnumerable = asEnumerable;
-    
+    var extensionMap = {asEnumerable: asEnumerable};
+    utils.defineProperties(Array.prototype, extensionMap);
+    utils.defineProperties(String.prototype, extensionMap);
+
     // it is too general, but if you know what you're doing you can use this:
-    //Object.prototype.asEnumerable = asEnumerable;
-    
+    //utils.defineProperties(Object.prototype, extensionMap);
+
     // you can add linq functions to Array and/or String prototype too, but its way too general:
     //setPrototype(Array.prototype);
     //setPrototype(String.prototype);
@@ -252,5 +253,4 @@ export default class Linq {
   static zip() {
     return zip.apply(this, arguments);
   }
-}  
-
+}
