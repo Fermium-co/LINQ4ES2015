@@ -37,6 +37,30 @@ let utils = {
       return -1;
     }
   }
+
+  defineProperty: (object, name, value, force) => {
+   let supportsDescriptors = true;
+   if (!force && name in object) { return; }
+   if (supportsDescriptors) {
+     Object.defineProperty(object, name, {
+       configurable: true,
+       enumerable: false,
+       writable: true,
+       value: value
+     });
+   } else {
+     object[name] = value;
+   }
+ };
+
+ // Define configurable, writable and non-enumerable props
+ // if they don’t exist.
+ defineProperties: (object, map) => {
+   Object.keys(map).forEach(name => {
+     var method = map[name];
+     utils.defineProperty(object, name, method, false);
+   });
+ };
 };
 
 export default utils;
