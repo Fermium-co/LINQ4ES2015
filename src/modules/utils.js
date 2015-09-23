@@ -36,7 +36,7 @@ let utils = {
       if (a == b) return 0;
       return -1;
     }
-  }
+  },
 
   defineProperty: (object, name, value, force) => {
    let supportsDescriptors = true;
@@ -51,7 +51,7 @@ let utils = {
    } else {
      object[name] = value;
    }
- };
+ },
 
  // Define configurable, writable and non-enumerable props
  // if they don’t exist.
@@ -60,7 +60,7 @@ let utils = {
      var method = map[name];
      utils.defineProperty(object, name, method, false);
    });
- };
+ }
 };
 
 export default utils;
