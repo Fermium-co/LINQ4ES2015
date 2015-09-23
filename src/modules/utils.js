@@ -39,7 +39,7 @@ let utils = {
   },
 
   defineProperty: (object, name, value, force) => {
-   let supportsDescriptors = true;
+   const supportsDescriptors = true; // targeting ES6...
    if (!force && name in object) { return; }
    if (supportsDescriptors) {
      Object.defineProperty(object, name, {
