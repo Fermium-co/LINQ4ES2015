@@ -49,59 +49,66 @@ import where from './modules/where';
 import utils from './modules/utils';
 import zip from './modules/zip';
 
-function setPrototype(prototype) {
-  prototype.aggregate = aggregate;
-  prototype.all = all;
-  prototype.any = any;
-  prototype.average = average;
-  prototype.concat = concat;
-  prototype.contains = contains;
-  prototype.count = count;
-  prototype.defaultIfEmpty = defaultIfEmpty;
-  prototype.distinct = distinct;
-  prototype.elementAt = elementAt;
-  prototype.elementAtOrDefault = elementAtOrDefault;
-  prototype.except = except;
-  prototype.first = first;
-  prototype.firstOrDefault = firstOrDefault;
-  prototype.groupBy = groupBy;
-  prototype.groupJoin = groupJoin;
-  prototype.intersect = intersect;
-  prototype.join = join;
-  prototype.last = last;
-  prototype.lastOrDefault = lastOrDefault;
-  prototype.max = max;
-  prototype.min = min;
-  prototype.orderBy = orderBy;
-  prototype.orderByDescending = orderByDescending;
-  prototype.reverse = reverse;
-  prototype.select = select;
-  prototype.selectMany = selectMany;
-  prototype.sequenceEqual = sequenceEqual;
-  prototype.single = single;
-  prototype.singleOrDefault = singleOrDefault;
-  prototype.skip = skip;
-  prototype.skipWhile = skipWhile;
-  prototype.sortBy = sortBy;
-  prototype.sum = sum;
-  prototype.take = take;
-  prototype.takeWhile = takeWhile;
-  prototype.thenBy = thenBy;
-  prototype.thenByDescending = thenByDescending;
-  prototype.toArray = toArray;
-  prototype.toLookup = toLookup;
-  prototype.union = union;
-  prototype.where = where;
-  prototype.zip = zip;
+function getLinqExtensionsMap() {
+  return {
+    aggregate: aggregate,
+    all: all,
+    any: any,
+    average: average,
+    concat: concat,
+    contains: contains,
+    count: count,
+    defaultIfEmpty: defaultIfEmpty,
+    distinct: distinct,
+    elementAt: elementAt,
+    elementAtOrDefault: elementAtOrDefault,
+    except: except,
+    first: first,
+    firstOrDefault: firstOrDefault,
+    groupBy: groupBy,
+    groupJoin: groupJoin,
+    intersect: intersect,
+    join: join,
+    last: last,
+    lastOrDefault: lastOrDefault,
+    max: max,
+    min: min,
+    orderBy: orderBy,
+    orderByDescending: orderByDescending,
+    reverse: reverse,
+    select: select,
+    selectMany: selectMany,
+    sequenceEqual: sequenceEqual,
+    single: single,
+    singleOrDefault: singleOrDefault,
+    skip: skip,
+    skipWhile: skipWhile,
+    sortBy: sortBy,
+    sum: sum,
+    take: take,
+    takeWhile: takeWhile,
+    thenBy: thenBy,
+    thenByDescending: thenByDescending,
+    toArray: toArray,
+    toLookup: toLookup,
+    union: union,
+    where: where,
+    zip: zip
+  };
 }
 
 export default class Linq {
   static setExtensions() {
-    setPrototype(utils.GeneratorFunctionProto);
-    setPrototype(utils.GeneratorFunctionPrototype);
-    var extensionMap = {asEnumerable: asEnumerable};
-    utils.defineProperties(Array.prototype, extensionMap);
-    utils.defineProperties(String.prototype, extensionMap);
+    
+    let linqExtensionsMap = getLinqExtensionsMap();
+    
+    utils.defineProperties(utils.GeneratorFunctionProto, linqExtensionsMap);
+    utils.defineProperties(utils.GeneratorFunctionPrototype, linqExtensionsMap);
+    
+    let asEnumerableExtensionMap = { asEnumerable: asEnumerable };
+    
+    utils.defineProperties(Array.prototype, asEnumerableExtensionMap);
+    utils.defineProperties(String.prototype, asEnumerableExtensionMap);
 
     // it is too general, but if you know what you're doing you can use this:
     //utils.defineProperties(Object.prototype, extensionMap);

@@ -1,5 +1,5 @@
 declare module 'linq4es2015/linq' {
-export default class Linq {
+  export default class Linq {
     static setExtensions(): void;
     static repeat<T>(element: T, count: number): Enumerable<T>;
     static range(start: number, count: number): Enumerable<number>;
@@ -49,7 +49,7 @@ export default class Linq {
     static union(): any;
     static where(): any;
     static zip(): any;
-}
+  }
 }
 
 interface Enumerable<T> {
@@ -57,7 +57,7 @@ interface Enumerable<T> {
   all(predicate: (i: T) => boolean): Enumerable<T>;
   where(predicate: (i: T) => boolean): Enumerable<T>;
   select<T2>(transformation: (i: T) => T2): Enumerable<T2>;
-  selectMany<T2>(collectionSelector: (c: Enumerable<T>) => T2, resultSelector?) : Enumerable<T2>;
+  selectMany<T2>(collectionSelector: (c: Enumerable<T>) => T2, resultSelector?): Enumerable<T2>;
   reverse(): Enumerable<T>;
   take(count: number): Enumerable<T>;
   skip(count: number): Enumerable<T>;
